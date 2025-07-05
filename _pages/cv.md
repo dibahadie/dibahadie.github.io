@@ -11,32 +11,32 @@ redirect_from:
 
 # Diba Hadi Esfangereh
 **Undergraduate CE Student**  
-📞 (+98) 990-191-1570  
-📧 [diba.hadie@gmail.com](mailto:diba.hadie@gmail.com)  
-🐙 [GitHub: dibahadie](https://github.com/dibahadie)  
-🔗 [LinkedIn: dibahadie](https://www.linkedin.com/in/dibahadie)  
+(+98) 990-191-1570  
+[diba.hadie@gmail.com](mailto:diba.hadie@gmail.com)  
+[GitHub: dibahadie](https://github.com/dibahadie)  
+[LinkedIn: dibahadie](https://www.linkedin.com/in/dibahadie)  
 
 ---
 
 ## Education
 
 **Sharif University of Technology**, Tehran, Iran  
-**B.Sc. in Computer Science and Engineering**, Minor in Mathematics  
+**B.Sc. in Computer Science and Engineering, Minor in Mathematics** 
 *Sep. 2022 – Expected 2026*  
-- GPA: 17.75/20  
-- [Transcript](https://edu.sharif.edu/v/401110245/31A3AD5174F3812D7C749993D73C625A/pdf)
+* GPA: 17.75/20
+* [Transcript](https://edu.sharif.edu/v/401110245/31A3AD5174F3812D7C749993D73C625A/pdf)
 
 **Farzanegan4 (SAMPAD) High School**, Tehran, Iran  
 **High School Diploma in Math and Physics**  
 *2019 – 2022*  
-- GPA: 19.8/20
+* GPA: 19.8/20
 
 ---
 
 ## Honors & Awards
 
-- 🥈 Silver Medal, Nationwide Mathematics Olympiad, Tehran, 2021  
-- 📊 Ranked 218th (among +145,000), Nationwide University Entrance Exam (Math & Physics), Iran, 2022  
+* Silver Medal, Nationwide Mathematics Olympiad, Tehran, 2021
+* Ranked 218th (among +145,000), Nationwide University Entrance Exam (Math & Physics), Iran, 2022  
 
 ---
 
@@ -45,9 +45,9 @@ redirect_from:
 **Research Assistant**  
 *Sharif University of Technology – Machine Learning Lab*  
 *May 2024 – Present*  
-- Supervised by Dr. Mahdieh Soleymani  
-- Researching generation of Persian melodies  
-- [Lab Website](http://mll.ce.sharif.edu/)
+* Supervised by Dr. Mahdieh Soleymani
+* Researching generation of Persian melodies
+* [Lab Website](http://mll.ce.sharif.edu/)
 
 ---
 
@@ -56,9 +56,9 @@ redirect_from:
 **Artificial Intelligence Programmer**  
 *PARSA*  
 *2024 – 2025*  
-- Built a license plate recognition system using classical computer vision  
-- Designed and trained a deep segmentation model for key recognition to enhance security  
-- [Company Website](https://www.parsa-cit.com/)
+* Built a license plate recognition system using classical computer vision
+* Designed and trained a deep segmentation model for key recognition to enhance security
+* [Company Website](https://www.parsa-cit.com/)
 
 ---
 
@@ -66,11 +66,13 @@ redirect_from:
 
 **Undergraduate Teaching Assistant**  
 *Sharif University of Technology – CE Department*  
-- *Fundamentals of Programming (Python)* | A. Malekzadeh, Fall 2023  
-- *Fundamentals of Programming (C)* | Dr. M. Fazli, Fall 2023  
-- *Advanced Programming (Java)* | Dr. M. Fazli, Fall 2023  
-- *Linear Algebra* | Dr. Hamid Reza Rabiee, Fall 2023
+* *Fundamentals of Programming (Python)* | A. Malekzadeh, Fall 2023
+* *Fundamentals of Programming (C)* | Dr. M. Fazli, Fall 2023
+* *Advanced Programming (Java)* | Dr. M. Fazli, Fall 2023
+* *Linear Algebra* | Dr. Hamid Reza Rabiee, Fall 2023
 
+**Number Theory and Algebra in Olympiad** 
+*Salam Highschool*
 ---
 
 ## Projects
@@ -102,15 +104,12 @@ redirect_from:
 
 | Subject                  | Course Title                                                    |
 |--------------------------|------------------------------------------------------------------|
-| Probability & Statistics | Statistics 110: Probability – HarvardX                         |
-| Linear Algebra           | Linear Algebra – MIT OCW                                       |
 | Machine Learning         | Machine Learning Specialization – Coursera                     |
 | Computer Vision          | Computer Vision – UCF, Mubarak Shah                            |
 | Digital Image Processing | Intro to Digital Image Processing – Rich Radke                 |
-| Digital Signal Processing| Digital Signal Processing – MIT OCW                            |
 | Neural Networks          | Convolutional Neural Networks for Visual Recognition – Stanford|
-| Audio Signal Processing  | Audio Signal Processing for Music Applications – Coursera      |
 | Automated Reasoning      | Automated Reasoning – YCLA Automated Reasoning Group           |
+|System2                   | System2 in AI - Sharif University of Technology - OCW          |
 
 ---
 
