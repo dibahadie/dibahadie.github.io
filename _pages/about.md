@@ -27,7 +27,7 @@ Music is an integral part of my life. I have a deep appreciation for Persian tra
 
 ## Get in Touch
 
-Feel free to reach out if you share similar interests or would like to collaborate on exciting research projects. You can connect with me via [LinkedIn](https://www.linkedin.com/) or [GitHub](https://github.com/).
+Feel free to reach out if you share similar interests or would like to collaborate on exciting research projects. You can connect with me via [email](diba.hadie@gmail.com).
 
 ---
 *"To play a wrong note is insignificant; to play without passion is inexcusable."*
