@@ -73,6 +73,7 @@ redirect_from:
 
 **Number Theory and Algebra in Olympiad** 
 *Salam Highschool*
+
 ---
 
 ## Projects
