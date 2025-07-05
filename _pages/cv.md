@@ -9,56 +9,109 @@ redirect_from:
 
 {% include base_path %}
 
-Education
-======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+# Diba Hadi Esfangereh
+**Undergraduate CE Student**  
+📞 (+98) 990-191-1570  
+📧 [diba.hadie@gmail.com](mailto:diba.hadie@gmail.com)  
+🐙 [GitHub: dibahadie](https://github.com/dibahadie)  
+🔗 [LinkedIn: dibahadie](https://www.linkedin.com/in/dibahadie)  
 
-Work experience
-======
-* Spring 2024: Academic Pages Collaborator
-  * Github University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+---
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+## Education
 
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+**Sharif University of Technology**, Tehran, Iran  
+**B.Sc. in Computer Science and Engineering**, Minor in Mathematics  
+*Sep. 2022 – Expected 2026*  
+- GPA: 17.75/20  
+- [Transcript](https://edu.sharif.edu/v/401110245/31A3AD5174F3812D7C749993D73C625A/pdf)
 
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+**Farzanegan4 (SAMPAD) High School**, Tehran, Iran  
+**High School Diploma in Math and Physics**  
+*2019 – 2022*  
+- GPA: 19.8/20
+
+---
+
+## Honors & Awards
+
+- 🥈 Silver Medal, Nationwide Mathematics Olympiad, Tehran, 2021  
+- 📊 Ranked 218th (among +145,000), Nationwide University Entrance Exam (Math & Physics), Iran, 2022  
+
+---
+
+## Research Experience
+
+**Research Assistant**  
+*Sharif University of Technology – Machine Learning Lab*  
+*May 2024 – Present*  
+- Supervised by Dr. Mahdieh Soleymani  
+- Researching generation of Persian melodies  
+- [Lab Website](http://mll.ce.sharif.edu/)
+
+---
+
+## Work Experience
+
+**Artificial Intelligence Programmer**  
+*PARSA*  
+*2024 – 2025*  
+- Built a license plate recognition system using classical computer vision  
+- Designed and trained a deep segmentation model for key recognition to enhance security  
+- [Company Website](https://www.parsa-cit.com/)
+
+---
+
+## Teaching Experience
+
+**Undergraduate Teaching Assistant**  
+*Sharif University of Technology – CE Department*  
+- *Fundamentals of Programming (Python)* | A. Malekzadeh, Fall 2023  
+- *Fundamentals of Programming (C)* | Dr. M. Fazli, Fall 2023  
+- *Advanced Programming (Java)* | Dr. M. Fazli, Fall 2023  
+- *Linear Algebra* | Dr. Hamid Reza Rabiee, Fall 2023
+
+---
+
+## Projects
+
+### Stronghold (Advanced Programming Project)  
+- Java-based game simulation of castle building and medieval warfare  
+- Used JavaFX and software design patterns  
+- [Project Repo](https://github.com/advanced-programming-sut-2023/project-group-59)
+
+### Vim (Fundamentals of Programming Project)  
+- Console-based Vim clone implemented in C  
+- [Project Repo](https://github.com/FundamentalOfProgramming-SUT-2022/project-dibahadie)
+
+▶️ **More projects on [GitHub](https://github.com/dibahadie?tab=repositories)**
+
+---
+
+## Skills
+
+- **Programming:** Python, PyTorch, C/C++, Java, MIPS Assembly, NumPy, OpenCV, PyQt  
+- **Technologies:** Git, Linux  
+- **Music:** Guitar, Violin, Piano, Persian Traditional Singing  
+- **Sports:** Ballet, Mountain Climbing  
+- **Languages:** Persian (native), English (fluent)
+
+---
+
+## Coursework
+
+| Subject                  | Course Title                                                    |
+|--------------------------|------------------------------------------------------------------|
+| Probability & Statistics | Statistics 110: Probability – HarvardX                         |
+| Linear Algebra           | Linear Algebra – MIT OCW                                       |
+| Machine Learning         | Machine Learning Specialization – Coursera                     |
+| Computer Vision          | Computer Vision – UCF, Mubarak Shah                            |
+| Digital Image Processing | Intro to Digital Image Processing – Rich Radke                 |
+| Digital Signal Processing| Digital Signal Processing – MIT OCW                            |
+| Neural Networks          | Convolutional Neural Networks for Visual Recognition – Stanford|
+| Audio Signal Processing  | Audio Signal Processing for Music Applications – Coursera      |
+| Automated Reasoning      | Automated Reasoning – YCLA Automated Reasoning Group           |
+
+---
+
+_Last updated: October 24, 2024_
