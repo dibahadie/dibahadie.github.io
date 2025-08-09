@@ -14,9 +14,9 @@ main:
 
 deep-dive:
   - title: "Part 1 – Introduction"
-    url: /blog/deep-dive/part1/
+    url: /blog/deep-dive-induction/part1/
   - title: "Part 2 – Core Concepts"
-    url: /blog/deep-dive/part2/
+    url: /blog/deep-dive-induction/part2/
   - title: "Part 3 – Advanced Topics"
-    url: /blog/deep-dive/part3/
+    url: /blog/deep-dive-induction/part3/
 
