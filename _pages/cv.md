@@ -44,16 +44,6 @@ redirect_from:
 
 ---
 
-## Professional Experience
-
-### PARSA Intelligent Technologies  
-**AI Engineer** | *2024 - 2025*  
-- Designed and implemented a license plate recognition system using computer vision techniques  
-- Developed deep segmentation models for security applications, improving accuracy by 15%  
-- Optimized image processing pipelines for real-time performance  
-
----
-
 ## Teaching Experience
 
 ### Sharif University of Technology  
