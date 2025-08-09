@@ -10,3 +10,12 @@ main:
     
   - title: "CV"
     url: /cv/
+
+
+deep-dive:
+  - title: "Part 1 – Introduction"
+    url: /deep-dive/part1/
+  - title: "Part 2 – Core Concepts"
+    url: /deep-dive/part2/
+  - title: "Part 3 – Advanced Topics"
+    url: /deep-dive/part3/
