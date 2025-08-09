@@ -12,7 +12,7 @@ main:
     url: /cv/
 
 
-deep-dive:
+deep-dive-induction:
   - title: "Part 1 – Introduction"
     url: /blog/deep-dive-induction/part1/
   - title: "Part 2 – Core Concepts"
