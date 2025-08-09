@@ -1,9 +1,9 @@
 ---
-title: 'Deep Dive: Induction'
-date: 2199-01-01
-permalink: /posts/2012/08/blog-post-1/
-tags:
-  - deep dive
+title: "Deep Dive – Part 1: Introduction"
+layout: single
+date: 2025-08-10
+author: "Diba Hadi Esfangereh"
+categories: [blog]
 ---
 
 I’m starting a new deep dive series!
