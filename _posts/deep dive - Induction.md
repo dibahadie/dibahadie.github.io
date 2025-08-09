@@ -1,11 +1,9 @@
 ---
-title: 'Future Blog Post'
+title: 'Deep Dive: Induction'
 date: 2199-01-01
-permalink: /posts/2012/08/blog-post-4/
+permalink: /posts/2012/08/blog-post-1/
 tags:
-  - cool posts
-  - category1
-  - category2
+  - deep dive
 ---
 
 I’m starting a new deep dive series!
