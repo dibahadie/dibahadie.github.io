@@ -24,13 +24,19 @@ redirect_from:
 **Bachelor of Science in Computer Engineering**  
 *Minor in Mathematics | September 2022 - Expected June 2026*  
 - GPA: 17.75/20 (3.7/4.0 equivalent)  
-- Relevant Coursework: Machine Learning, Computer Vision, Advanced Programming, Linear Algebra  
 - [Academic Transcript](https://edu.sharif.edu/v/401110245/31A3AD5174F3812D7C749993D73C625A/pdf)  
 
 ### Farzanegan4 High School (National Organization for Development of Exceptional Talents)  
 **Diploma in Mathematics and Physics**  
 *2019 - 2022*  
-- GPA: 19.8/20 (Top 1% of class)  
+- GPA: 19.8/20
+
+---
+
+## Honors & Awards
+
+- **Silver Medal**, National Mathematics Olympiad (2021)  
+- **Top 0.1%**, Nationwide University Entrance Exam (Among 145,000+ candidates)  
 
 ---
 
@@ -39,7 +45,7 @@ redirect_from:
 ### Machine Learning Laboratory, Sharif University  
 **Research Assistant** | *May 2024 - Present*  
 - Conducting research on Persian melody generation under supervision of Dr. Mahdieh Soleymani  
-- Developing novel deep learning architectures for music generation  
+- Developing novel deep learning architectures for persian instrument classification
 - Collaborating with interdisciplinary team on audio signal processing techniques  
 
 ---
@@ -49,15 +55,12 @@ redirect_from:
 ### Sharif University of Technology  
 **Undergraduate Teaching Assistant**  
 - **Fundamentals of Programming (Python/C)** | Fall 2023  
-  - Conducted lab sessions and office hours for 100+ students  
-  - Developed supplementary educational materials  
-- **Advanced Programming (Java)** | Fall 2023  
-  - Assisted in grading and project supervision  
+- **Advanced Programming (Java)** | Fall 2023    
 - **Linear Algebra** | Fall 2023  
 
 ### Salam High School  
 **Mathematics Olympiad Instructor**  
-- Taught number theory and algebra to gifted students preparing for national competitions  
+- Teaching number theory and algebra
 
 ---
 
@@ -86,20 +89,12 @@ redirect_from:
 - Tools: Git, Linux, OpenCV, PyQt  
 
 **Languages**  
-- Persian (Native)  
-- English (Fluent - TOEFL iBT: 108)  
+- Persian (Native)
+- English (Fluent)  
 
 **Interests**  
 - Music Performance (Guitar, Violin, Piano)  
 - Ballet & Mountain Climbing  
-
----
-
-## Honors & Awards
-
-- **Silver Medal**, National Mathematics Olympiad (2021)  
-- **Top 0.1%**, Nationwide University Entrance Exam (Among 145,000+ candidates)  
-- **Academic Excellence Scholarship**, Sharif University of Technology  
 
 ---
 
