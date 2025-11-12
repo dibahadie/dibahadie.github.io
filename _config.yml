@@ -23,7 +23,7 @@ repository               : "dibahadie.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "images/profilepic.png"
+  avatar           : "images/profilepic.jpg"
   name             : "Diba Hadi Esfangereh"
   pronouns         : # example: "she/her"  
   bio              : "Just a music lover doing some research!"
