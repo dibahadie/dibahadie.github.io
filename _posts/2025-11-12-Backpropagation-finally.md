@@ -4,9 +4,10 @@ layout: single
 sidebar:
   nav: 
 date: 2025-11-12
-categories: [blog]
+categories: [My_Ignorance_Examined]
 permalink: /Backpropagation-finally
 ---
+Welcome to **My Ignorance, Examined**, a series where I confront the gaps in my own understanding. Each week, I pick a topic I know nothing about, dive into the research, and share what I've learned. This is my public journey from bewilderment to basic comprehension, and you're along for the ride.
 
 I’ve dreaded backpropagation ever since I saw the algorithm for the first time! Somehow, I managed to dislike it so much, it took me an extremely long time to even try to understand it. Not that it’s an extremely complicated topic — it’s just that the people who have once understood it don’t make the effort to actually transfer that knowledge!
 
