@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I am Diba Hadi Esfangereh, a third-year Computer Engineering student at Sharif University of Technology with a passion for exploring the frontiers of artificial intelligence and cognitive science. My research interests lie at the intersection of Neurosymbolic AI, Automated Reasoning, Statistical Machine Learning, and Cognitive Science. I am fascinated by the potential of combining neural and symbolic methods to create AI systems capable of complex reasoning and robust learning.
+I am Diba Hadi Esfangereh, a forth-year Computer Engineering student at Sharif University of Technology with a passion for exploring the frontiers of artificial intelligence and cognitive science. My research interests lie at the intersection of Neurosymbolic AI, Automated Reasoning, Statistical Machine Learning, and Cognitive Science. I am fascinated by the potential of combining neural and symbolic methods to create AI systems capable of complex reasoning and robust learning.
 
 Beyond my academic pursuits, I have a deep love for music, which I express through playing multiple instruments, singing in traditional Persian styles, and studying the art of music generation. This passion has inspired me to explore innovative approaches to Neuro-Symbolic Music Generation, blending symbolic reasoning with deep learning techniques to overcome challenges in this creative domain.
 
