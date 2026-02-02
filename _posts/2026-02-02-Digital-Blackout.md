@@ -29,13 +29,6 @@ This is the extent of our misery:
 
 The list goes on and on.
 
-## The biggest digital darkness of the twenty-first century
-
-My life has basically stopped.
-
-I can’t search for or download papers. That means no research and no studying. I don’t have access to my email or Slack. My internship and remote projects are all in the air. It’s just me, all this time, and nothing to fill it with.
-
-To do *something*, I decided to bake. Even finding recipes is hard. I’ve opened books—actual paper books—to answer simple questions, and I honestly feel like I’m living in the eighteenth century.
 
 ## Dear reader, this is sad.
 
@@ -49,11 +42,9 @@ Even writing about it makes me more upset.
 
 ## The Darkness
 
-Dear reader, I don’t know how much you know about how things really are.
+There's this darkness, I would try to explain it, but I don’t think there are words for it. There’s a point—somewhere after hate and violence—where everything stops making sense. Moral values lose their meaning. Lives become numbers. The world turns into a calculation.
 
-I would try to explain it, but I don’t think there are words for it. There’s a point—somewhere after hate and violence—where everything stops making sense. Moral values lose their meaning. Lives become numbers. The world turns into a calculation.
-
-Past that point, nothing gets inside you anymore. For good reason. No one can fully understand this level of violence and hate. You would go mad if you tried.
+Past that point, nothing gets inside you anymore. And for good reason. No one can fully understand this level of violence and hate. You would go mad if you tried.
 
 So you sit there, in the darkness, trying to understand what cannot be understood, and you ask:
 
@@ -70,8 +61,9 @@ In moments like this, I’m reminded of one of my favorite poems:
 
 ## The Great Crime: Hope
 
-Maybe the greatest crime, in times like these, is hope.
+Maybe the greatest crime, in times like these, is hope. When a tragedy at this scale happens, being OK becomes sinful. It takes a lot to get up and keep going when your whole world is down.
 
+It's a daring and strange thing, hope. 
 And yet, you can only see the world’s wide horizons with eyes that still have it.
 
 ---
