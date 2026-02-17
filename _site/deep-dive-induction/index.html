@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Deep Dive: The Old Riddle of Induction | Diba Hadi Esfangereh</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Deep Dive: The Old Riddle of Induction" />
+<meta name="author" content="Diba Hadi Esfangereh" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The Old Riddle of Induction" />
+<meta property="og:description" content="The Old Riddle of Induction" />
+<link rel="canonical" href="http://localhost:4000/deep-dive-induction/" />
+<meta property="og:url" content="http://localhost:4000/deep-dive-induction/" />
+<meta property="og:site_name" content="Diba Hadi Esfangereh" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-08-10T00:00:00+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Deep Dive: The Old Riddle of Induction" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Diba Hadi Esfangereh"},"dateModified":"2025-08-10T00:00:00+03:00","datePublished":"2025-08-10T00:00:00+03:00","description":"The Old Riddle of Induction","headline":"Deep Dive: The Old Riddle of Induction","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/deep-dive-induction/"},"url":"http://localhost:4000/deep-dive-induction/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/blog-post.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+  <body class="site-wrapper">
+    <nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">Diba Hadi Esfangereh</a>
+    <div class="nav-links">
+      <a href="/" class="">Home</a>
+      <a href="/research/" class="">Research</a>
+      <a href="/blog/" class="">Blog</a>
+      <a href="/contact/" class="">Contact</a>
+    </div>
+  </div>
+</nav>
+
+
+    <main class="container content-area reveal-card">
+      <article class="post-content">
+        <header class="post-header">
+          <a href="/blog/" class="back-link">
+            <i class="fa-solid fa-arrow-left-long"></i> Back to Blog
+          </a>
+          <h1 class="post-title">Deep Dive: The Old Riddle of Induction</h1>
+          <div class="post-meta">
+            <span class="post-date">August 10, 2025</span>
+            
+              <span class="meta-divider">·</span>
+              <span class="post-tags">
+                
+              </span>
+            
+          </div>
+        </header>
+
+        <div class="post-body">
+          <h1 id="the-old-riddle-of-induction">The Old Riddle of Induction</h1>
+
+<p>First up, we’re diving into the article that set this whole series in motion: <em>The New Riddle of Induction</em> by Goodman. Even if you’ve never studied the philosophy of induction, the title alone begs the question: what exactly is the problem of induction?<br />
+Surprisingly, it’s about something we all do every day—often without thinking twice—that turns out to have deep philosophical roots. Once you start looking closer, this “simple” act of making inductive judgments becomes a puzzle that’s far trickier than it seems.
+For me, it connects deeply with my long-standing curiosity about out-of-distribution generalization in machine learning. The more I explore induction, the more I feel we need to pause and reflect on what we truly want from our AI systems. One thing is becoming crystal clear: without fully grasping the nature of induction, building AI with truly strong reasoning capabilities will remain out of reach. So buckle up!</p>
+
+<h2 id="problem-of-validity-of-judgments-about-future-or-unknown-cases">Problem of Validity of Judgments About Future or Unknown Cases</h2>
+
+<p>The problem is very simple, nothing in the future can be logically inferred from what has been observed already. What has happened imposes no logical restriction on what will happen. A more technical way of describing this would be that there are no necessary connections of matters of fact. This seem complex so let’s break it down:
+To really get this right, I’m gonna go back to definitions. What are matters of facts, what is a necessary condition, and lastly, what does it mean to say there are no necessary connections of matters of facts?</p>
+
+<h3 id="humes-distinction-matters-of-fact-vs-relations-of-ideas">Hume’s Distinction: Matters of Fact vs. Relations of Ideas</h3>
+
+<p>According to Hume, there are two sources of knowledge: relations of ideas and matters of fact <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>.</p>
+<ul>
+  <li>Relations of ideas: analytic claims which can be justified a priori, that is to say, independent of experience and with necessity. These include claims about geometry and algebra, and definitional statements.</li>
+  <li>Matters of fact: Matters of fact are a posteriori claims grounded in experience in the world, such as claims about substance and causal relations. But unlike as with a priori claims, to deny a posteriori claims implies no contradiction.
+We can also characterize Hume’s distinction between relations of ideas and matters of fact as the distinction between analytic and synthetic knowledge, respectively.
+Now jumping to the idea of necessary connections.</li>
+</ul>
+
+<h3 id="humes-copy-principle-and-necessary-connections">Hume’s Copy Principle and Necessary Connections</h3>
+
+<p>Hume has a copy principle that loosely states all our ideas come from experience. The contents of our minds (perceptions) are categorized in two parts: impressions and ideas. Impressions are vivid experiences from our senses or memory, and ideas are fainter versions in our mind. Hume suggests that all our ideas come from our impressions being mixed together through various relations: [2]</p>
+<ul>
+  <li>Natural relations resemblance, closeness in space/time, cause and effect.</li>
+  <li>Philosophical relations (put together by reasoning): some give certainty (like resemblance), others don’t—cause and effect is one of the uncertain ones.
+Among all these relations, cause and effect is the most special, it fits into both categories of relations and it seems to be the main way we reason about things we can’t directly sense. In Hume’s view, causation isn’t a property of things, but a relation between ideas in the mind that helps us make sense of the world beyond what we see right now.</li>
+</ul>
+
+<h3 id="no-necessary-connection-between-cause-and-effect">No Necessary Connection Between Cause and Effect</h3>
+
+<p>This is where it gets interesting, Hume here argues that there is really no necessary connection between cause and effect. I’ll refer to this great explanation provided in <sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>:</p>
+
+<blockquote>
+  <p>Hume challenges us to consider any one event and meditate on it; for instance, a billiard ball striking another. He holds that no matter how clever we are, the only way we can infer if and how the second billiard ball will move is via past experience. There is nothing in the cause that will ever imply the effect in an experiential vacuum.<br />
+And here it is important to remember that, in addition to cause and effect, the mind naturally associates ideas via resemblance and contiguity.<br />
+Hume does not hold that, having never seen a game of billiards before, we cannot know what the effect of the collision will be. Rather, we can use resemblance, for instance, to infer an analogous case from our past experiences of transferred momentum, deflection, and so forth.<br />
+We are still relying on previous impressions to predict the effect and therefore do not violate the Copy Principle. We simply use resemblance to form an analogous prediction. And we can charitably make such resemblances as broad as we want.<br />
+Thus, objections like: <em>Under a Humean account, the toddler who burned his hand would not fear the flame after only one such occurrence because he has not experienced a constant conjunction,</em> are unfair to Hume, as the toddler would have had thousands of experiences of the principle that like causes like, and could thus employ resemblance to reach the conclusion to fear the flame.</p>
+</blockquote>
+
+<p>Now, another question is raised. If we define causation merely as constant conjunction, that events A and B consistently happen together, how do we decide that this consistency isn’t just luck? In other words, seeing events happen together a number of times still doesn’t necessarily imply that idea of causation in our mind. Causation provides the deeper meaning that not only the conjunction seems to be consistent, but also it’s necessary and not accidental.</p>
+
+<p>We can truly understand here what revolutionary statement it is to say there are no necessary connections of matters of fact! If you think about it, logically speaking, we can’t justify the decision as to why a relation between matters of fact is considered as causation in our mind. There are always possible worlds in which event A does not cause event B to happen. This begs the question to mind: So what is this necessity that is implied by causation? Although it can’t be justified logically, it’s definitely an attribute of a connection that we decide about and feel. This is where we can jump to the problem of induction.</p>
+
+<hr />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p><a href="https://michaelrobertcaditz.medium.com/exploring-humes-distinction-between-relations-of-ideas-and-matters-of-fact-the-devil-is-in-the-5e975624f2a6">Exploring Hume’s Distinction Between Relations of Ideas and Matters of Fact</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p><a href="https://iep.utm.edu/hume-causation/#H1">Hume on Causation</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        </div>
+      </article>
+    </main>
+
+    <div class="footer">
+  <div>
+    © 2026 Diba Hadi Esfangereh · Built with Jekyll ·
+    <a href="/feed.xml">RSS</a>
+  </div>
+</div>
+
+  </body>
+</html>
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

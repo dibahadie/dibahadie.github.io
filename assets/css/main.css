@@ -1,0 +1,454 @@
+/* ==========================================================================
+   1. VARIABLES & RESET
+   ========================================================================== */
+:root {
+  --bg: #06090f;
+  --panel: #0e1422;
+  --text: #f1f5ff;
+  --muted: #b4c0dd;
+  --border: rgba(255, 255, 255, .12);
+  --accent: #8fb0ff;
+  --accent2: #c6a6ff;
+  --shadow: 0 14px 48px rgba(0, 0, 0, .45);
+  --radius: 2px;
+  --max: 1060px;
+  --accent-indigo: #818cf8;    /* Professional link/PDF color */
+  --accent-cyan: #22d3ee;      /* High-visibility code/data color */
+  --accent-lavender: #c084fc;  /* Music/NIME themed color */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background-color: #0d1117 !important;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Ensure the body fills the whole screen */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* The wrapper that holds everything */
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Minimum height of the full screen */
+  background-color: #0d1117; /* Solid background fix */
+}
+
+/* The area containing your cards */
+.content-area {
+  flex: 1 0 auto; /* This forces the content to grow and push the footer down */
+  padding-bottom: 60px; /* Space between the last card and the footer */
+}
+
+/* The footer itself */
+footer {
+  flex-shrink: 0; /* Prevents the footer from getting squished */
+  width: 100%;
+  padding: 30px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #0d1117;
+}
+
+/* ==========================================================================
+   2. COMMON COMPONENTS
+   ========================================================================== */
+a { color: var(--text); text-decoration: none; transition: all 160ms ease; }
+a:hover { color: var(--accent); }
+
+.container { max-width: var(--max); margin: 0 auto; padding: 5px; }
+
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .02), rgba(255, 255, 255, 0)), var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.card:hover { transform: translateY(-2px); border-color: rgba(255, 255, 255, .16); }
+.card .card:hover { transform: none; }
+.card:active { transform: translateY(0px); }
+.card-pad { padding: 18px; }
+
+.icon {
+  width: 36px; height: 36px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: rgba(122, 162, 255, .14);
+  border: 1px solid rgba(122, 162, 255, .22);
+  flex: 0 0 auto;
+}
+
+.icon.music { background: rgba(198, 166, 255, .14); border-color: rgba(198, 166, 255, .22); }
+.icon.music i { color: var(--accent2); }
+
+.pill {
+  font-size: 12px; color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 6px 10px; border-radius: 999px;
+  background: rgba(255, 255, 255, .03);
+}
+
+/* ==========================================================================
+   3. NAVIGATION
+   ========================================================================== */
+.nav {
+  position: sticky; top: 0;
+  backdrop-filter: blur(10px);
+  background: rgba(11, 15, 23, .65);
+  border-bottom: 1px solid var(--border);
+  z-index: 50;
+}
+
+.nav-inner { max-width: var(--max); margin: 0 auto; padding: 14px 18px; display: flex; align-items: center; gap: 18px; }
+.brand { font-weight: 700; letter-spacing: .2px; }
+.nav-links { margin-left: auto; display: flex; gap: 14px; flex-wrap: wrap; }
+.nav a { color: var(--muted); }
+.nav a.active, .nav a:hover { color: var(--text); }
+
+/* ==========================================================================
+   4. HERO & CONTENT SECTIONS
+   ========================================================================== */
+.hero, .under-hero {
+  padding: 12px 0 8px;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 18px;
+}
+
+.under-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 18px;
+}
+
+.h-title { font-size: 34px; line-height: 1.15; margin: 0 0 10px; letter-spacing: .01em; margin-top: 0;}
+.sub { color: var(--muted); margin: 0; }
+
+.intro-contacts i { width: 18px; text-align: center; margin-right: 8px; display: inline-block; }
+.intro-contacts a:hover { color: var(--text); text-decoration: none; }
+.section-label {margin-top: 0;}
+
+.bio-quote {
+  margin: 4px 0 0; padding-left: 12px;
+  border-left: 2px solid rgba(143, 176, 255, .35);
+  font-style: italic; font-size: 13.5px; line-height: 1.45;
+  color: rgba(180, 192, 221, .8);
+}
+.bio-quote span { display: block; font-style: normal; font-size: 12px; color: rgba(180, 192, 221, .6); }
+
+.section h2 {
+  margin: 0 0 10px; font-size: 16px; color: var(--muted);
+  letter-spacing: .12em; text-transform: uppercase;
+}
+
+.stack { display: flex; flex-direction: column; gap: 12px; }
+.row { display: flex; gap: 10px; align-items: flex-start; }
+.row-title { font-weight: 600; font-size: 15px; }
+.row-text { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
+
+.profile-pic {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+.profile-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 140px; /* Limits width so bio has room on the right */
+  flex-shrink: 0; /* Prevents sidebar from being squished */
+}
+
+.bio-text-col {
+  flex: 1;
+}
+
+.intro-contacts {
+  display: flex;
+  flex-direction: column; /* Vertical alignment below picture */
+  gap: 10px;
+  font-size: 14px;
+}
+
+.intro-flex-container {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  flex-wrap: nowrap; /* Prevents bio from dropping below image on desktop */
+}
+
+/* Hover state: Brighten text and icons */
+.intro-contacts a:hover {
+  color: #ffffff !important; /* Forces pure white brightness */
+  transform: translateX(1px); /* Subtle shift to the right */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Specifically brighten the icons on hover */
+.intro-contacts a:hover i {
+  color: var(--accent); /* Makes the icon pop with your blue/indigo accent */
+}
+
+/* ==========================================================================
+   5. INTERACTIVE STAFF
+   ========================================================================== */
+.staff-wrap {
+  display: grid; grid-template-columns: 1fr 50px; align-items: center;
+  background: rgba(255, 255, 255, 0.03); border-radius: var(--radius); overflow: hidden;
+}
+
+.staff-wrap canvas { width: 100%; height: 42px; display: block; cursor: crosshair; }
+
+.staff-play {
+  height: 60px; width: 50px; border: none;
+  border-left: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.01); color: rgba(241, 245, 255, 0.75);
+  cursor: pointer; display: grid; place-items: center; transition: all 140ms ease;
+}
+.staff-play:hover { background: rgba(143, 176, 255, 0.08); color: var(--accent); }
+.staff-play:active { transform: scale(0.95); }
+
+.staff-hint { font-size: 12px; color: var(--muted); margin-top: 0; }
+
+/* ==========================================================================
+   6. ACCESSIBILITY & UTILS
+   ========================================================================== */
+a:focus-visible, button:focus-visible, .link:focus-visible {
+  outline: 2px solid rgba(122, 162, 255, .55); outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a, .card, .link { transition: none !important; }
+  .card:hover { transform: none !important; }
+}
+
+/* ==========================================================================
+   7. RESPONSIVE QUERIES
+   ========================================================================== */
+
+@media (max-width: 980px) {
+  .under-hero { grid-template-columns: 1fr; }
+  .staff-wrap { background: rgba(255, 255, 255, 0.02); padding-right: 8px; }
+}
+
+@media (max-width: 880px) {
+  .hero { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  /* Profile/Hero Adjustments */
+  .profile-sidebar {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    width: 100%; gap: 20px !important;
+  }
+  .profile-sidebar img { width: 150px !important; height: 150px !important; flex-shrink: 0; }
+  .intro-contacts i { width: 20px; }
+
+  .h-title {
+    font-size: 24px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .sub { font-size: 13px; line-height: 1.3; }
+
+  /* Nav Adjustments */
+  .nav-inner { flex-direction: column; gap: 12px; padding: 12px 10px; }
+  .nav-links { margin-left: 0; justify-content: center; width: 100%; border-top: 1px solid var(--border); padding-top: 10px; }
+
+  .profile-sidebar {
+    flex-direction: row; /* Image and contacts side-by-side on mobile */
+    width: 100%;
+    align-items: center;
+  }
+
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+  }
+
+  .bio-text-col {
+    min-width: 100%;
+    margin-top: 10px;
+  }
+
+  .intro-flex-container {
+    flex-wrap: wrap; /* Allows stacking on mobile */
+    gap: 20px;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* Make mini-cards inside Highlights slightly more compact */
+  .mini-card .card-pad {
+    padding: 12px;
+  }
+
+  .mini-card .row-title {
+    font-size: 14px;
+  }
+
+  .mini-card .row-text {
+    font-size: 12px;
+  }
+
+  /* Adjust the lower grid to stack vertically */
+  .under-hero {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+
+/* ==========================================================================
+   8. HIGHLIGHTS CARD
+   ========================================================================== */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: all 160ms ease;
+}
+
+.pill:hover {
+  background: rgba(143, 176, 255, 0.1);
+  border-color: var(--accent);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+/* Container: Subtle Indigo glow on hover */
+.featured-publication {
+  background: #1a2235 !important; 
+  border: 1px solid rgba(129, 140, 248, 0.4) !important;
+  box-shadow: inset 0 0 10px rgba(129, 140, 248, 0.1) !important;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.featured-publication:hover {
+  background: #202940 !important;
+  border-color: rgba(129, 140, 248, 0.8) !important;
+}
+
+.featured-publication .pub-title {
+  color: #ffffff !important;
+}
+
+/* Label: Lavender for a touch of creative 'Music' flair */
+.pub-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-lavender);
+  margin-bottom: 12px;
+  opacity: 0.9;
+}
+
+/* Title: Pure white with better line height */
+.pub-title {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+/* Meta: Desaturated Cyan for a modern "tech" feel */
+.pub-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent-cyan);
+  opacity: 0.7;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.pub-venue {
+  color: rgb(151, 161, 236);
+}
+
+/* Action Pills: Differential colors for PDF vs Code */
+.action-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: all 0.2s ease;
+}
+
+/* PDF Icon: Indigo */
+.action-pill i.fa-file-pdf {
+  color: var(--accent-indigo);
+}
+
+/* Code Icon: Cyan */
+.action-pill i.fa-code {
+  color: var(--accent-cyan);
+}
+
+.action-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ==========================================================================
+   9. ANIMATION
+   ========================================================================== */
+
+
+
+.reveal-card {
+  opacity: 0; 
+  /* Slower duration (0.8s) and a smoother easing curve */
+  animation: subtleFadeIn 0.8s cubic-bezier(0.21, 0.6, 0.35, 1) forwards;
+}
+
+@keyframes subtleFadeIn {
+  from {
+    opacity: 0;
+    /* Reduced movement from 15px to 8px for subtlety */
+    transform: translateY(8px); 
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

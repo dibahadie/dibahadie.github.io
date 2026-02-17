@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-02-17T14:25:26+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Diba Hadi Esfangereh</title><subtitle>Research, publications, projects, and writing.</subtitle><entry><title type="html">Backpropagation, Once and for all!</title><link href="http://localhost:4000/Backpropagation-finally" rel="alternate" type="text/html" title="Backpropagation, Once and for all!" /><published>2025-11-12T00:00:00+03:00</published><updated>2025-11-12T00:00:00+03:00</updated><id>http://localhost:4000/Backpropagation-finally</id><content type="html" xml:base="http://localhost:4000/Backpropagation-finally"><![CDATA[<p>Welcome to <strong>My Ignorance, Examined</strong>, a series where I confront the gaps in my own understanding. Each time, I pick a topic I know nothing about, dive into the research, and share what I’ve learned. This is my journey from bewilderment to basic comprehension, and you’re along for the ride.</p>
+
+<p>I’ve dreaded backpropagation ever since I saw the algorithm for the first time! Somehow, I managed to dislike it so much, it took me an extremely long time to even try to understand it. Not that it’s an extremely complicated topic — it’s just that the people who have once understood it don’t make the effort to actually transfer that knowledge!</p>
+
+<p>A while back, after ignoring the topic for too long, I decided enough is enough. I’m a grown woman, and this is embarrassing. After about an hour in the library, searching through a dozen books and lecture notes, I finally came to my <em>aha moment.</em></p>
+
+<p>This is my attempt to explain backpropagation the way I think it should be explained.<br />
+So buckle up!</p>
+
+<hr />
+
+<h2 id="computation-graphs">Computation Graphs</h2>
+
+<p>The first thing almost every lecture and source starts with is the idea of computation graphs.<br />
+I’m not going to linger on this, because my guess is this is not the core source of confusion. Most people grasp the concept of breaking a calculation into a graph of operations.</p>
+
+<p>The real hurdle — the part that feels like a mental block — is what happens <em>on that graph</em>.<br />
+It’s the moment we stop moving forward and start moving backward.</p>
+
+<p><strong>What are we actually calculating in that backward pass? Why does chaining these derivatives together give us what we need?</strong></p>
+
+<p>That is the heart of the problem.<br />
+So let’s skip past the comfortable part and tackle the awkward one head-on.</p>
+
+<hr />
+
+<h2 id="gradient-flow-through-the-important-gates">Gradient Flow Through the Important Gates</h2>
+
+<p>In this section, I’m gonna refer to the slide most of you have probably seen and thought to yourself, <em>“Oh, I get it.”</em></p>
+
+<figure>
+  <img src="assets/img/Backpropagation-finally/gates.png" alt="Computation Graph of Backpropagation" width="300" />
+  <figcaption>Fei-Fei Li, Jiajun Wu, and Ruohan Gao — CS231n, Stanford, Fall 2022.</figcaption>
+</figure>
+
+<p>Before we dive into the details of the figure, let’s go over the <strong>chain rule</strong>.<br />
+I know, I know! Not just the simple chain rule you’ve been seeing all over the place though — I’m talking about the <strong>multivariable chain rule!</strong></p>
+
+<hr />
+
+<h3 id="chain-rule-refresher">Chain Rule Refresher</h3>
+
+<p>For a scalar function \(L = f(g(x))\), the <strong>simple chain rule</strong> is:</p>
+
+\[\frac{dL}{dx} = \frac{dL}{dg} \cdot \frac{dg}{dx}\]
+
+<p>For multivariable functions \(L = f(u, v)\) where \(u = u(x, y)\) and \(v = v(x, y)\):</p>
+
+\[\frac{\partial L}{\partial x} = \frac{\partial L}{\partial u} \frac{\partial u}{\partial x} + \frac{\partial L}{\partial v} \frac{\partial v}{\partial x}\]
+
+<p>This is the foundation of the <strong>copy gate</strong> gradient flow.</p>
+
+<hr />
+
+<h3 id="add-gate">Add Gate</h3>
+
+<p>This is pretty straightforward however you look at it.</p>
+
+<p>In the given example, assume you want to take the derivative with respect to the upper input. Then our output function would be:</p>
+
+\[f(x) = x + 4\]
+
+<p>Now we can compute the derivative of \(f\) with respect to \(x\) easily:</p>
+
+\[\frac{df}{dx} = 1\]
+
+<p>So, the <strong>add gate copies the gradient</strong> into its inputs:</p>
+
+\[\frac{\partial L}{\partial x_1} = \frac{\partial L}{\partial y}, \quad
+\frac{\partial L}{\partial x_2} = \frac{\partial L}{\partial y}\]
+
+<hr />
+
+<h3 id="multiply-gate-mul-gate">Multiply Gate (Mul Gate)</h3>
+
+<p>In the given example, assume you want to take the derivative with respect to the upper input. Then our output function would be:</p>
+
+\[f(x) = 3x\]
+
+<p>So the derivative of the output with respect to this input (\(x\)) would be <strong>3</strong>.</p>
+
+<p>Mathematically, if \(y = x_1 \cdot x_2\), then:</p>
+
+\[\frac{\partial y}{\partial x_1} = x_2, \quad \frac{\partial y}{\partial x_2} = x_1\]
+
+<p>Hence, during backpropagation:</p>
+
+\[\frac{\partial L}{\partial x_1} = \frac{\partial L}{\partial y} \cdot x_2, \quad
+\frac{\partial L}{\partial x_2} = \frac{\partial L}{\partial y} \cdot x_1\]
+
+<hr />
+
+<h3 id="max-gate">Max Gate</h3>
+
+<p>Take the input that is the current maximum.<br />
+In the neighborhood of this input, when we take epsilon steps, the output would be \(f(x) = x\).</p>
+
+<p>Now take the <em>other</em> input. In the epsilon neighborhood of this input, no matter how we change it, the output is a constant \(c\) (the other input).<br />
+So \(f(x) = c\), and our gradient is <strong>zero</strong>.</p>
+
+<p>Formally, if \(y = \max(x_1, x_2)\):</p>
+
+\[\frac{\partial y}{\partial x_1} =
+\begin{cases}
+1 &amp; \text{if } x_1 &gt; x_2 \\
+0 &amp; \text{otherwise}
+\end{cases},
+\quad
+\frac{\partial y}{\partial x_2} =
+\begin{cases}
+1 &amp; \text{if } x_2 &gt; x_1 \\
+0 &amp; \text{otherwise}
+\end{cases}\]
+
+<hr />
+
+<h3 id="copy-gate">Copy Gate</h3>
+
+<p>Onto the most difficult gate for me to grasp!</p>
+
+<p>At the core of this gate lies the <strong>multivariable chain rule</strong>.<br />
+If a variable \(x\) is copied to multiple outputs \(y_1, y_2, \dots, y_n\):</p>
+
+\[\frac{\partial L}{\partial x} = \sum_{i=1}^{n} \frac{\partial L}{\partial y_i}\]
+
+<p>Each copy contributes additively to the gradient — this is why gradients <strong>accumulate</strong> during backpropagation.</p>
+
+<hr />
+
+<h2 id="visualize-once-and-for-all">Visualize, Once and for All</h2>
+
+<p>Now that we fully understand how the gradient flows through these gates, let’s draw a neural network <strong>entirely in terms of these gates</strong> and nothing more.<br />
+Then, backpropagation is as close as it can be to obvious!</p>
+
+<p align="center">
+  <img src="assets/img/Backpropagation-finally/backprop_graph.png" alt="Computation Graph of Backpropagation" width="500" />
+</p>
+
+<p>First, let’s set our terminology and notation straight:</p>
+
+<ul>
+  <li>\(j^{th}\) activation of layer $l$  : \(a^{[l]}_j=f(z_j^{[l]})\)</li>
+  <li>\(j^{th}\) pre-activation  of later \(l\): \(z^{[l]}_j = \sum_{i=1}^{d[l-1]} w_{ji}a^{[l-1]}_i\)</li>
+  <li>Loss function: \(L\)</li>
+  <li>Number of neurons of layer \(l\): \(d[l]\)</li>
+</ul>
+
+<hr />
+
+<h2 id="backpropagation-finally">Backpropagation, Finally!</h2>
+
+<p>Backpropagation basically has two parts you need to understand.</p>
+
+<hr />
+
+<h3 id="part-1-gradient-of-the-loss-with-respect-to-any-given-weight">Part 1: Gradient of the Loss with Respect to Any Given Weight</h3>
+
+<p>Basically, our objective is to calculate the gradient of the loss with respect to any given weight. This is the part where visualization makes our lives very easy! As you can see in the figure, we want to calculate gradient with respect to one of the inputs to a mul gate. So all we have to do is to calculate the gradient with respect to output and multiply it by the other input of the gate which is our activation value we have calculated in the forward pass. So far so good!</p>
+
+<p align="center">
+  <img src="assets/img/Backpropagation-finally/mul.png" alt="Computation Graph of Backpropagation" width="500" />
+</p>
+
+<p>Our objective is to calculate the <strong>gradient of the loss</strong> with respect to any given weight \(W^{[l]}_{ji}\):</p>
+
+\[\frac{\partial L}{\partial W^{[l]}_{ji}} = \frac{\partial L}{\partial z^{[l]}_j} a_i^{[l-1]}\]
+
+<p>This means:</p>
+<blockquote>
+  <p>The gradient of the loss with respect to the weights equals the gradient flowing into the layer times the activation from the previous layer.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="part-2-derivative-of-the-loss-with-respect-to-pre-activation-values">Part 2: Derivative of the Loss with Respect to Pre-Activation Values</h3>
+
+<p>Now we need to calculate \(\frac{\partial L}{\partial z^{[l]}_j}\). This is done in a <strong>recursive manner</strong>.</p>
+
+<p align="center">
+  <img src="assets/img/Backpropagation-finally/error.png" alt="Computation Graph of Backpropagation" width="500" />
+</p>
+
+<p>Basically, every pre-activation value at each layer goes through several gates:</p>
+
+<ul>
+  <li>Activation function</li>
+</ul>
+
+\[\frac{\partial L}{\partial z^{[l-1]}_i}=\frac{\partial L}{\partial a^{[l-1]}_i}
+\frac{\partial a^{[l-1]}_i}{\partial z^{[l-1]}_i}\]
+
+<ul>
+  <li>Copy gate and mul gate for each copy thread</li>
+</ul>
+
+\[\frac{\partial L}{\partial z^{[l-1]}_i}=\frac{\partial a^{[l-1]}_i}{\partial z^{[l-1]}_i}
+\sum_{j=1}^{d[l]} w_{ji}^{[l]}\frac{\partial L}{\partial z^{[l]}_j}\]
+
+<p>The term \(\frac{\partial a^{[l-1]}_i}{\partial z^{[l-1]}_i}\) can be calculated easily:</p>
+
+\[\frac{\partial a^{[l-1]}_i}{\partial z^{[l-1]}_i} = f'(z^{[l-1]}_i)\]
+
+<p>So now we can calculate \(\frac{\partial L}{\partial z^{[l-1]}_i}\) terms from \(\frac{\partial L}{\partial z^{[l]}_i}\) terms.</p>
+
+<hr />
+
+<p><em>Thanks for reading! Hopefully, this explanation helps make backpropagation finally click.</em></p>]]></content><author><name>Diba Hadi Esfangereh</name></author><category term="My_Ignorance_Examined" /><summary type="html"><![CDATA[Welcome to My Ignorance, Examined, a series where I confront the gaps in my own understanding. Each time, I pick a topic I know nothing about, dive into the research, and share what I’ve learned. This is my journey from bewilderment to basic comprehension, and you’re along for the ride.]]></summary></entry><entry><title type="html">Digital Blackout: Behind the Curtains</title><link href="http://localhost:4000/digital-blackout" rel="alternate" type="text/html" title="Digital Blackout: Behind the Curtains" /><published>2025-11-12T00:00:00+03:00</published><updated>2025-11-12T00:00:00+03:00</updated><id>http://localhost:4000/Digital-Blackout</id><content type="html" xml:base="http://localhost:4000/digital-blackout"><![CDATA[<p><em>Context note:</em><br />
+Iran has been experiencing a nationwide internet blackout. The government has shut down international internet access in an effort to conceal the violent suppression. This post was written when international internet access was completely shut off.</p>
+
+<hr />
+
+<p>This feels unreal. It has almost been a week since everything went offline, and I still find myself opening my browser three or four times a day, typing something—only to remember that there is no Google.</p>
+
+<p>This is the extent of our misery:</p>
+
+<ul>
+  <li>No international internet</li>
+  <li>No Google services</li>
+  <li>A lot of my files are trapped in Google Drive</li>
+  <li>No email — so I can’t continue my internship applications or remote projects</li>
+  <li>No Google Maps, no Colab, no Kaggle</li>
+  <li>No location services</li>
+  <li>Even internal social media platforms are shut down</li>
+  <li>No text messages, and on some parts of the day, no phone calls</li>
+  <li>No news channels or news sites</li>
+  <li>No YouTube</li>
+  <li>No Instagram</li>
+  <li>No papers</li>
+  <li>No books</li>
+  <li>No ChatGPT</li>
+</ul>
+
+<p>The list goes on and on.</p>
+
+<h2 id="dear-reader-this-is-sad">Dear reader, this is sad.</h2>
+
+<p>I’m not going to sugarcoat it. This is horrifying.</p>
+
+<p>As a college student, my life was built on papers, courses, YouTube, and constant searching. I was planning to apply for a master’s program overseas. Now everything feels like it’s falling apart. The building blocks of my future are slipping out of my hands, and there’s nothing I can do to stop it.</p>
+
+<p>The thought that this situation might last for a long time terrifies me. The longer this disconnection continues, the harder it is to believe that things will go back to normal. I feel sad, frightened, angry, shocked—and mostly, I feel disbelief. I never imagined this could happen.</p>
+
+<p>Even writing about it makes me more upset.</p>
+
+<h2 id="the-darkness">The Darkness</h2>
+
+<p>There’s this darkness, I would try to explain it, but I don’t think there are words for it. There’s a point—somewhere after hate and violence—where everything stops making sense. Moral values lose their meaning. Lives become numbers. The world turns into a calculation.</p>
+
+<p>Past that point, nothing gets inside you anymore. And for good reason. No one can fully understand this level of violence and hate. You would go mad if you tried.</p>
+
+<p>So you sit there, in the darkness, trying to understand what cannot be understood, and you ask:</p>
+
+<p><em>Where is the sun?</em></p>
+
+<p>What do you do when nothing can be done?</p>
+
+<p>In moments like this, I’m reminded of one of my favorite poems:</p>
+
+<blockquote>
+  <p>Out of the night that covers me<br />
+Black as the pit from pole to pole<br />
+I thank whatever gods may be<br />
+For my unconquerable soul</p>
+</blockquote>
+
+<h2 id="the-great-crime-hope">The Great Crime: Hope</h2>
+
+<p>Maybe the greatest crime, in times like these, is hope. When a tragedy at this scale happens, being OK becomes sinful. It takes a lot to get up and keep going when your whole world is down.</p>
+
+<p>It’s a daring and strange thing, hope. 
+And yet, you can only see the world’s wide horizons with eyes that still have it.</p>
+
+<hr />
+
+<p><em>I sincerely hope for freedom, safety, and dignity for all people.</em></p>]]></content><author><name>Diba Hadi Esfangereh</name></author><category term="Personal" /><summary type="html"><![CDATA[Context note: Iran has been experiencing a nationwide internet blackout. The government has shut down international internet access in an effort to conceal the violent suppression. This post was written when international internet access was completely shut off.]]></summary></entry><entry><title type="html">Deep Dive: The Old Riddle of Induction</title><link href="http://localhost:4000/deep-dive-induction/" rel="alternate" type="text/html" title="Deep Dive: The Old Riddle of Induction" /><published>2025-08-10T00:00:00+03:00</published><updated>2025-08-10T00:00:00+03:00</updated><id>http://localhost:4000/riddle-of-induction</id><content type="html" xml:base="http://localhost:4000/deep-dive-induction/"><![CDATA[<h1 id="the-old-riddle-of-induction">The Old Riddle of Induction</h1>
+
+<p>First up, we’re diving into the article that set this whole series in motion: <em>The New Riddle of Induction</em> by Goodman. Even if you’ve never studied the philosophy of induction, the title alone begs the question: what exactly is the problem of induction?<br />
+Surprisingly, it’s about something we all do every day—often without thinking twice—that turns out to have deep philosophical roots. Once you start looking closer, this “simple” act of making inductive judgments becomes a puzzle that’s far trickier than it seems.
+For me, it connects deeply with my long-standing curiosity about out-of-distribution generalization in machine learning. The more I explore induction, the more I feel we need to pause and reflect on what we truly want from our AI systems. One thing is becoming crystal clear: without fully grasping the nature of induction, building AI with truly strong reasoning capabilities will remain out of reach. So buckle up!</p>
+
+<h2 id="problem-of-validity-of-judgments-about-future-or-unknown-cases">Problem of Validity of Judgments About Future or Unknown Cases</h2>
+
+<p>The problem is very simple, nothing in the future can be logically inferred from what has been observed already. What has happened imposes no logical restriction on what will happen. A more technical way of describing this would be that there are no necessary connections of matters of fact. This seem complex so let’s break it down:
+To really get this right, I’m gonna go back to definitions. What are matters of facts, what is a necessary condition, and lastly, what does it mean to say there are no necessary connections of matters of facts?</p>
+
+<h3 id="humes-distinction-matters-of-fact-vs-relations-of-ideas">Hume’s Distinction: Matters of Fact vs. Relations of Ideas</h3>
+
+<p>According to Hume, there are two sources of knowledge: relations of ideas and matters of fact <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>.</p>
+<ul>
+  <li>Relations of ideas: analytic claims which can be justified a priori, that is to say, independent of experience and with necessity. These include claims about geometry and algebra, and definitional statements.</li>
+  <li>Matters of fact: Matters of fact are a posteriori claims grounded in experience in the world, such as claims about substance and causal relations. But unlike as with a priori claims, to deny a posteriori claims implies no contradiction.
+We can also characterize Hume’s distinction between relations of ideas and matters of fact as the distinction between analytic and synthetic knowledge, respectively.
+Now jumping to the idea of necessary connections.</li>
+</ul>
+
+<h3 id="humes-copy-principle-and-necessary-connections">Hume’s Copy Principle and Necessary Connections</h3>
+
+<p>Hume has a copy principle that loosely states all our ideas come from experience. The contents of our minds (perceptions) are categorized in two parts: impressions and ideas. Impressions are vivid experiences from our senses or memory, and ideas are fainter versions in our mind. Hume suggests that all our ideas come from our impressions being mixed together through various relations: [2]</p>
+<ul>
+  <li>Natural relations resemblance, closeness in space/time, cause and effect.</li>
+  <li>Philosophical relations (put together by reasoning): some give certainty (like resemblance), others don’t—cause and effect is one of the uncertain ones.
+Among all these relations, cause and effect is the most special, it fits into both categories of relations and it seems to be the main way we reason about things we can’t directly sense. In Hume’s view, causation isn’t a property of things, but a relation between ideas in the mind that helps us make sense of the world beyond what we see right now.</li>
+</ul>
+
+<h3 id="no-necessary-connection-between-cause-and-effect">No Necessary Connection Between Cause and Effect</h3>
+
+<p>This is where it gets interesting, Hume here argues that there is really no necessary connection between cause and effect. I’ll refer to this great explanation provided in <sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>:</p>
+
+<blockquote>
+  <p>Hume challenges us to consider any one event and meditate on it; for instance, a billiard ball striking another. He holds that no matter how clever we are, the only way we can infer if and how the second billiard ball will move is via past experience. There is nothing in the cause that will ever imply the effect in an experiential vacuum.<br />
+And here it is important to remember that, in addition to cause and effect, the mind naturally associates ideas via resemblance and contiguity.<br />
+Hume does not hold that, having never seen a game of billiards before, we cannot know what the effect of the collision will be. Rather, we can use resemblance, for instance, to infer an analogous case from our past experiences of transferred momentum, deflection, and so forth.<br />
+We are still relying on previous impressions to predict the effect and therefore do not violate the Copy Principle. We simply use resemblance to form an analogous prediction. And we can charitably make such resemblances as broad as we want.<br />
+Thus, objections like: <em>Under a Humean account, the toddler who burned his hand would not fear the flame after only one such occurrence because he has not experienced a constant conjunction,</em> are unfair to Hume, as the toddler would have had thousands of experiences of the principle that like causes like, and could thus employ resemblance to reach the conclusion to fear the flame.</p>
+</blockquote>
+
+<p>Now, another question is raised. If we define causation merely as constant conjunction, that events A and B consistently happen together, how do we decide that this consistency isn’t just luck? In other words, seeing events happen together a number of times still doesn’t necessarily imply that idea of causation in our mind. Causation provides the deeper meaning that not only the conjunction seems to be consistent, but also it’s necessary and not accidental.</p>
+
+<p>We can truly understand here what revolutionary statement it is to say there are no necessary connections of matters of fact! If you think about it, logically speaking, we can’t justify the decision as to why a relation between matters of fact is considered as causation in our mind. There are always possible worlds in which event A does not cause event B to happen. This begs the question to mind: So what is this necessity that is implied by causation? Although it can’t be justified logically, it’s definitely an attribute of a connection that we decide about and feel. This is where we can jump to the problem of induction.</p>
+
+<hr />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p><a href="https://michaelrobertcaditz.medium.com/exploring-humes-distinction-between-relations-of-ideas-and-matters-of-fact-the-devil-is-in-the-5e975624f2a6">Exploring Hume’s Distinction Between Relations of Ideas and Matters of Fact</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p><a href="https://iep.utm.edu/hume-causation/#H1">Hume on Causation</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Diba Hadi Esfangereh</name></author><category term="blog" /><summary type="html"><![CDATA[The Old Riddle of Induction]]></summary></entry></feed>

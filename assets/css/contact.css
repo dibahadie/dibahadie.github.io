@@ -1,0 +1,63 @@
+/* --- Vertical List Layout --- */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 50px;
+  max-width: 600px; /* Constrains width for better vertical balance */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Card Styling --- */
+.contact-card-link {
+  text-decoration: none;
+  display: block;
+}
+
+.contact-card {
+  background: #1a2235 !important;
+  border: 1px solid rgba(129, 140, 248, 0.2) !important;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.contact-card-link:hover .contact-card {
+  background: #212a3e !important;
+  transform: translateX(6px); /* Slides right on hover instead of lifting */
+  border-left-color: #ffffff !important;
+}
+
+/* --- Content Alignment --- */
+.contact-card .card-pad {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 24px !important;
+}
+
+.contact-card i {
+  font-size: 20px;
+  color: var(--accent-cyan);
+  width: 25px;
+  text-align: center;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.contact-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+}

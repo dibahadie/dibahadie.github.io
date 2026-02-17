@@ -1,0 +1,27 @@
+name: "Diba Hadi Esfangereh"
+handle: "dibahadie"
+role: "Undergraduate"
+affiliation: ""
+location: "Tehran, Iran"
+email: "diba.hadie@gmail.com"
+academic_email: "diba.hadie83@sharif.edu"
+
+intro: >
+  I’m an undergraduate researcher in Computer Engineering at Sharif University of Technology (minor in Mathematics). My primary focus is computational music generation and NIME, especially culturally grounded modeling of musical structure and expressivity. I also work on statistical learning and AI—probabilistic modeling and controllable generation.
+
+
+social:
+  - label: "GitHub"
+    icon: "fa-brands fa-github"
+    url: "https://github.com/dibahadie"
+  - label: "Google Scholar"
+    icon: "fa-solid fa-graduation-cap"
+    url: "https://scholar.google.com/citations?user=ddBShJ8AAAAJ&hl=en"
+  - label: "LinkedIn"
+    icon: "fa-brands fa-linkedin"
+    url: "https://www.linkedin.com/in/dibahadie"
+
+music:
+  enabled: false
+  text: "Outside research, I love music."
+  url: ""

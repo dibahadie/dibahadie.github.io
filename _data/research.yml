@@ -1,0 +1,9 @@
+items:
+  - title: "Persian Musical Instruments Classification Using Polyphonic Data Augmentation"
+    authors: "Diba Hadi Esfangereh, Mohammad Hossein Sameti, Sepehr Harfi Moridani, Leili Javidpour, Mahdieh Soleymani Baghshah"
+    venue: "NeurIPS 2025 Workshop on AI for Music"
+    year: 2025
+    featured: true
+    pdf: "https://arxiv.org/pdf/2511.05717"  
+    code: "https://github.com/dibahadie/Persian-Musical-Instruments-Classification-Using-Polyphonic-Data-Augmentation"
+    abstract: "Musical instrument classification is essential for music information retrieval (MIR) and generative music systems. However, research on non-Western traditions, particularly Persian music, remains limited. We address this gap by introducing a new dataset of isolated recordings covering seven traditional Persian instruments, two common but originally non-Persian instruments (i.e., violin, piano), and vocals. We propose a culturally informed data augmentation strategy that generates realistic polyphonic mixtures from monophonic samples. Using the MERT model (Music understanding with large-scale self-supervised Training) with a classification head, we evaluate our approach with out-of-distribution data which was obtained by manually labeling segments of traditional songs. On real-world polyphonic Persian music, the proposed method yielded the best ROC-AUC (0.795), highlighting complementary benefits of tonal and temporal coherence. These results demonstrate the effectiveness of culturally grounded augmentation for robust Persian instrument recognition and provide a foundation for culturally inclusive MIR and diverse music generation systems."

@@ -1,0 +1,185 @@
+---
+layout: default
+title: Home
+---
+
+{% assign p = site.data.profile %}
+
+<div class="container">
+  <section class="hero reveal-card">
+    
+    <div class="card card-pad">
+      <div class="intro-flex-container">
+
+        <div class="profile-sidebar">
+          <img src="{{ '/assets/img/profile.png' | relative_url }}" alt="{{ p.name }}" class="profile-pic">
+          
+          <div class="intro-contacts">
+            {% if p.location != "" %}
+              <div style="color:var(--muted);"><i class="fa-solid fa-location-dot"></i> {{ p.location }}</div>
+            {% endif %}
+            
+            {% if p.email != "" %}
+              <a href="mailto:{{ p.email }}" style="color:var(--muted);"><i class="fa-solid fa-envelope"></i> Email</a>
+            {% endif %}
+
+            {% for s in p.social %}
+              <a href="{{ s.url }}" target="_blank" rel="noopener" style="color:var(--muted);">
+                <i class="{{ s.icon }}"></i> {{ s.label }}
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="bio-text-col">
+          <h1 class="h-title" style="margin-top:0;">{{ p.name }}</h1>
+          <p class="sub">{{ p.role }} · {{ p.affiliation }}</p>
+          
+          <p style="margin: 15px 0; color: var(--muted);">
+            {{ p.intro }}
+          </p>
+
+          <blockquote class="bio-quote">
+            “To play a wrong note is insignificant; to play without passion is inexcusable.”
+            <span>— Ludwig van Beethoven</span>
+          </blockquote>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card card-pad">
+      <h2 class="section-label">Highlights</h2>
+      <div class="stack">
+        
+        <div class="card mini-card featured-publication">
+          <div class="card-pad">
+            {% assign featured_pub = site.data.research.items | where: "featured", true | first %}
+            {% unless featured_pub %}
+              {% assign featured_pub = site.data.research.items | first %}
+            {% endunless %}
+
+            {% if featured_pub %}
+              <div style="font-weight: 700; color: var(--text); font-size: 16px; line-height: 1.4;">
+                {{ featured_pub.title }}
+              </div>
+
+              <div class="pub-venue" style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; font-weight: 500;">
+                {{ featured_pub.venue }}{% if featured_pub.year %} · {{ featured_pub.year }}{% endif %}
+              </div>
+
+              {% if featured_pub.abstract %}
+              <p style="margin: 14px 0; font-size: 13px; color: var(--muted); line-height: 1.5; opacity: 0.9;">
+                {{ featured_pub.abstract | truncate: 160 }}
+              </p>
+              {% endif %}
+
+              <div class="pill-row" style="margin-top: 15px; display: flex; gap: 10px;">
+                {% if featured_pub.pdf %}
+                  <a href="{{ featured_pub.pdf | relative_url }}" class="pill" target="_blank">
+                    <i class="fa-solid fa-file-pdf"></i> PDF
+                  </a>
+                {% endif %}
+                {% if featured_pub.code %}
+                  <a href="{{ featured_pub.code }}" class="pill" target="_blank">
+                    <i class="fa-solid fa-code"></i> Code
+                  </a>
+                {% endif %}
+              </div>
+            {% else %}
+              <div style="font-size: 13px; color: var(--muted); opacity: 0.6;">
+                Add your first publication in <code>_data/research.yml</code>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- <div class="card mini-card featured-publication">
+          <div class="card-pad row">
+            <div>
+              <div class="row-title">Featured project</div>
+              <div class="row-text">
+                {{ site.data.projects.featured[0].title | default: "Add a project in _data/projects.yml" }}
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        {% if p.music.enabled %}
+        <div class="card mini-card">
+          <div class="card-pad row">
+            <div class="icon music"><i class="fa-solid fa-music"></i></div>
+            <div>
+              <div class="row-title">Beyond research</div>
+              <div class="row-text">
+                {% if p.music.url != "" %}
+                  <a href="{{ p.music.url }}" target="_blank" rel="noopener">{{ p.music.text }}</a>
+                {% else %}
+                  {{ p.music.text }}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </section>
+
+  <section class="staff-strip reveal-card" aria-label="Interactive musical staff">
+    <div class="staff-wrap">
+      <canvas id="staffCanvas" width="900" height="90" data-clef-src="{{ '/assets/img/treble-clef.svg' | relative_url }}"></canvas>
+      <button id="staffPlay" class="staff-play" type="button" aria-label="Play notes">
+        <i class="fa-solid fa-play fa-sm"></i>
+      </button>
+    </div>
+    <div class="staff-hint">Click to place notes · Click a note to remove</div>
+  </section>
+
+  <section class="section reveal-card ">
+    <div class="under-hero">
+      
+      <div>
+        <h2><i class="fa-solid fa-compass"></i> Research Interests</h2>
+        <div class="stack">
+          <div class="row">
+            <div class="icon"><i class="fa-solid fa-music"></i></div>
+            <div>
+              <div class="row-title">Computational music generation &amp; NIME</div>
+              <div class="row-text">Culturally grounded modeling of musical structure and expressivity.</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+            <div>
+              <div class="row-title">Statistical learning &amp; AI</div>
+              <div class="row-text">Probabilistic modeling and controllable generation algorithms.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2><i class="fa-solid fa-pen-nib"></i> Latest on Blog</h2>
+        <div class="stack">
+          {% for post in site.posts limit:2 %}
+            <div class="row">
+              <div class="icon"><i class="fa-regular fa-file"></i></div>
+              <div>
+                <div class="row-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
+                <div class="row-text">{{ post.date | date: "%b %-d, %Y" }} · {{ post.excerpt | strip_html | truncate: 110 }}</div>
+              </div>
+            </div>
+          {% endfor %}
+          {% if site.posts.size == 0 %}
+            <div class="row"><div class="row-text">Create your first post in <code>_posts/</code>.</div></div>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<script defer src="{{ '/assets/js/staff.js' | relative_url }}"></script>

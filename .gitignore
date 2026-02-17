@@ -1,0 +1,6 @@
+.bundle
+.sass-cache
+.vscode
+vendor
+Gemfile
+Gemfile.lock

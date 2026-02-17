@@ -1,0 +1,21 @@
+featured:
+  - title: "Project Title"
+    icon: "fa-solid fa-flask"
+    summary: "A 1–2 line summary describing what the project does and why it matters."
+    tags: ["method", "application"]
+    links:
+      - label: "Code"
+        url: ""
+      - label: "Paper"
+        url: ""
+
+all:
+  - title: "Project Title"
+    icon: "fa-solid fa-flask"
+    summary: "A 1–2 line summary describing what the project does and why it matters."
+    tags: ["method", "application"]
+    links:
+      - label: "Code"
+        url: ""
+      - label: "Paper"
+        url: ""
