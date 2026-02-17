@@ -1,4 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-02-17T14:25:26+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Diba Hadi Esfangereh</title><subtitle>Research, publications, projects, and writing.</subtitle><entry><title type="html">Backpropagation, Once and for all!</title><link href="http://localhost:4000/Backpropagation-finally" rel="alternate" type="text/html" title="Backpropagation, Once and for all!" /><published>2025-11-12T00:00:00+03:00</published><updated>2025-11-12T00:00:00+03:00</updated><id>http://localhost:4000/Backpropagation-finally</id><content type="html" xml:base="http://localhost:4000/Backpropagation-finally"><![CDATA[<p>Welcome to <strong>My Ignorance, Examined</strong>, a series where I confront the gaps in my own understanding. Each time, I pick a topic I know nothing about, dive into the research, and share what I’ve learned. This is my journey from bewilderment to basic comprehension, and you’re along for the ride.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-02-17T18:04:54+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Diba Hadi Esfangereh</title><subtitle>Research, publications, projects, and writing.</subtitle><entry><title type="html">Persian Music System Explained</title><link href="http://localhost:4000/Persian-Music-System" rel="alternate" type="text/html" title="Persian Music System Explained" /><published>2026-02-17T00:00:00+03:00</published><updated>2026-02-17T00:00:00+03:00</updated><id>http://localhost:4000/Persian-Music-System</id><content type="html" xml:base="http://localhost:4000/Persian-Music-System"><![CDATA[]]></content><author><name>Diba Hadi Esfangereh</name></author><category term="My_Ignorance_Examined" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Digital Blackout: Behind the Curtains</title><link href="http://localhost:4000/digital-blackout" rel="alternate" type="text/html" title="Digital Blackout: Behind the Curtains" /><published>2026-02-02T00:00:00+03:00</published><updated>2026-02-02T00:00:00+03:00</updated><id>http://localhost:4000/Digital-Blackout</id><content type="html" xml:base="http://localhost:4000/digital-blackout"><![CDATA[<p><em>Context note:</em><br />
+Iran has been experiencing a nationwide internet blackout. This post was written when international internet access was completely shut off.</p>
+
+<hr />
+
+<p>This feels unreal. It has almost been a week since everything went offline, and I still find myself opening my browser three or four times a day, typing something—only to remember that there is no Google.</p>
+
+<p>This is the extent of our misery:</p>
+
+<ul>
+  <li>No international internet</li>
+  <li>No Google services</li>
+  <li>A lot of my files are trapped in Google Drive</li>
+  <li>No email — so I can’t continue my internship applications or remote projects</li>
+  <li>No Google Maps, no Colab, no Kaggle</li>
+  <li>No location services</li>
+  <li>Even internal social media platforms are shut down</li>
+  <li>No text messages, and on some parts of the day, no phone calls</li>
+  <li>No news channels or news sites</li>
+  <li>No YouTube</li>
+  <li>No Instagram</li>
+  <li>No papers</li>
+  <li>No books</li>
+  <li>No ChatGPT</li>
+</ul>
+
+<p>The list goes on and on.</p>
+
+<h2 id="dear-reader-this-is-sad">Dear reader, this is sad.</h2>
+
+<p>I’m not going to sugarcoat it. This is horrifying.</p>
+
+<p>As a college student, my life was built on papers, courses, YouTube, and constant searching. I was planning to apply for a master’s program overseas. Now everything feels like it’s falling apart. The building blocks of my future are slipping out of my hands, and there’s nothing I can do to stop it.</p>
+
+<p>The thought that this situation might last for a long time terrifies me. The longer this disconnection continues, the harder it is to believe that things will go back to normal. I feel sad, frightened, angry, shocked—and mostly, I feel disbelief. I never imagined this could happen.</p>
+
+<p>Even writing about it makes me more upset.</p>
+
+<h2 id="the-darkness">The Darkness</h2>
+
+<p>There’s this darkness, I would try to explain it, but I don’t think there are words for it. There’s a point—somewhere after hate and violence—where everything stops making sense. Moral values lose their meaning. Lives become numbers.</p>
+
+<p>Past that point, nothing gets inside you anymore. And for good reason. No one can fully understand this level of violence and hate. You would go mad if you tried.</p>
+
+<h2 id="the-great-crime-hope">The Great Crime: Hope</h2>
+
+<p>Maybe the greatest crime, in times like these, is hope. When a tragedy at this scale happens, being OK becomes sinful. It takes a lot to get up and keep going when your whole world is down.</p>
+
+<p>It’s a daring and strange thing, hope. 
+And yet, you can only see the world’s wide horizons with eyes that still have it.</p>
+
+<hr />
+
+<p><em>I hope for freedom, safety, and dignity for all people.</em></p>]]></content><author><name>Diba Hadi Esfangereh</name></author><category term="Personal" /><summary type="html"><![CDATA[Context note: Iran has been experiencing a nationwide internet blackout. This post was written when international internet access was completely shut off.]]></summary></entry><entry><title type="html">Backpropagation, Once and for all!</title><link href="http://localhost:4000/Backpropagation-finally" rel="alternate" type="text/html" title="Backpropagation, Once and for all!" /><published>2025-11-12T00:00:00+03:00</published><updated>2025-11-12T00:00:00+03:00</updated><id>http://localhost:4000/Backpropagation-finally</id><content type="html" xml:base="http://localhost:4000/Backpropagation-finally"><![CDATA[<p>Welcome to <strong>My Ignorance, Examined</strong>, a series where I confront the gaps in my own understanding. Each time, I pick a topic I know nothing about, dive into the research, and share what I’ve learned. This is my journey from bewilderment to basic comprehension, and you’re along for the ride.</p>
 
 <p>I’ve dreaded backpropagation ever since I saw the algorithm for the first time! Somehow, I managed to dislike it so much, it took me an extremely long time to even try to understand it. Not that it’s an extremely complicated topic — it’s just that the people who have once understood it don’t make the effort to actually transfer that knowledge!</p>
 
@@ -204,75 +257,7 @@ Then, backpropagation is as close as it can be to obvious!</p>
 
 <hr />
 
-<p><em>Thanks for reading! Hopefully, this explanation helps make backpropagation finally click.</em></p>]]></content><author><name>Diba Hadi Esfangereh</name></author><category term="My_Ignorance_Examined" /><summary type="html"><![CDATA[Welcome to My Ignorance, Examined, a series where I confront the gaps in my own understanding. Each time, I pick a topic I know nothing about, dive into the research, and share what I’ve learned. This is my journey from bewilderment to basic comprehension, and you’re along for the ride.]]></summary></entry><entry><title type="html">Digital Blackout: Behind the Curtains</title><link href="http://localhost:4000/digital-blackout" rel="alternate" type="text/html" title="Digital Blackout: Behind the Curtains" /><published>2025-11-12T00:00:00+03:00</published><updated>2025-11-12T00:00:00+03:00</updated><id>http://localhost:4000/Digital-Blackout</id><content type="html" xml:base="http://localhost:4000/digital-blackout"><![CDATA[<p><em>Context note:</em><br />
-Iran has been experiencing a nationwide internet blackout. The government has shut down international internet access in an effort to conceal the violent suppression. This post was written when international internet access was completely shut off.</p>
-
-<hr />
-
-<p>This feels unreal. It has almost been a week since everything went offline, and I still find myself opening my browser three or four times a day, typing something—only to remember that there is no Google.</p>
-
-<p>This is the extent of our misery:</p>
-
-<ul>
-  <li>No international internet</li>
-  <li>No Google services</li>
-  <li>A lot of my files are trapped in Google Drive</li>
-  <li>No email — so I can’t continue my internship applications or remote projects</li>
-  <li>No Google Maps, no Colab, no Kaggle</li>
-  <li>No location services</li>
-  <li>Even internal social media platforms are shut down</li>
-  <li>No text messages, and on some parts of the day, no phone calls</li>
-  <li>No news channels or news sites</li>
-  <li>No YouTube</li>
-  <li>No Instagram</li>
-  <li>No papers</li>
-  <li>No books</li>
-  <li>No ChatGPT</li>
-</ul>
-
-<p>The list goes on and on.</p>
-
-<h2 id="dear-reader-this-is-sad">Dear reader, this is sad.</h2>
-
-<p>I’m not going to sugarcoat it. This is horrifying.</p>
-
-<p>As a college student, my life was built on papers, courses, YouTube, and constant searching. I was planning to apply for a master’s program overseas. Now everything feels like it’s falling apart. The building blocks of my future are slipping out of my hands, and there’s nothing I can do to stop it.</p>
-
-<p>The thought that this situation might last for a long time terrifies me. The longer this disconnection continues, the harder it is to believe that things will go back to normal. I feel sad, frightened, angry, shocked—and mostly, I feel disbelief. I never imagined this could happen.</p>
-
-<p>Even writing about it makes me more upset.</p>
-
-<h2 id="the-darkness">The Darkness</h2>
-
-<p>There’s this darkness, I would try to explain it, but I don’t think there are words for it. There’s a point—somewhere after hate and violence—where everything stops making sense. Moral values lose their meaning. Lives become numbers. The world turns into a calculation.</p>
-
-<p>Past that point, nothing gets inside you anymore. And for good reason. No one can fully understand this level of violence and hate. You would go mad if you tried.</p>
-
-<p>So you sit there, in the darkness, trying to understand what cannot be understood, and you ask:</p>
-
-<p><em>Where is the sun?</em></p>
-
-<p>What do you do when nothing can be done?</p>
-
-<p>In moments like this, I’m reminded of one of my favorite poems:</p>
-
-<blockquote>
-  <p>Out of the night that covers me<br />
-Black as the pit from pole to pole<br />
-I thank whatever gods may be<br />
-For my unconquerable soul</p>
-</blockquote>
-
-<h2 id="the-great-crime-hope">The Great Crime: Hope</h2>
-
-<p>Maybe the greatest crime, in times like these, is hope. When a tragedy at this scale happens, being OK becomes sinful. It takes a lot to get up and keep going when your whole world is down.</p>
-
-<p>It’s a daring and strange thing, hope. 
-And yet, you can only see the world’s wide horizons with eyes that still have it.</p>
-
-<hr />
-
-<p><em>I sincerely hope for freedom, safety, and dignity for all people.</em></p>]]></content><author><name>Diba Hadi Esfangereh</name></author><category term="Personal" /><summary type="html"><![CDATA[Context note: Iran has been experiencing a nationwide internet blackout. The government has shut down international internet access in an effort to conceal the violent suppression. This post was written when international internet access was completely shut off.]]></summary></entry><entry><title type="html">Deep Dive: The Old Riddle of Induction</title><link href="http://localhost:4000/deep-dive-induction/" rel="alternate" type="text/html" title="Deep Dive: The Old Riddle of Induction" /><published>2025-08-10T00:00:00+03:00</published><updated>2025-08-10T00:00:00+03:00</updated><id>http://localhost:4000/riddle-of-induction</id><content type="html" xml:base="http://localhost:4000/deep-dive-induction/"><![CDATA[<h1 id="the-old-riddle-of-induction">The Old Riddle of Induction</h1>
+<p><em>Thanks for reading! Hopefully, this explanation helps make backpropagation finally click.</em></p>]]></content><author><name>Diba Hadi Esfangereh</name></author><category term="My_Ignorance_Examined" /><summary type="html"><![CDATA[Welcome to My Ignorance, Examined, a series where I confront the gaps in my own understanding. Each time, I pick a topic I know nothing about, dive into the research, and share what I’ve learned. This is my journey from bewilderment to basic comprehension, and you’re along for the ride.]]></summary></entry><entry><title type="html">Deep Dive: The Old Riddle of Induction</title><link href="http://localhost:4000/deep-dive-induction/" rel="alternate" type="text/html" title="Deep Dive: The Old Riddle of Induction" /><published>2025-08-10T00:00:00+03:00</published><updated>2025-08-10T00:00:00+03:00</updated><id>http://localhost:4000/riddle-of-induction</id><content type="html" xml:base="http://localhost:4000/deep-dive-induction/"><![CDATA[<h1 id="the-old-riddle-of-induction">The Old Riddle of Induction</h1>
 
 <p>First up, we’re diving into the article that set this whole series in motion: <em>The New Riddle of Induction</em> by Goodman. Even if you’ve never studied the philosophy of induction, the title alone begs the question: what exactly is the problem of induction?<br />
 Surprisingly, it’s about something we all do every day—often without thinking twice—that turns out to have deep philosophical roots. Once you start looking closer, this “simple” act of making inductive judgments becomes a puzzle that’s far trickier than it seems.

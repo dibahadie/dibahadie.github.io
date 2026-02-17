@@ -3,13 +3,13 @@ title: "Digital Blackout: Behind the Curtains"
 layout: post
 sidebar:
   nav:
-date: 2025-11-12
+date: 2026-02-02
 categories: [Personal]
 permalink: /digital-blackout
 ---
 
 *Context note:*  
-Iran has been experiencing a nationwide internet blackout. The government has shut down international internet access in an effort to conceal the violent suppression. This post was written when international internet access was completely shut off.
+Iran has been experiencing a nationwide internet blackout. This post was written when international internet access was completely shut off.
 
 ---
 
@@ -47,22 +47,10 @@ Even writing about it makes me more upset.
 
 ## The Darkness
 
-There's this darkness, I would try to explain it, but I don’t think there are words for it. There’s a point—somewhere after hate and violence—where everything stops making sense. Moral values lose their meaning. Lives become numbers. The world turns into a calculation.
+There's this darkness, I would try to explain it, but I don’t think there are words for it. There’s a point—somewhere after hate and violence—where everything stops making sense. Moral values lose their meaning. Lives become numbers. 
 
 Past that point, nothing gets inside you anymore. And for good reason. No one can fully understand this level of violence and hate. You would go mad if you tried.
-
-So you sit there, in the darkness, trying to understand what cannot be understood, and you ask:
-
-*Where is the sun?*
-
-What do you do when nothing can be done?
-
-In moments like this, I’m reminded of one of my favorite poems:
-
-> Out of the night that covers me  
-> Black as the pit from pole to pole  
-> I thank whatever gods may be  
-> For my unconquerable soul  
+ 
 
 ## The Great Crime: Hope
 
@@ -73,4 +61,4 @@ And yet, you can only see the world’s wide horizons with eyes that still have 
 
 ---
 
-*I sincerely hope for freedom, safety, and dignity for all people.*
+*I hope for freedom, safety, and dignity for all people.*

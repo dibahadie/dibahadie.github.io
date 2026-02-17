@@ -2,15 +2,15 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://localhost:4000/blog/</loc>
-<lastmod>2026-02-17T14:25:26+03:00</lastmod>
+<lastmod>2026-02-17T18:04:54+03:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/contact/</loc>
-<lastmod>2026-02-17T14:25:26+03:00</lastmod>
+<lastmod>2026-02-17T18:04:54+03:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/research/</loc>
-<lastmod>2026-02-17T14:25:26+03:00</lastmod>
+<lastmod>2026-02-17T18:04:54+03:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/deep-dive-induction/</loc>
@@ -22,7 +22,11 @@
 </url>
 <url>
 <loc>http://localhost:4000/digital-blackout</loc>
-<lastmod>2025-11-12T00:00:00+03:00</lastmod>
+<lastmod>2026-02-02T00:00:00+03:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/Persian-Music-System</loc>
+<lastmod>2026-02-17T00:00:00+03:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/</loc>
