@@ -17,6 +17,10 @@ collections:
   pages:
     output: true
     permalink: /:name/
+  
+  notebooks:
+    output: true
+    permalink: /notebooks/:path/
 
 defaults:
   - scope:

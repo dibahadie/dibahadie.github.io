@@ -1,0 +1,274 @@
+/* ==========================================================================
+   1. NOTEBOOK GRID & LAYOUT (Desktop)
+   ========================================================================== */
+.site-wrapper, .content-area, .container {
+  overflow: visible !important;
+  display: block !important;
+}
+
+.notebook-grid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 30px;
+  align-items: start;
+  margin-top: 40px;
+  position: relative;
+}
+
+.notebook-sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+  align-self: start;
+  z-index: 10;
+}
+
+.notebook-sidebar .card {
+  margin: 0;
+  width: 100%;
+}
+
+.sidebar-sticky {
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+}
+
+/* Container to manage the spacing above the card */
+.back-link-wrapper {
+  margin-bottom: 18px; /* Matches the internal card-pad spacing for visual rhythm */
+  display: flex;
+}
+
+/* Make sure the action-pill doesn't stretch and stays left-aligned */
+.back-link-wrapper .action-pill {
+  width: auto;
+  justify-content: flex-start;
+  background: var(--panel); /* Matches card background */
+  border: 1px solid var(--border);
+}
+
+/* Optional: Slight adjustment to the sticky top position 
+   to account for the new button height */
+.notebook-sidebar {
+  top: 60px; /* Reduced from 100px so the button doesn't start too low */
+}
+
+/* Add to the top of notebooks.css */
+.mobile-only { display: none; }
+
+/* ==========================================================================
+   2. SIDEBAR NAVIGATION & CONTENT
+   ========================================================================== */
+.notebook-nav-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  display: block;
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--glass-border);
+  transition: all 160ms ease;
+}
+
+.nav-item.active {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.nav-item:hover {
+  color: var(--text);
+  transform: translateX(4px);
+}
+
+.notebook-body {
+  min-width: 0;
+}
+
+.notebook-header {
+  margin-bottom: 28px;
+}
+
+.notebook-markdown {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.notebook-markdown h2 {
+  color: var(--text);
+  font-size: 20px;
+  margin-top: 32px;
+}
+
+.nav-section-title {
+  list-style: none;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--accent-lavender);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 20px 0 8px 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Remove margin for the very first section title */
+li.nav-section-title:first-child {
+  margin-top: 0;
+}
+
+/* ==========================================================================
+   3. MOBILE TOGGLE & DESKTOP DEFAULTS
+   ========================================================================== */
+.nav-toggle-input, .mobile-nav-button { display: none; }
+.desktop-only { display: block; }
+
+.nav-toggle-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   4. RESPONSIVE QUERIES (Mobile View)
+   ========================================================================== */
+@media (max-width: 880px) {
+  .desktop-only { display: none; }
+
+  .notebook-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .notebook-sidebar {
+    position: relative;
+    top: 0 !important;
+    width: 100%;
+    order: 1;
+  }
+
+  .notebook-body {
+    width: 100%;
+    order: 2;
+  }
+
+  /* Mobile Section Toggle */
+  .mobile-nav-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    z-index: 20;
+  }
+
+  .mobile-nav-button .pub-label { margin-bottom: 0; }
+  .arrow-icon { transition: transform 0.3s ease; color: var(--muted); }
+
+  .sidebar-collapsible {
+    display: none;
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .nav-toggle-input:checked ~ .sidebar-collapsible {
+    display: block;
+  }
+
+  .nav-toggle-input:checked ~ .mobile-nav-button .arrow-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Mobile Nav Items */
+  .notebook-nav-list ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .nav-item {
+    background: var(--glass-bg);
+    padding: 12px;
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .nav-item.active {
+    background: rgba(143, 176, 255, 0.1);
+    border-color: var(--accent);
+  }
+
+  .h-title {
+    font-size: 26px !important;
+  }
+
+  .card-pad {
+    padding: 15px;
+  }
+
+  .mobile-only { display: block; }
+  
+  /* Ensure the back button in the sidebar doesn't look weird on mobile */
+  .back-container.desktop-only { display: none; }
+}
+
+@media (max-width: 480px) {
+  .notebook-nav-list ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Flex container for the top of the card */
+.sidebar-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Ensure the purple label doesn't have extra bottom margin now */
+.sidebar-header-flex .pub-label {
+  margin-bottom: 0;
+}
+
+/* The Mini Back Button */
+.back-button-mini {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 160ms ease;
+}
+
+.back-button-mini i {
+  margin-right: 4px;
+  font-size: 10px;
+}
+
+.back-button-mini:hover {
+  color: var(--text);
+  border-color: var(--accent);
+  background: rgba(143, 176, 255, 0.1);
+}
+
+/* Mobile specific: hide the mini back button if using the toggle approach 
+   or keep it if it fits the layout */
+@media (max-width: 880px) {
+  .sidebar-header-flex {
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,79 @@
+---
+layout: default
+---
+<div class="site-wrapper">
+  <div class="content-area">
+    <div class="container">
+      <div class="notebook-grid">
+        
+        <aside class="notebook-sidebar">
+          <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+          
+          <div class="sidebar-sticky card reveal-card sidebar-collapsible">
+            <div class="card-pad">
+              
+              <div class="sidebar-header-flex">
+                <div class="pub-label">Sections</div>
+                <a href="/notebooks/" class="back-button-mini">
+                  <i class="fa-solid fa-arrow-left"></i> Back
+                </a>
+              </div>
+
+              <nav class="notebook-nav-list">
+                <ul>
+                  {% comment %} Define the base variables {% endcomment %}
+                  {% assign path_parts = page.path | split: "/" %}
+                  {% assign main_notebook_dir = path_parts[1] %}
+                  {% assign notebook_pages = site.notebooks | sort: "order" %}
+                  {% assign last_section = "" %}
+
+                  {% for p in notebook_pages %}
+                    {% if p.path contains main_notebook_dir %}
+                      
+                      {% comment %} 
+                        1. Split the path of the current page in the loop
+                        2. The section name is the 3rd part of the path (index 2)
+                        Example: _notebooks/deep_music/01_theory/page.md -> '01_theory'
+                      {% endcomment %}
+                      {% assign p_parts = p.path | split: "/" %}
+                      {% assign current_section = p_parts[2] %}
+
+                      {% comment %} 
+                        Display header if we enter a new folder and it's not the root index.md 
+                      {% endcomment %}
+                      {% if current_section != last_section and p_parts.size > 3 %}
+                        <li class="nav-section-title">
+                          {{ current_section | replace: "_", " " | replace: "01", "I" | replace: "02", "II" }}
+                        </li>
+                        {% assign last_section = current_section %}
+                      {% endif %}
+
+                      <li>
+                        <a href="{{ p.url | relative_url }}" class="nav-item {% if p.url == page.url %}active{% endif %}">
+                          {{ p.title }}
+                        </a>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </aside>
+
+        <article class="notebook-body card reveal-card">
+          <div class="card-pad">
+            <header class="notebook-header">
+              <div class="pub-label">{{ page.category }}</div>
+              <h1 class="h-title">{{ page.title }}</h1>
+            </header>
+            <div class="notebook-markdown">
+              {{ content }}
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</div>
