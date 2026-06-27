@@ -481,3 +481,8 @@ a:focus-visible, button:focus-visible, .link:focus-visible {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: var(--accent); /* Lights up with your signature blue on hover */
 }
+
+/* Prevents default link styles from muddying the highlight layout structure */
+.card-anchor-wrapper:hover {
+  text-decoration: none !important;
+}
