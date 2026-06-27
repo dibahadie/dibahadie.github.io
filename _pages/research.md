@@ -13,10 +13,6 @@ custom_css: research
 <div class="research-list">
   {% for res in site.data.research.items %}
     <div class="card research-card reveal-card">
-      {% if res.venue == "In Progress" or res.venue == "Under Review" %}
-        <div class="status-badge">{{ res.venue }}</div>
-      {% endif %}
-
       <div class="card-pad">
         <div class="research-header">
           <div class="title-area">
