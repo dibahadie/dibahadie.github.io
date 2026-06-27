@@ -48,52 +48,39 @@ title: Home
       </div>
     </div>
 
-    <div class="card card-pad">
-      <h2 class="section-label">Highlights</h2>
-      <div class="stack">
+    <div class="card card-pad" style="display: flex; flex-direction: column;">
+      <h2 class="section-label" style="flex: 0 0 auto;">Featured Publications</h2>
+      
+      <div class="stack custom-scrollbar" style="flex: 1 1 auto; overflow-y: auto; padding-right: 6px; gap: 12px;">
         
-        <div class="card mini-card featured-publication">
-          <div class="card-pad">
-            {% assign featured_pub = site.data.research.items | where: "featured", true | first %}
-            {% unless featured_pub %}
-              {% assign featured_pub = site.data.research.items | first %}
-            {% endunless %}
+        {% assign featured_pubs = site.data.research.items | where_exp: "item", "item.featured == true" %}
 
-            {% if featured_pub %}
-              <div style="font-weight: 700; color: var(--text); font-size: 16px; line-height: 1.4;">
-                {{ featured_pub.title }}
-              </div>
+        {% if featured_pubs.size > 0 %}
+          {% for pub in featured_pubs %}
+            <div class="card mini-card featured-publication" style="flex-shrink: 0; width: 100%;">
+              <div class="card-pad">
+                <div style="font-weight: 700; color: var(--text); font-size: 15px; line-height: 1.4;">
+                  {{ pub.title }}
+                </div>
 
-              <div class="pub-venue" style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; font-weight: 500;">
-                {{ featured_pub.venue }}{% if featured_pub.year %} · {{ featured_pub.year }}{% endif %}
+                <div class="pub-venue" style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px; font-weight: 500;">
+                  {% if pub.venue != "" and pub.venue != nil %}
+                    {{ pub.venue }} · 
+                  {% endif %}
+                  {{ pub.year }}
+                </div>
               </div>
-
-              {% if featured_pub.abstract %}
-              <p style="margin: 14px 0; font-size: 13px; color: var(--muted); line-height: 1.5; opacity: 0.9;">
-                {{ featured_pub.abstract | truncate: 160 }}
-              </p>
-              {% endif %}
-
-              <div class="pill-row" style="margin-top: 15px; display: flex; gap: 10px;">
-                {% if featured_pub.pdf %}
-                  <a href="{{ featured_pub.pdf | relative_url }}" class="pill" target="_blank">
-                    <i class="fa-solid fa-file-pdf"></i> PDF
-                  </a>
-                {% endif %}
-                {% if featured_pub.code %}
-                  <a href="{{ featured_pub.code }}" class="pill" target="_blank">
-                    <i class="fa-solid fa-code"></i> Code
-                  </a>
-                {% endif %}
-              </div>
-            {% else %}
-              <div style="font-size: 13px; color: var(--muted); opacity: 0.6;">
-                Add your first publication in <code>_data/research.yml</code>
-              </div>
-            {% endif %}
+            </div>
+          {% endfor %}
+        {% else %}
+          <div style="font-size: 13px; color: var(--muted); opacity: 0.6;">
+            Add your first publication in <code>_data/research.yml</code>
           </div>
-        </div>
-
+        {% endif %}
+        
+      </div>
+    </div>
+        
         <!-- <div class="card mini-card featured-publication">
           <div class="card-pad row">
             <div>
