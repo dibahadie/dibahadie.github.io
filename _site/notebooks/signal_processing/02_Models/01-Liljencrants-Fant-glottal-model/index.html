@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Liljencrants-Fant (LF) glottal model | Diba Hadi Esfangereh</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Liljencrants-Fant (LF) glottal model" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="To put it simply, the Liljencrants-Fant (LF) model is a mathematical blueprint for how human vocal cords create sound. It is one of the most famous models used in digital speech synthesis (like giving AI a realistic, human-sounding voice) and medical voice analysis." />
+<meta property="og:description" content="To put it simply, the Liljencrants-Fant (LF) model is a mathematical blueprint for how human vocal cords create sound. It is one of the most famous models used in digital speech synthesis (like giving AI a realistic, human-sounding voice) and medical voice analysis." />
+<link rel="canonical" href="http://localhost:4000/notebooks/signal_processing/02_Models/01-Liljencrants-Fant-glottal-model/" />
+<meta property="og:url" content="http://localhost:4000/notebooks/signal_processing/02_Models/01-Liljencrants-Fant-glottal-model/" />
+<meta property="og:site_name" content="Diba Hadi Esfangereh" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-07-24T13:10:09+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Liljencrants-Fant (LF) glottal model" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-07-24T13:10:09+03:00","datePublished":"2026-07-24T13:10:09+03:00","description":"To put it simply, the Liljencrants-Fant (LF) model is a mathematical blueprint for how human vocal cords create sound. It is one of the most famous models used in digital speech synthesis (like giving AI a realistic, human-sounding voice) and medical voice analysis.","headline":"Liljencrants-Fant (LF) glottal model","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notebooks/signal_processing/02_Models/01-Liljencrants-Fant-glottal-model/"},"url":"http://localhost:4000/notebooks/signal_processing/02_Models/01-Liljencrants-Fant-glottal-model/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+      <link rel="stylesheet" href="/assets/css/notebook_layout.css">
+    
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body class="site-wrapper">
+    <nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">Diba Hadi Esfangereh</a>
+    <div class="nav-links">
+      <a href="/" class="">Home</a>
+      <a href="/research/" class="">Research</a>
+      <a href="/blog/" class="">Blog</a>
+      <a href="/notebooks/" class="active">Notebooks</a>
+      <a href="/contact/" class="">Contact</a>
+    </div>
+  </div>
+</nav>
+
+    
+    <main class="container content-area">
+      <div class="site-wrapper">
+  <div class="content-area">
+    <div class="container">
+      <div class="notebook-grid">
+        
+        <aside class="notebook-sidebar">
+          <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+          
+          <div class="sidebar-sticky card reveal-card sidebar-collapsible">
+            <div class="card-pad">
+              
+              <div class="sidebar-header-flex">
+                <div class="pub-label">Sections</div>
+                <a href="/notebooks/" class="back-button-mini">
+                  <i class="fa-solid fa-arrow-left"></i> Back
+                </a>
+              </div>
+
+              <nav class="notebook-nav-list">
+                <ul>
+                  
+                  
+                  
+                  
+                  
+
+                  
+                    
+                  
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/signal_processing/index/" class="nav-item ">
+                          Signal Processing Topics
+                        </a>
+                      </li>
+                    
+                  
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+                        <li class="nav-section-title">
+                          I Algorithms
+                        </li>
+                        
+                      
+
+                      <li>
+                        <a href="/notebooks/signal_processing/01_Algorithms/01-Liljencrants-Fant-glottal-model/" class="nav-item ">
+                          Alignment Algorithms
+                        </a>
+                      </li>
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+                        <li class="nav-section-title">
+                          II Models
+                        </li>
+                        
+                      
+
+                      <li>
+                        <a href="/notebooks/signal_processing/02_Models/01-Liljencrants-Fant-glottal-model/" class="nav-item active">
+                          Liljencrants-Fant (LF) glottal model
+                        </a>
+                      </li>
+                    
+                  
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </aside>
+
+        <article class="notebook-body card reveal-card">
+          <div class="card-pad">
+            <header class="notebook-header">
+              <div class="pub-label">signal processing</div>
+              <h1 class="h-title">Liljencrants-Fant (LF) glottal model</h1>
+            </header>
+            <div class="notebook-markdown">
+              <p>To put it simply, the Liljencrants-Fant (LF) model is a mathematical blueprint for how human vocal cords create sound. It is one of the most famous models used in digital speech synthesis (like giving AI a realistic, human-sounding voice) and medical voice analysis.</p>
+
+<p>When we speak or sing, air from our lungs pushes through our vocal folds (cords). Instead of letting the air flow out smoothly, our vocal folds vibrate, rapidly opening and snapping shut to chop the airstream into a series of rapid pulses.</p>
+
+<p>The LF model is a standardized way to draw the exact shape of one of those air pulses.</p>
+
+<p>The model mathematically splits the glottal pulse into two distinct continuous phases: the phase before the vocal folds snap shut, and the “return phase” immediately after.</p>
+
+<ul>
+  <li><strong>The Opening Phase:</strong> Three parameters—E<sub>0</sub>, ω<sub>g</sub> (where frequency is F<sub>g</sub> = ω<sub>g</sub>/2π), and an exponential growth parameter (often denoted as α)—describe the flow derivative up to the exact moment of maximum closure, known as the discontinuity point t<sub>e</sub>.</li>
+</ul>
+
+<p align="center">E(t) = E<sub>0</sub>e<sup>αt</sup>sin(ω<sub>g</sub>t)</p>
+
+<ul>
+  <li><strong>The Return Phase:</strong> After the sudden closure at t<sub>e</sub>, the airflow does not instantly drop to zero. Instead, it enters a return phase dictated by a time constant t<sub>a</sub>.</li>
+</ul>
+
+<p align="center">E(t) = (-E<sub>0</sub> / εt<sub>a</sub>) [e<sup>-ε(t - t<sub>e</sub>)</sup> - e<sup>-ε(t<sub>c</sub> - t<sub>e</sub>)</sup>]</p>
+
+<hr />
+
+<h2 id="why-the-lf-model-is-important">Why the LF Model is Important</h2>
+
+<ul>
+  <li><strong>Spectral Roll-off:</strong> The return time constant t<sub>a</sub> directly controls how high frequencies fade out in a voice. In the frequency spectrum, this creates a cut-off frequency F<sub>a</sub> = (2πt<sub>a</sub>)<sup>-1</sup>. Beyond this frequency, the acoustic energy falls off at an additional rate of 6 dB per octave.</li>
+  <li><strong>Modeling Source-Filter Interaction:</strong> The model helps explain how the pressure building up in the vocal tract (above the vocal cords) actually pushes back down and alters the shape of the glottal flow. This means the voice source is highly dependent on the vocal tract’s filter function (like the shape of your mouth and throat).</li>
+  <li><strong>Explaining Waveform Anomalies:</strong> It accounts for “ripple” effects, such as the occasional appearance of a double peak in the glottal flow derivative. This is not an error in measurement, but a natural consequence of the supraglottal pressure dropping and interacting with the flow.</li>
+</ul>
+
+<hr />
+
+<h2 id="practical-applications-in-music-and-sound-generation">Practical Applications in Music and Sound Generation</h2>
+
+<p>Because the LF model accurately translates the physical biology of the human voice into controllable mathematical parameters, it is a foundational tool for audio engineers, digital instrument builders, and developers of virtual singers (like Vocaloid or AI voice models).</p>
+
+<ul>
+  <li><strong>Designing Expressive Virtual Vocalists (Breathy to Belting):</strong> Standard synthesizers generate static, rigid waveforms that sound distinctly electronic. The LF model allows sound designers to dynamically change the “voice” by tweaking the math. For example, by adjusting the model to include a constant glottal shunt (where the digital vocal folds never fully seal), engineers can simulate “leaky phonation”. This generates a realistic breathy or whispering vocal texture characterized by a noticeable residual return phase and dynamic leakage.</li>
+  <li><strong>Synthesizing Realistic High-Register Singing (Soprano Acoustics):</strong> The model demonstrates how singers can maximize their acoustic output while minimizing air consumption, which is crucial for programming realistic vocal synths. For example, when a soprano sings with a fundamental frequency (F0) matching their vocal tract’s first formant (F1), the supraglottal pressure peaks just before maximum glottal aperture. This physical interaction highly reduces the maximum rate of flow while keeping the closure sharp, creating a powerful, ringing tone. Digital instruments can replicate this exact acoustic behavior to ensure virtual choirs sound authentic in their upper ranges.</li>
+  <li><strong>Adding “Organic” Warmth to Digital Instruments (Jitter and Shimmer):</strong> A perfectly repeating waveform sounds artificial to the human ear. The LF model shows that because of complex air pressure interactions in the vocal tract, consecutive glottal pulses naturally vary slightly in shape, peak amplitude, and duration, even if the musical pitch remains completely constant. By mapping these specific, mathematically modeled micro-variations into a synthesizer’s oscillator, sound designers can inject a natural, human-like quality (often called shimmer and jitter) into digital instruments and voice patches.</li>
+</ul>
+
+<h2 id="further-reading">Further Reading:</h2>
+<ul>
+  <li><strong>Fant, G., Liljencrants, J., &amp; Lin, Q-g. (1985).</strong> <em>A four-parameter model of glottal flow.</em> Paper presented at the French-Swedish Symposium, Grenoble, France.</li>
+  <li><strong>Fant, G. (1986).</strong> <em>Glottal flow: models and interaction.</em> Journal of Phonetics, 14(3-4), 393–399.</li>
+</ul>
+
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
+
+    <div class="footer">
+  <div>
+    © 2026 Diba Hadi Esfangereh · Built with Jekyll ·
+    <a href="/feed.xml">RSS</a>
+  </div>
+</div>
+
+  </body>
+</html>
