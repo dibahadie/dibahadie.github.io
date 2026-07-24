@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>The Gabor Limit: Time-Frequency Uncertainty in Signal Processing | Diba Hadi Esfangereh</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="The Gabor Limit: Time-Frequency Uncertainty in Signal Processing" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Introduction The Gabor Limit (often referred to as the Time-Frequency Uncertainty Principle) is a foundational theorem in digital signal processing (DSP), acoustics, and Fourier analysis. First proposed by Hungarian-British physicist Dennis Gabor in 1946, it establishes a strict mathematical boundary on the limits of observation for any wave-based signal." />
+<meta property="og:description" content="Introduction The Gabor Limit (often referred to as the Time-Frequency Uncertainty Principle) is a foundational theorem in digital signal processing (DSP), acoustics, and Fourier analysis. First proposed by Hungarian-British physicist Dennis Gabor in 1946, it establishes a strict mathematical boundary on the limits of observation for any wave-based signal." />
+<link rel="canonical" href="http://localhost:4000/notebooks/signal_processing/03_Concepts/01-gabor-limit/" />
+<meta property="og:url" content="http://localhost:4000/notebooks/signal_processing/03_Concepts/01-gabor-limit/" />
+<meta property="og:site_name" content="Diba Hadi Esfangereh" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-07-24T13:44:17+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="The Gabor Limit: Time-Frequency Uncertainty in Signal Processing" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-07-24T13:44:17+03:00","datePublished":"2026-07-24T13:44:17+03:00","description":"Introduction The Gabor Limit (often referred to as the Time-Frequency Uncertainty Principle) is a foundational theorem in digital signal processing (DSP), acoustics, and Fourier analysis. First proposed by Hungarian-British physicist Dennis Gabor in 1946, it establishes a strict mathematical boundary on the limits of observation for any wave-based signal.","headline":"The Gabor Limit: Time-Frequency Uncertainty in Signal Processing","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notebooks/signal_processing/03_Concepts/01-gabor-limit/"},"url":"http://localhost:4000/notebooks/signal_processing/03_Concepts/01-gabor-limit/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+      <link rel="stylesheet" href="/assets/css/notebook_layout.css">
+    
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body class="site-wrapper">
+    <nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">Diba Hadi Esfangereh</a>
+    <div class="nav-links">
+      <a href="/" class="">Home</a>
+      <a href="/research/" class="">Research</a>
+      <a href="/blog/" class="">Blog</a>
+      <a href="/notebooks/" class="active">Notebooks</a>
+      <a href="/contact/" class="">Contact</a>
+    </div>
+  </div>
+</nav>
+
+    
+    <main class="container content-area">
+      <div class="site-wrapper">
+  <div class="content-area">
+    <div class="container">
+      <div class="notebook-grid">
+        
+        <aside class="notebook-sidebar">
+          <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+          
+          <div class="sidebar-sticky card reveal-card sidebar-collapsible">
+            <div class="card-pad">
+              
+              <div class="sidebar-header-flex">
+                <div class="pub-label">Sections</div>
+                <a href="/notebooks/" class="back-button-mini">
+                  <i class="fa-solid fa-arrow-left"></i> Back
+                </a>
+              </div>
+
+              <nav class="notebook-nav-list">
+                <ul>
+                  
+                  
+                  
+                  
+                  
+
+                  
+                    
+                  
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/signal_processing/index/" class="nav-item ">
+                          Signal Processing Topics
+                        </a>
+                      </li>
+                    
+                  
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+                        <li class="nav-section-title">
+                          I Algorithms
+                        </li>
+                        
+                      
+
+                      <li>
+                        <a href="/notebooks/signal_processing/01_Algorithms/01-DTW-Viterbi/" class="nav-item ">
+                          Foundational Sequence Alignment & Hidden State Algorithms
+                        </a>
+                      </li>
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+                        <li class="nav-section-title">
+                          II Models
+                        </li>
+                        
+                      
+
+                      <li>
+                        <a href="/notebooks/signal_processing/02_Models/01-Liljencrants-Fant-glottal-model/" class="nav-item ">
+                          Liljencrants-Fant (LF) glottal model
+                        </a>
+                      </li>
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+                        <li class="nav-section-title">
+                          03 Concepts
+                        </li>
+                        
+                      
+
+                      <li>
+                        <a href="/notebooks/signal_processing/03_Concepts/01-gabor-limit/" class="nav-item active">
+                          The Gabor Limit: Time-Frequency Uncertainty in Signal Processing
+                        </a>
+                      </li>
+                    
+                  
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </aside>
+
+        <article class="notebook-body card reveal-card">
+          <div class="card-pad">
+            <header class="notebook-header">
+              <div class="pub-label">signal processing</div>
+              <h1 class="h-title">The Gabor Limit: Time-Frequency Uncertainty in Signal Processing</h1>
+            </header>
+            <div class="notebook-markdown">
+              <h2 id="introduction">Introduction</h2>
+<p>The Gabor Limit (often referred to as the Time-Frequency Uncertainty Principle) is a foundational theorem in digital signal processing (DSP), acoustics, and Fourier analysis. First proposed by Hungarian-British physicist Dennis Gabor in 1946, it establishes a strict mathematical boundary on the limits of observation for any wave-based signal.</p>
+
+<p>In simple terms, the theory dictates that <strong>you cannot simultaneously know the exact time a signal occurs and its exact frequency (pitch)</strong>.</p>
+
+<p>If an engineer or an algorithm wants to pinpoint the precise microsecond a sound or electrical pulse happens (maximizing time resolution), its frequency spectrum inevitably becomes blurred. Conversely, if one needs to know the exact frequency of a signal (maximizing frequency resolution), the signal must be observed over a long duration, thereby losing track of exactly when specific transient events occurred within that duration. It is the direct signal processing equivalent of Heisenberg’s Uncertainty Principle in quantum mechanics.</p>
+
+<hr />
+
+<h2 id="the-core-concept-the-trade-off">The Core Concept: The Trade-off</h2>
+
+<p>To understand why this is a physical and mathematical law rather than a hardware limitation, consider the two extremes of sound:</p>
+
+<ul>
+  <li><strong>The Perfect Click (Impulse):</strong> Imagine a handclap that lasts for exactly one infinitely small instant (an impulse). You know exactly <em>when</em> it happened. However, to mathematically create an infinitely sharp spike in the time domain, you must sum together an infinite number of frequencies. Thus, a perfect click has no identifiable pitch—it is all frequencies simultaneously.</li>
+  <li><strong>The Perfect Pitch (Sine Wave):</strong> A pure, mathematically perfect musical note has a single, exact frequency. However, to have a mathematically perfect frequency, the wave must repeat its cycle infinitely. It has no beginning and no end. Because it lasts forever, you cannot point to a specific moment and say, “The sound occurred <em>here</em>.”</li>
+</ul>
+
+<p>When analyzing real-world sounds, we are forced to slice audio into chunks (windows).</p>
+<ul>
+  <li>A <strong>short window</strong> gives excellent temporal precision (good for drums) but poor pitch precision.</li>
+  <li>A <strong>long window</strong> gives excellent pitch precision (good for sustained violin notes) but smears temporal precision (causing “pre-echo” artifacts on drums).</li>
+</ul>
+
+<hr />
+
+<h2 id="mathematical-formulation">Mathematical Formulation</h2>
+
+<p>Mathematically, the Gabor limit is expressed as an inequality bounding the product of the signal’s spread (variance) in time and its spread in frequency.</p>
+
+\[\Delta t \cdot \Delta f \ge \frac{1}{4\pi}\]
+
+<p>Where:</p>
+<ul>
+  <li><strong>$\Delta t$</strong> is the standard deviation (uncertainty, or effective duration) of the signal’s energy in the time domain.</li>
+  <li><strong>$\Delta f$</strong> is the standard deviation (uncertainty, or effective bandwidth) of the signal’s energy in the frequency domain.</li>
+</ul>
+
+<p><em>(Note: Depending on whether angular frequency $\omega$ or standard frequency $f$ is used, and how the signal energy is normalized in the derivation, the constant on the right side is sometimes expressed as $\frac{1}{2}$ when using $\Delta \omega$.)</em></p>
+
+<p>This equation demonstrates that the “area” of uncertainty on a time-frequency plane (like a spectrogram) has an absolute minimum floor. You can shrink $\Delta t$ by using a shorter analysis window, but the math dictates that $\Delta f$ must proportionally grow so that their product never dips below $\frac{1}{4\pi}$.</p>
+
+<hr />
+
+<h2 id="the-ideal-signal-the-gabor-atom">The Ideal Signal: The Gabor Atom</h2>
+
+<p>Because of this inequality, scientists sought to find the signal that provides the absolute best possible compromise—the signal where $\Delta t \cdot \Delta f$ is exactly equal to $\frac{1}{4\pi}$.</p>
+
+<p>Gabor proved that only one type of signal achieves this theoretical minimum: a <strong>sine wave multiplied by a Gaussian (bell-shaped) window</strong>.</p>
+
+<p>This optimal waveform is known as a <strong>Gabor atom</strong> or Gabor wavelet. Because it minimizes the uncertainty product, it represents the most efficient way to capture both time and frequency information simultaneously. As a result, Gabor atoms form the foundational basis for:</p>
+<ul>
+  <li><strong>MP3 and AAC audio compression</strong></li>
+  <li><strong>Radar and Sonar pulse generation</strong></li>
+  <li><strong>JPEG2000 image compression</strong> (via 2D Gabor filters)</li>
+  <li><strong>Visual cortex modeling</strong> (human eyes process visual stimuli using receptive fields that mathematically resemble 2D Gabor filters).</li>
+</ul>
+
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
+
+    <div class="footer">
+  <div>
+    © 2026 Diba Hadi Esfangereh · Built with Jekyll ·
+    <a href="/feed.xml">RSS</a>
+  </div>
+</div>
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  </body>
+</html>

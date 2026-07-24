@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Foundational Sequence Alignment &amp; Hidden State Algorithms | Diba Hadi Esfangereh</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Foundational Sequence Alignment &amp; Hidden State Algorithms" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Deep Dive: Sequence Alignment, State Decoding, and Dynamic Programming" />
+<meta property="og:description" content="Deep Dive: Sequence Alignment, State Decoding, and Dynamic Programming" />
+<link rel="canonical" href="http://localhost:4000/notebooks/signal_processing/01_Algorithms/01-DTW-Viterbi/" />
+<meta property="og:url" content="http://localhost:4000/notebooks/signal_processing/01_Algorithms/01-DTW-Viterbi/" />
+<meta property="og:site_name" content="Diba Hadi Esfangereh" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-07-24T13:44:17+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Foundational Sequence Alignment &amp; Hidden State Algorithms" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-07-24T13:44:17+03:00","datePublished":"2026-07-24T13:44:17+03:00","description":"Deep Dive: Sequence Alignment, State Decoding, and Dynamic Programming","headline":"Foundational Sequence Alignment &amp; Hidden State Algorithms","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notebooks/signal_processing/01_Algorithms/01-DTW-Viterbi/"},"url":"http://localhost:4000/notebooks/signal_processing/01_Algorithms/01-DTW-Viterbi/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+      <link rel="stylesheet" href="/assets/css/notebook_layout.css">
+    
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body class="site-wrapper">
+    <nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">Diba Hadi Esfangereh</a>
+    <div class="nav-links">
+      <a href="/" class="">Home</a>
+      <a href="/research/" class="">Research</a>
+      <a href="/blog/" class="">Blog</a>
+      <a href="/notebooks/" class="active">Notebooks</a>
+      <a href="/contact/" class="">Contact</a>
+    </div>
+  </div>
+</nav>
+
+    
+    <main class="container content-area">
+      <div class="site-wrapper">
+  <div class="content-area">
+    <div class="container">
+      <div class="notebook-grid">
+        
+        <aside class="notebook-sidebar">
+          <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+          
+          <div class="sidebar-sticky card reveal-card sidebar-collapsible">
+            <div class="card-pad">
+              
+              <div class="sidebar-header-flex">
+                <div class="pub-label">Sections</div>
+                <a href="/notebooks/" class="back-button-mini">
+                  <i class="fa-solid fa-arrow-left"></i> Back
+                </a>
+              </div>
+
+              <nav class="notebook-nav-list">
+                <ul>
+                  
+                  
+                  
+                  
+                  
+
+                  
+                    
+                  
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/signal_processing/index/" class="nav-item ">
+                          Signal Processing Topics
+                        </a>
+                      </li>
+                    
+                  
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+                        <li class="nav-section-title">
+                          I Algorithms
+                        </li>
+                        
+                      
+
+                      <li>
+                        <a href="/notebooks/signal_processing/01_Algorithms/01-DTW-Viterbi/" class="nav-item active">
+                          Foundational Sequence Alignment & Hidden State Algorithms
+                        </a>
+                      </li>
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+                        <li class="nav-section-title">
+                          II Models
+                        </li>
+                        
+                      
+
+                      <li>
+                        <a href="/notebooks/signal_processing/02_Models/01-Liljencrants-Fant-glottal-model/" class="nav-item ">
+                          Liljencrants-Fant (LF) glottal model
+                        </a>
+                      </li>
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+                        <li class="nav-section-title">
+                          03 Concepts
+                        </li>
+                        
+                      
+
+                      <li>
+                        <a href="/notebooks/signal_processing/03_Concepts/01-gabor-limit/" class="nav-item ">
+                          The Gabor Limit: Time-Frequency Uncertainty in Signal Processing
+                        </a>
+                      </li>
+                    
+                  
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </aside>
+
+        <article class="notebook-body card reveal-card">
+          <div class="card-pad">
+            <header class="notebook-header">
+              <div class="pub-label">signal processing</div>
+              <h1 class="h-title">Foundational Sequence Alignment & Hidden State Algorithms</h1>
+            </header>
+            <div class="notebook-markdown">
+              <h1 id="deep-dive-sequence-alignment-state-decoding-and-dynamic-programming">Deep Dive: Sequence Alignment, State Decoding, and Dynamic Programming</h1>
+
+<p>Welcome to this technical guide on foundational algorithms in sequence processing, pattern matching, and signal analysis: <strong>Dynamic Time Warping (DTW)</strong>, the <strong>Viterbi Algorithm</strong>, <strong>Needleman-Wunsch</strong>, <strong>Smith-Waterman</strong>, and <strong>Baum-Welch</strong>.</p>
+
+<p>These algorithms form the backbone of modern temporal signal analysis, bioinformatics, and probabilistic sequence processing. While they rely heavily on <strong>Dynamic Programming (DP)</strong> and graph search to eliminate combinatorial complexity, they operate under fundamentally different paradigms.</p>
+
+<hr />
+
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+  <li><a href="#1-introduction--context">Introduction &amp; Context</a></li>
+  <li><a href="#2-dynamic-time-warping-dtw">Dynamic Time Warping (DTW)</a>
+    <ul>
+      <li><a href="#the-core-problem">The Core Problem</a></li>
+      <li><a href="#key-constraints">Key Constraints</a></li>
+      <li><a href="#mathematical-formulation">Mathematical Formulation</a></li>
+      <li><a href="#algorithm-step-by-step">Algorithm Step-by-Step</a></li>
+      <li><a href="#complexity--optimizations">Complexity &amp; Optimizations</a></li>
+      <li><a href="#applications">Applications</a></li>
+    </ul>
+  </li>
+  <li><a href="#3-the-viterbi-algorithm">The Viterbi Algorithm</a>
+    <ul>
+      <li><a href="#the-core-problem--hmms">The Core Problem &amp; HMMs</a></li>
+      <li><a href="#hidden-markov-model-essentials">Hidden Markov Model Essentials</a></li>
+      <li><a href="#mathematical-formulation-1">Mathematical Formulation</a></li>
+      <li><a href="#log-space-transformation">Log-Space Transformation</a></li>
+      <li><a href="#complexity--analysis">Complexity &amp; Analysis</a></li>
+      <li><a href="#applications-1">Applications</a></li>
+    </ul>
+  </li>
+  <li><a href="#4-additional-foundational-algorithms">Additional Foundational Algorithms</a>
+    <ul>
+      <li><a href="#a-needleman-wunsch-algorithm-global-discrete-alignment">Needleman-Wunsch Algorithm (Global Discrete Alignment)</a></li>
+      <li><a href="#b-smith-waterman-algorithm-local-subsegment-alignment">Smith-Waterman Algorithm (Local Subsegment Alignment)</a></li>
+      <li><a href="#c-baum-welch-algorithm-hmm-parameter-learning">Baum-Welch Algorithm (HMM Parameter Learning)</a></li>
+    </ul>
+  </li>
+  <li><a href="#5-comparative-analysis">Comparative Analysis</a></li>
+  <li><a href="#6-summary--key-takeaways">Summary &amp; Key Takeaways</a></li>
+</ol>
+
+<hr />
+
+<h2 id="1-introduction--context">1. Introduction &amp; Context</h2>
+
+<p>When working with sequential data—such as time series, audio waveforms, DNA strands, or natural language—standard element-wise comparisons (like Euclidean distance or index-by-index equality) often fail. This happens because sequence length can vary, speed/tempo can fluctuate non-linearly, or the underlying generation process is stochastic.</p>
+
+<p>To address these challenges, sequence processing algorithms split into two main paradigms:</p>
+<ul>
+  <li><strong>Deterministic / Non-Parametric Approaches</strong>: Measure direct spatial or geometric similarities between explicit series (e.g., DTW, Needleman-Wunsch, Smith-Waterman).</li>
+  <li><strong>Probabilistic / Model-Based Approaches</strong>: Model hidden underlying processes that generate observable events (e.g., Viterbi, Baum-Welch).</li>
+</ul>
+
+<hr />
+
+<h2 id="2-dynamic-time-warping-dtw">2. Dynamic Time Warping (DTW)</h2>
+
+<h3 id="the-core-problem">The Core Problem</h3>
+
+<p>Imagine comparing two audio recordings of the same person saying the word <em>“algorithm”</em>:</p>
+<ul>
+  <li><strong>Recording A</strong>: The speaker says it quickly (0.8 seconds).</li>
+  <li><strong>Recording B</strong>: The speaker stretches out the vowels (1.5 seconds).</li>
+</ul>
+
+<p>If you align these audio signals index-by-index (<em>t</em><sub>1</sub> to <em>t</em><sub>1</sub>, <em>t</em><sub>2</sub> to <em>t</em><sub>2</sub>), the feature frames will be severely misaligned, producing a massive Euclidean distance even though the underlying words are identical. <strong>DTW warps the time axis non-linearly</strong> to achieve optimal alignment between two sequences.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sequence X:  x_1 --- x_2 --- x_3 --- x_4 --- x_5
+               \      |      /        |      |
+                \     |     /         |      |
+Sequence Y:      y_1 --- y_2 ------- y_3 --- y_4
+</code></pre></div></div>
+
+<h3 id="key-constraints">Key Constraints</h3>
+
+<p>To prevent absurd alignments (e.g., mapping all points to a single index or stepping backward in time), DTW imposes strict constraints on the <strong>Warping Path</strong> <em>W</em> = (<em>w</em><sub>1</sub>, <em>w</em><sub>2</sub>, …, <em>w</em><sub>K</sub>), where <em>w</em><sub>k</sub> = (<em>i</em>, <em>j</em>) pairs the <em>i</em>-th element of sequence <em>X</em> with the <em>j</em>-th element of sequence <em>Y</em>:</p>
+
+<ol>
+  <li><strong>Boundary Condition</strong>: The path must start at (1, 1) and end at (<em>N</em>, <em>M</em>).</li>
+</ol>
+<div class="math-display">
+$$w_1 = (1, 1) \quad \text{and} \quad w_K = (N, M)$$
+</div>
+
+<ol>
+  <li><strong>Monotonicity Condition</strong>: The path cannot step backward in time.</li>
+</ol>
+<div class="math-display">
+$$\text{If } w_k = (i, j) \text{ and } w_{k+1} = (i', j'), \text{ then } i' \ge i \text{ and } j' \ge j$$
+</div>
+
+<ol>
+  <li><strong>Continuity (Step-size) Condition</strong>: The path can only advance by at most one step at a time (no skipping elements).</li>
+</ol>
+<div class="math-display">
+$$i' - i \le 1 \quad \text{and} \quad j' - j \le 1$$
+</div>
+
+<p>Together, these constraints ensure that from cell (<em>i</em>, <em>j</em>), you can only transition to (<em>i</em>+1, <em>j</em>), (<em>i</em>, <em>j</em>+1), or (<em>i</em>+1, <em>j</em>+1).</p>
+
+<hr />
+
+<h3 id="mathematical-formulation">Mathematical Formulation</h3>
+
+<p>Let <em>X</em> = (<em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, …, <em>x</em><sub>N</sub>) and <em>Y</em> = (<em>y</em><sub>1</sub>, <em>y</em><sub>2</sub>, …, <em>y</em><sub>M</sub>) be two temporal sequences.</p>
+
+<ol>
+  <li><strong>Local Cost Matrix <em>d</em>(<em>i</em>, <em>j</em>)</strong>:
+Measures the point-to-point distance between elements (e.g., absolute difference or squared Euclidean distance):</li>
+</ol>
+<div class="math-display">
+$$d(i, j) = |x_i - y_j| \quad \text{or} \quad (x_i - y_j)^2$$
+</div>
+
+<ol>
+  <li><strong>Accumulated Cost Matrix <em>D</em>(<em>i</em>, <em>j</em>)</strong>:
+The minimum cumulative distance to align prefix <em>X</em>[1..<em>i</em>] with prefix <em>Y</em>[1..<em>j</em>] is defined recursively:</li>
+</ol>
+<div class="math-display">
+$$D(i, j) = d(i, j) + \min \begin{cases} D(i-1, j) &amp; \text{(Insertion / Vertical)} \\ D(i, j-1) &amp; \text{(Deletion / Horizontal)} \\ D(i-1, j-1) &amp; \text{(Match / Diagonal)} \end{cases}$$
+</div>
+
+<hr />
+
+<h3 id="algorithm-step-by-step">Algorithm Step-by-Step</h3>
+
+<ol>
+  <li><strong>Initialize</strong>: Create an (<em>N</em>+1) × (<em>M</em>+1) matrix <em>D</em> initialized to infinity. Set <em>D</em>(0, 0) = 0.</li>
+  <li><strong>Fill Matrix</strong>: Iterate <em>i</em> from 1 to <em>N</em> and <em>j</em> from 1 to <em>M</em>, filling cells using the recurrence relation.</li>
+  <li><strong>DTW Distance</strong>: The total optimal alignment distance is given by <em>D</em>(<em>N</em>, <em>M</em>).</li>
+  <li><strong>Backtracking</strong>: Trace back from (<em>N</em>, <em>M</em>) to (1, 1) by stepping to the minimum neighboring cell at each step to reconstruct the warping path.</li>
+</ol>
+
+<hr />
+
+<h3 id="complexity--optimizations">Complexity &amp; Optimizations</h3>
+
+<ul>
+  <li><strong>Standard Time Complexity</strong>: O(<em>N</em> × <em>M</em>)</li>
+  <li><strong>Standard Space Complexity</strong>: O(<em>N</em> × <em>M</em>) (or O(min(<em>N</em>, <em>M</em>)) if calculating only the total distance without path recovery).</li>
+</ul>
+
+<h4 id="common-optimizations">Common Optimizations</h4>
+<ul>
+  <li><strong>Sakoe-Chiba Band</strong>: Restricts search to a diagonal window of width <em>R</em>, reducing time complexity to O(<em>N</em> · <em>R</em>).</li>
+  <li><strong>Itakura Parallelogram</strong>: Enforces strict slope constraints to limit excessive warping at sequence boundaries.</li>
+  <li><strong>FastDTW</strong>: A multiscale coarsening algorithm that downsamples sequences, estimates alignment at coarse resolution, and refines it locally, achieving O(<em>N</em>) complexity.</li>
+</ul>
+
+<hr />
+
+<h3 id="applications">Applications</h3>
+<ul>
+  <li><strong>Speech Recognition</strong>: Matching spoken audio against reference templates.</li>
+  <li><strong>Biometrics</strong>: Online signature verification and ECG signal analysis.</li>
+  <li><strong>Financial Analytics</strong>: Identifying similar historical price movements.</li>
+  <li><strong>Human Activity Recognition</strong>: Comparing motion streams from wearable sensors.</li>
+</ul>
+
+<hr />
+
+<h2 id="3-the-viterbi-algorithm">3. The Viterbi Algorithm</h2>
+
+<h3 id="the-core-problem--hmms">The Core Problem &amp; HMMs</h3>
+
+<p>While DTW works on raw geometric or numerical distances between two observed sequences, the <strong>Viterbi Algorithm</strong> operates within a <strong>probabilistic model framework</strong>.</p>
+
+<p>Given:</p>
+<ol>
+  <li>An observed sequence <em>O</em> = (<em>o</em><sub>1</sub>, <em>o</em><sub>2</sub>, …, <em>o</em><sub>T</sub>).</li>
+  <li>An underlying <strong>Hidden Markov Model (HMM)</strong> with known parameters λ.</li>
+</ol>
+
+<p><strong>Goal</strong>: Find the single most likely sequence of hidden states <em>S</em> = (<em>s</em><sub>1</sub>, <em>s</em><sub>2</sub>, …, <em>s</em><sub>T</sub>) that generated observations <em>O</em>.</p>
+
+<div class="math-display">
+$$\hat{S} = \arg\max_S P(S \mid O, \lambda)$$
+</div>
+
+<hr />
+
+<h3 id="hidden-markov-model-essentials">Hidden Markov Model Essentials</h3>
+
+<p>An HMM is defined by the parameter tuple λ = (<em>A</em>, <em>B</em>, π):</p>
+<ul>
+  <li><strong>State Space <em>Q</em> = {<em>q</em><sub>1</sub>, <em>q</em><sub>2</sub>, …, <em>q</em><sub>K</sub>}</strong>: The set of hidden states.</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Transition Matrix <em>A</em> (<em>K</em> × <em>K</em>)</strong>: <em>A</em><sub>ij</sub> = <em>P</em>(<em>s</em><sub>t+1</sub> = <em>q</em><sub>j</sub></td>
+          <td><em>s</em><sub>t</sub> = <em>q</em><sub>i</sub>) (probability of transitioning from state <em>i</em> to state <em>j</em>).</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Emission Matrix <em>B</em> (<em>K</em> × <em>V</em>)</strong>: <em>B</em><sub>j</sub>(<em>o</em><sub>t</sub>) = <em>P</em>(<em>o</em><sub>t</sub></td>
+          <td><em>s</em><sub>t</sub> = <em>q</em><sub>j</sub>) (probability of state <em>j</em> emitting observation <em>o</em><sub>t</sub>).</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><strong>Initial State Distribution π (<em>K</em> × 1)</strong>: π<sub>i</sub> = <em>P</em>(<em>s</em><sub>1</sub> = <em>q</em><sub>i</sub>).</li>
+</ul>
+
+<hr />
+
+<h3 id="mathematical-formulation-1">Mathematical Formulation</h3>
+
+<p>The Viterbi variable <em>V</em><sub>t, k</sub> represents the probability of the most likely hidden state path accounting for the first <em>t</em> observations and ending in state <em>q</em><sub>k</sub>:</p>
+
+<div class="math-display">
+$$V_{t, k} = \max_{s_1, \dots, s_{t-1}} P(s_1, \dots, s_{t-1}, s_t = q_k, o_1, \dots, o_t \mid \lambda)$$
+</div>
+
+<h4 id="recurrence-relation">Recurrence Relation</h4>
+<ol>
+  <li><strong>Initialization</strong> (<em>t</em> = 1):</li>
+</ol>
+<div class="math-display">
+$$V_{1, k} = \pi_k \cdot B_k(o_1) \quad \forall k \in \{1, \dots, K\}$$
+</div>
+<div class="math-display">
+$$\text{Backpointer: } \psi_{1, k} = 0$$
+</div>
+
+<ol>
+  <li><strong>Recursion</strong> (<em>t</em> = 2 … <em>T</em>):</li>
+</ol>
+<div class="math-display">
+$$V_{t, k} = \left( \max_{j=1}^K V_{t-1, j} \cdot A_{jk} \right) \cdot B_k(o_t)$$
+</div>
+<div class="math-display">
+$$\psi_{t, k} = \arg\max_{j=1}^K \left( V_{t-1, j} \cdot A_{jk} \right)$$
+</div>
+
+<ol>
+  <li><strong>Termination</strong>:</li>
+</ol>
+<div class="math-display">
+$$P^* = \max_{k=1}^K V_{T, k}$$
+</div>
+<div class="math-display">
+$$s_T^* = \arg\max_{k=1}^K V_{T, k}$$
+</div>
+
+<ol>
+  <li><strong>Backtracking</strong>:</li>
+</ol>
+<div class="math-display">
+$$s_t^* = \psi_{t+1, s_{t+1}^*} \quad \text{for } t = T-1, T-2, \dots, 1$$
+</div>
+
+<hr />
+
+<h3 id="log-space-transformation">Log-Space Transformation</h3>
+
+<p>Multiplying probabilities across long sequence lengths <em>T</em> results in floating-point <strong>numerical underflow</strong> (values rounding down to zero).</p>
+
+<p>To prevent this, implementations convert probabilities into log-space:</p>
+
+<div class="math-display">
+$$\log V_{t, k} = \max_{j} \left( \log V_{t-1, j} + \log A_{jk} \right) + \log B_k(o_t)$$
+</div>
+
+<p>This transforms multiplications into additions, ensuring numerical stability.</p>
+
+<hr />
+
+<h3 id="complexity--analysis">Complexity &amp; Analysis</h3>
+
+<ul>
+  <li><strong>Time Complexity</strong>: O(<em>T</em> · <em>K</em><sup>2</sup>), where <em>T</em> is the sequence length and <em>K</em> is the number of hidden states.</li>
+  <li><strong>Space Complexity</strong>: O(<em>T</em> · <em>K</em>) to store the trellis values and backpointer indices.</li>
+</ul>
+
+<hr />
+
+<h3 id="applications-1">Applications</h3>
+<ul>
+  <li><strong>Natural Language Processing</strong>: Part-of-Speech (POS) tagging and Named Entity Recognition (NER).</li>
+  <li><strong>Bioinformatics</strong>: Gene finding and sequence annotation.</li>
+  <li><strong>Communications</strong>: Decoding convolutional codes over noisy channels (Viterbi Decoder).</li>
+  <li><strong>Acoustic Modeling</strong>: Phoneme decoding in HMM-based speech systems.</li>
+</ul>
+
+<hr />
+
+<h2 id="4-additional-foundational-algorithms">4. Additional Foundational Algorithms</h2>
+
+<p>To round out your theoretical knowledge of sequence processing, three other algorithms build directly on these concepts:</p>
+
+<h3 id="a-needleman-wunsch-algorithm-global-discrete-alignment">A. Needleman-Wunsch Algorithm (Global Discrete Alignment)</h3>
+
+<h4 id="the-core-problem-1">The Core Problem</h4>
+<p>Designed for discrete character strings (such as DNA sequences or amino acids), <strong>Needleman-Wunsch</strong> finds the <strong>optimal global alignment</strong> between two strings by explicitly accounting for matches, mismatches, and <strong>gap penalties</strong> (insertions/deletions).</p>
+
+<h4 id="theoretical-framework">Theoretical Framework</h4>
+<p>Uses a configurable scoring function:</p>
+<ul>
+  <li><strong>Match Score (<em>S</em><sub>match</sub>)</strong>: Reward for identical characters.</li>
+  <li><strong>Mismatch Penalty (<em>S</em><sub>mismatch</sub>)</strong>: Penalty for replacing one character with another.</li>
+  <li><strong>Gap Penalty (<em>d</em>)</strong>: Penalty for introducing gaps (represented by <code class="language-plaintext highlighter-rouge">-</code>).</li>
+</ul>
+
+<h4 id="mathematical-recurrence">Mathematical Recurrence</h4>
+<p>For sequences <em>X</em> (length <em>N</em>) and <em>Y</em> (length <em>M</em>):</p>
+
+<div class="math-display">
+$$F(i, j) = \max \begin{cases} F(i-1, j-1) + S(X_i, Y_j) &amp; \text{(Match / Mismatch)} \\ F(i-1, j) - d &amp; \text{(Deletion / Vertical Gap)} \\ F(i, j-1) - d &amp; \text{(Insertion / Horizontal Gap)} \end{cases}$$
+</div>
+
+<hr />
+
+<h3 id="b-smith-waterman-algorithm-local-subsegment-alignment">B. Smith-Waterman Algorithm (Local Subsegment Alignment)</h3>
+
+<h4 id="the-core-problem-2">The Core Problem</h4>
+<p>Global alignment forces two sequences to match end-to-end. However, two long sequences might share only a short, conserved domain while being unrelated elsewhere. <strong>Smith-Waterman</strong> solves the <strong>optimal local alignment</strong> problem, isolating the highest-scoring matching sub-regions.</p>
+
+<h4 id="theoretical-framework-1">Theoretical Framework</h4>
+<p>Smith-Waterman modifies Needleman-Wunsch by enforcing a <strong>zero lower bound</strong>. If a path incurs too many penalties and drops below zero, the score resets to 0, allowing alignment to restart at any index.</p>
+
+<h4 id="mathematical-recurrence-1">Mathematical Recurrence</h4>
+<div class="math-display">
+$$H(i, j) = \max \begin{cases} 0 &amp; \text{(Reset local search)} \\ H(i-1, j-1) + S(X_i, Y_j) &amp; \text{(Match / Mismatch)} \\ H(i-1, j) - d &amp; \text{(Deletion)} \\ H(i, j-1) - d &amp; \text{(Insertion)} \end{cases}$$
+</div>
+
+<h4 id="traceback-mechanism">Traceback Mechanism</h4>
+<ul>
+  <li><strong>Needleman-Wunsch</strong>: Traceback starts at the bottom-right corner <em>F</em>(<em>N</em>, <em>M</em>) and ends at <em>F</em>(0, 0).</li>
+  <li><strong>Smith-Waterman</strong>: Traceback starts at the <strong>highest score cell anywhere in the table</strong> and stops as soon as it hits a cell with a score of <strong>0</strong>.</li>
+</ul>
+
+<hr />
+
+<h3 id="c-baum-welch-algorithm-hmm-parameter-learning">C. Baum-Welch Algorithm (HMM Parameter Learning)</h3>
+
+<h4 id="the-core-problem-3">The Core Problem</h4>
+<p>The Viterbi algorithm assumes HMM parameters (λ = <em>A</em>, <em>B</em>, π) are known in advance. When you only have observation sequences <em>O</em> without labeled hidden states, the <strong>Baum-Welch algorithm</strong> (an implementation of the <strong>Expectation-Maximization / EM</strong> framework) iteratively estimates the parameters that maximize <em>P</em>(<em>O</em> | λ).</p>
+
+<h4 id="theoretical-framework-forward-backward-variables">Theoretical Framework: Forward-Backward Variables</h4>
+<ol>
+  <li><strong>Forward Variable α<sub>t</sub>(<em>i</em>)</strong>: The probability of observing sequence prefix <em>o</em><sub>1</sub>…<em>o</em><sub>t</sub> and ending in state <em>q</em><sub>i</sub> at step <em>t</em>.</li>
+  <li><strong>Backward Variable β<sub>t</sub>(<em>i</em>)</strong>: The probability of observing sequence suffix <em>o</em><sub>t+1</sub>…<em>o</em><sub>T</sub> given state <em>q</em><sub>i</sub> at step <em>t</em>.</li>
+</ol>
+
+<h4 id="the-em-iteration">The EM Iteration</h4>
+<ul>
+  <li><strong>Expectation Step (E-step)</strong>: Compute expected state transition and emission counts using current parameter estimates and forward-backward variables.</li>
+  <li><strong>Maximization Step (M-step)</strong>: Re-estimate transition matrix <em>A</em>, emission matrix <em>B</em>, and initial probabilities π by normalizing the expected counts.</li>
+</ul>
+
+<hr />
+
+<h2 id="5-comparative-analysis">5. Comparative Analysis</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Algorithm</th>
+      <th style="text-align: left">Model Type</th>
+      <th style="text-align: left">Primary Objective</th>
+      <th style="text-align: left">Optimization Metric</th>
+      <th style="text-align: left">Input Requirements</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Dynamic Time Warping (DTW)</strong></td>
+      <td style="text-align: left">Non-parametric, Deterministic</td>
+      <td style="text-align: left">Align continuous trajectories non-linearly</td>
+      <td style="text-align: left">Minimal cumulative warping distance</td>
+      <td style="text-align: left">Two time-series sequences</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Viterbi Algorithm</strong></td>
+      <td style="text-align: left">Parametric, Probabilistic</td>
+      <td style="text-align: left">Decode most likely hidden state path</td>
+      <td style="text-align: left">Maximum joint path probability</td>
+      <td style="text-align: left">Observations + Known HMM</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Needleman-Wunsch</strong></td>
+      <td style="text-align: left">Non-parametric, Discrete</td>
+      <td style="text-align: left">Global end-to-end string alignment</td>
+      <td style="text-align: left">Maximum global score matrix</td>
+      <td style="text-align: left">Two discrete symbol strings</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Smith-Waterman</strong></td>
+      <td style="text-align: left">Non-parametric, Discrete</td>
+      <td style="text-align: left">Local subsegment alignment</td>
+      <td style="text-align: left">Maximum local subsegment score</td>
+      <td style="text-align: left">Two discrete symbol strings</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Baum-Welch</strong></td>
+      <td style="text-align: left">Unsupervised Probabilistic</td>
+      <td style="text-align: left">Learn unknown HMM parameters</td>
+      <td style="text-align: left">Marginal likelihood <em>P</em>(<em>O</em> | λ)</td>
+      <td style="text-align: left">Unlabeled observation sequences</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="6-summary--key-takeaways">6. Summary &amp; Key Takeaways</h2>
+
+<ol>
+  <li><strong>Dynamic Programming as the Core</strong>: All five algorithms use sub-problem memoization to avoid exploring exponential search spaces.</li>
+  <li><strong>Deterministic Alignment vs. State Estimation</strong>: Use <strong>DTW</strong> or <strong>Smith-Waterman / Needleman-Wunsch</strong> when comparing explicit sequences directly; use <strong>Viterbi</strong> or <strong>Baum-Welch</strong> when modeling hidden underlying processes.</li>
+  <li><strong>Global vs. Local Focus</strong>: Use global methods (DTW, Needleman-Wunsch) when full sequence length alignment matters; use local methods (Smith-Waterman) when looking for matching sub-patterns inside longer sequences.</li>
+</ol>
+
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
+
+    <div class="footer">
+  <div>
+    © 2026 Diba Hadi Esfangereh · Built with Jekyll ·
+    <a href="/feed.xml">RSS</a>
+  </div>
+</div>
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  </body>
+</html>
