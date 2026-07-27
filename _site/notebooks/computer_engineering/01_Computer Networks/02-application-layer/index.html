@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Application Layer | Diba Hadi Esfangereh</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Application Layer" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The Application Layer: DNS, Video Streaming, and the Transport Interface" />
+<meta property="og:description" content="The Application Layer: DNS, Video Streaming, and the Transport Interface" />
+<link rel="canonical" href="http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/02-application-layer/" />
+<meta property="og:url" content="http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/02-application-layer/" />
+<meta property="og:site_name" content="Diba Hadi Esfangereh" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-07-27T00:17:58+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Application Layer" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-07-27T00:17:58+03:00","datePublished":"2026-07-27T00:17:58+03:00","description":"The Application Layer: DNS, Video Streaming, and the Transport Interface","headline":"Application Layer","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/02-application-layer/"},"url":"http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/02-application-layer/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+      <link rel="stylesheet" href="/assets/css/notebook_layout.css">
+    
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body class="site-wrapper">
+    <nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">Diba Hadi Esfangereh</a>
+    <div class="nav-links">
+      <a href="/" class="">Home</a>
+      <a href="/research/" class="">Research</a>
+      <a href="/blog/" class="">Blog</a>
+      <a href="/notebooks/" class="active">Notebooks</a>
+      <a href="/contact/" class="">Contact</a>
+    </div>
+  </div>
+</nav>
+
+    
+    <main class="container content-area">
+      <div class="site-wrapper">
+  <div class="content-area">
+    <div class="container">
+      <div class="notebook-grid">
+        
+        <aside class="notebook-sidebar">
+          <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+          
+          <div class="sidebar-sticky card reveal-card sidebar-collapsible">
+            <div class="card-pad">
+              
+              <div class="sidebar-header-flex">
+                <div class="pub-label">Sections</div>
+                <a href="/notebooks/" class="back-button-mini">
+                  <i class="fa-solid fa-arrow-left"></i> Back
+                </a>
+              </div>
+
+              <nav class="notebook-nav-list">
+                <ul>
+                  
+                  
+                  
+                  
+                  
+
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/index/" class="nav-item ">
+                          Computer Engineering Topics
+                        </a>
+                      </li>
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+                        <li class="nav-section-title">
+                          I Computer Networks
+                        </li>
+                        
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/01_Computer%20Networks/01-basics/" class="nav-item ">
+                          Basics of Computer Networks
+                        </a>
+                      </li>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/01_Computer%20Networks/02-application-layer/" class="nav-item active">
+                          Application Layer
+                        </a>
+                      </li>
+                    
+                  
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/01_Computer%20Networks/03-transport-layer/" class="nav-item ">
+                          Transport Layer: Comprehensive Guide
+                        </a>
+                      </li>
+                    
+                  
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </aside>
+
+        <article class="notebook-body card reveal-card">
+          <div class="card-pad">
+            <header class="notebook-header">
+              <div class="pub-label">Computer Engineering</div>
+              <h1 class="h-title">Application Layer</h1>
+            </header>
+            <div class="notebook-markdown">
+              <h1 id="the-application-layer-dns-video-streaming-and-the-transport-interface">The Application Layer: DNS, Video Streaming, and the Transport Interface</h1>
+
+<p>The Application Layer is the topmost layer of the network stack, where network applications and protocols like HTTP, SMTP, and DNS reside. In this post, we will conclude our deep dive into the Application layer by exploring DNS, Peer-to-Peer file distribution, and video streaming, before transitioning into the foundational concepts of the Transport Layer.</p>
+
+<hr />
+
+<h2 id="1-what-is-dns-for">1. What is DNS For?</h2>
+
+<p>Humans and computers prefer different ways of identifying things on the Internet.</p>
+<ul>
+  <li><strong>Human Preference:</strong> People use identifiers like names, social security numbers, or passport numbers. For websites, humans prefer domain names (like <code class="language-plaintext highlighter-rouge">www.google.com</code> or <code class="language-plaintext highlighter-rouge">cs.umass.edu</code>) because they consist of meaningful words and are easy to remember. However, these names contain no relevant routing information and are not useful for machines.</li>
+  <li><strong>Machine Preference:</strong> Internet hosts and routers use 32-bit IP addresses (like <code class="language-plaintext highlighter-rouge">74.125.25.99</code>) for addressing datagrams, which helps make routing scalable.</li>
+</ul>
+
+<p>To bridge this gap, we use the <strong>Domain Name System (DNS)</strong>. DNS is an Internet protocol that translates human-readable domain names into IP addresses, and vice versa. While it acts as a core Internet function, it is implemented as an application-layer protocol, which keeps the complexity at the “edge” of the network.</p>
+
+<h3 id="key-services-provided-by-dns">Key Services Provided by DNS</h3>
+<p>Aside from hostname-to-IP-address translation, DNS offers several other services:</p>
+<ul>
+  <li><strong>Host Aliasing:</strong> Maps alias names to canonical names.</li>
+  <li><strong>Mail Server Aliasing:</strong> Directs emails to the correct mail servers.</li>
+  <li><strong>Load Distribution:</strong> Maps a single domain name to many IP addresses, which distributes traffic across replicated Web servers.</li>
+</ul>
+
+<h2 id="2-dns-design-a-distributed-hierarchy">2. DNS Design: A Distributed Hierarchy</h2>
+
+<p>You might wonder why we don’t just put all domain names into one centralized database. A centralized design simply doesn’t scale. It would create a single point of failure, require maintenance of a distant centralized database, and fail under the massive traffic volume. To put this in perspective, Comcast’s DNS servers handle 600 billion queries a day, and Akamai handles 2.2 trillion queries a day!</p>
+
+<p>Instead, DNS is designed as a humongous distributed database featuring about a billion simple records. It is organizationally and physically decentralized, with millions of different organizations responsible for their own records.</p>
+
+<h3 id="the-three-levels-of-the-dns-hierarchy">The Three Levels of the DNS Hierarchy</h3>
+<p>The DNS tree represents three forms of hierarchy: names, authority, and infrastructure.</p>
+<ul>
+  <li><strong>Root DNS Servers:</strong> These sit at the very top of the hierarchy and are controlled by ICANN (Internet Corporation for Assigned Names and Numbers). DNS queries always start with a request to the root name server.</li>
+  <li><strong>Top-Level Domain (TLD) Servers:</strong> These are directly below the root. Historically, there were relatively few TLDs based on purpose (like <code class="language-plaintext highlighter-rouge">.com</code>, <code class="language-plaintext highlighter-rouge">.org</code>, <code class="language-plaintext highlighter-rouge">.edu</code>) or country (like <code class="language-plaintext highlighter-rouge">.uk</code>, <code class="language-plaintext highlighter-rouge">.fr</code>, <code class="language-plaintext highlighter-rouge">.jp</code>). Today, there are over 1500 TLDs, including newer ones like <code class="language-plaintext highlighter-rouge">.travel</code> or <code class="language-plaintext highlighter-rouge">.pizza</code>. Specific registries manage these: for example, Network Solutions is the authoritative registry for <code class="language-plaintext highlighter-rouge">.com</code> and <code class="language-plaintext highlighter-rouge">.net</code>, while Educause manages <code class="language-plaintext highlighter-rouge">.edu</code>.</li>
+  <li><strong>Authoritative DNS Servers:</strong> These are maintained by organizations (or their service providers) to provide the authoritative hostname to IP mappings for that organization’s hosts. Organizations can also delegate parts of their zone to others; for example, UC Berkeley owns the <code class="language-plaintext highlighter-rouge">berkeley.edu</code> zone but gives the <code class="language-plaintext highlighter-rouge">eecs.berkeley.edu</code> zone to the EECS department.</li>
+</ul>
+
+<h2 id="3-how-a-dns-lookup-works">3. How a DNS Lookup Works</h2>
+
+<p>When you want to visit a website, your computer needs to figure out who to ask.</p>
+
+<h3 id="resolvers">Resolvers</h3>
+<ul>
+  <li><strong>Stub Resolver:</strong> This is the resolver on your local computer. It only contacts the recursive resolver and receives the final answer.</li>
+  <li><strong>Recursive Resolver:</strong> This is the resolver that makes the actual DNS queries across the Internet. They are usually run by ISPs or application providers (like Cloudflare’s <code class="language-plaintext highlighter-rouge">1.1.1.1</code> or Google’s <code class="language-plaintext highlighter-rouge">8.8.8.8</code>). Recursive resolvers build a large cache from multiple users’ requests, which heavily reduces the load on authoritative name servers.</li>
+</ul>
+
+<h3 id="iterated-vs-recursive-queries">Iterated vs. Recursive Queries</h3>
+<p>There are two ways name servers can handle requests:</p>
+<ul>
+  <li><strong>Iterated Query:</strong> The contacted server replies with the name of the next server to contact (e.g., “I don’t know this name, but ask this server”).</li>
+  <li><strong>Recursive Query:</strong> The contacted server takes on the burden of resolving the name itself. This places a heavy load on the upper levels of the hierarchy, so iterated queries are more common between infrastructure servers.</li>
+</ul>
+
+<h2 id="4-dns-implementation-details">4. DNS Implementation Details</h2>
+
+<p>From a developer’s perspective, DNS uses relatively simple APIs available in almost all programming languages. An older example in C is <code class="language-plaintext highlighter-rouge">gethostbyname</code> (which is limited to IPv4 and is deprecated), while the modern replacement is <code class="language-plaintext highlighter-rouge">getaddrinfo</code> (which supports IPv6). These functions hide the complexity of DNS from the developer and simply make requests to the OS’s configured resolving DNS server.</p>
+
+<h3 id="udp-vs-tcp">UDP vs. TCP</h3>
+<p>DNS needs to be lightweight and fast, as almost every Internet connection starts with a name lookup. If DNS is slow, every connection is slow.</p>
+<ul>
+  <li>DNS primarily uses <strong>UDP</strong> (User Datagram Protocol) because it requires no 3-way handshake and no connection state maintenance.</li>
+  <li>Queries are typically sent to a well-known UDP destination port: <strong>53</strong>.</li>
+  <li>If a UDP packet is dropped, the system sets a timer and retries on timeout.</li>
+  <li>Larger messages that don’t fit in a UDP packet can be sent over <strong>TCP</strong>.</li>
+  <li>Recent advances in DNS use secure transport protocols with encryption because standard TCP and UDP are vulnerable to attackers.</li>
+</ul>
+
+<h3 id="the-dns-packet-format">The DNS Packet Format</h3>
+<p>A DNS packet consists of a header and a payload.</p>
+<ul>
+  <li><strong>DNS Header:</strong> Contains a 16-bit ID number chosen by the client (used to associate queries with responses), flags (like the QR bit which is 0 in queries and 1 in responses, and the RD bit for requesting recursion), and counts indicating the number of records in the payload sections.</li>
+  <li><strong>DNS Payload:</strong> Contains a variable number of Resource Records (RRs) sorted into four sections: Question, Answer, Authority, and Additional (sometimes called glue records).</li>
+</ul>
+
+<h3 id="dns-record-types">DNS Record Types</h3>
+<p>Each Resource Record (RR) is a name-value pair with a specific type and a Time To Live (TTL) that dictates how long it can be cached. Important types include:</p>
+<ul>
+  <li><strong>A:</strong> Maps a domain name to an IPv4 address.</li>
+  <li><strong>AAAA:</strong> Maps a domain name to an IPv6 address.</li>
+  <li><strong>NS:</strong> Designates another DNS server (Name Server) to handle a domain.</li>
+  <li><strong>CNAME:</strong> Indicates that a domain is an alias for a true, canonical name.</li>
+  <li><strong>MX:</strong> Maps a domain to a mail server, with a priority value attached (lowest number is tried first).</li>
+</ul>
+
+<h2 id="5-scaling-availability-and-other-uses">5. Scaling, Availability, and Other Uses</h2>
+
+<p>Given that DNS handles trillions of queries daily, performance and “bulletproof” reliability are paramount.</p>
+
+<h3 id="caching">Caching</h3>
+<p>Answers are cached by recursive resolvers and local machines using the TTL field provided in the DNS records. If a resolver already knows the answer from a previous query, it will satisfy the request directly from its cache.</p>
+
+<h3 id="zone-redundancy">Zone Redundancy</h3>
+<p>Zones “must” have at least two authoritative name servers for redundancy to ensure availability. This operates on a primary/secondary model. The primary name server manages and updates the actual records, while the secondary uses a read-only copy and receives periodic transfers from the primary server.</p>
+
+<h3 id="anycast-for-root-servers">Anycast for Root Servers</h3>
+<p>If the root servers were to fail, anyone with an empty cache would be unable to make any lookups. To prevent this, root servers utilize a trick called <strong>anycast</strong>. While there are technically only 13 root-server domains (named <code class="language-plaintext highlighter-rouge">a.root-servers.net</code> through <code class="language-plaintext highlighter-rouge">m.root-servers.net</code>), there are actually thousands of physical servers across the globe. Anycast allows thousands of servers to use the exact same IP address. Routing protocols automatically direct your query to the closest available physical server sharing that IP address.</p>
+
+<h3 id="dns-for-load-balancing">DNS for Load Balancing</h3>
+<p>DNS can distribute load across replicated servers. For popular services like YouTube or Twitter, a name server can return multiple IP addresses for a single domain name. The server shuffles the order of these A records in its response, providing coarse-grained load balancing and simple resiliency. Furthermore, some servers use geographical load-balancing logic—using the client’s or recursive resolver’s IP address—to attempt to direct the client to the “nearest” or best-performing server.</p>
+
+<h3 id="dns-security">DNS Security</h3>
+<p>DNS is vulnerable to several types of attacks:</p>
+<ul>
+  <li><strong>DDoS Attacks:</strong> Attackers can attempt to bombard root or TLD servers with traffic. While largely unsuccessful against root servers due to traffic filtering and caching, attacks on TLD servers can be more dangerous.</li>
+  <li><strong>Spoofing Attacks:</strong> Attackers can intercept DNS queries and return bogus replies, leading to DNS cache poisoning.</li>
+  <li><strong>Defense:</strong> DNSSEC (RFC 4033) provides authentication services to combat these vulnerabilities.</li>
+</ul>
+
+<hr />
+
+<h2 id="6-peer-to-peer-p2p-architecture--file-distribution">6. Peer-to-Peer (P2P) Architecture &amp; File Distribution</h2>
+
+<p>Unlike Client-Server architectures, a <strong>Peer-to-Peer (P2P)</strong> architecture has no “always-on” server. Instead, arbitrary end systems (peers) directly communicate with one another. Peers request service from other peers, and provide service in return. Examples include P2P file sharing (BitTorrent), streaming (Kankan), and VoIP (Skype).</p>
+
+<p>This creates <strong>self-scalability</strong>: as new peers join, they bring new service demands, but they <em>also</em> bring new service capacity (upload bandwidth). However, because peers are intermittently connected and often change IP addresses, P2P networks require complex management.</p>
+
+<h3 id="file-distribution-time-client-server-vs-p2p">File Distribution Time: Client-Server vs. P2P</h3>
+
+<p>Consider distributing a file of size $F$ to $N$ peers. 
+Let $u_s$ be the server’s upload capacity, $d_i$ be peer $i$’s download capacity, and $u_i$ be peer $i$’s upload capacity.</p>
+
+<p><strong>Client-Server Approach:</strong></p>
+<ul>
+  <li><strong>Server transmission:</strong> The server must sequentially send $N$ copies of the file. The time to send one copy is $F/u_s$, so the time to send $N$ copies is $NF/u_s$.</li>
+  <li><strong>Client download:</strong> Each client must download a copy. The minimum download time for the slowest client is $F/d_{min}$.</li>
+  <li><strong>Total Time:</strong> The time to distribute the file to $N$ clients ($D_{c-s}$) is greater than or equal to $max{NF/u_s, F/d_{min}}$. Note that as $N$ grows, the distribution time increases linearly because $NF/u_s$ scales with $N$.</li>
+</ul>
+
+<p><strong>P2P Approach:</strong></p>
+<ul>
+  <li><strong>Server transmission:</strong> The server only needs to upload <em>at least one</em> copy to the network, which takes $F/u_s$.</li>
+  <li><strong>Client download:</strong> The minimum client download time remains $F/d_{min}$.</li>
+  <li><strong>Aggregate Capacity:</strong> All clients must collectively download $NF$ bits. However, the maximum upload rate of the entire system is now the server’s upload rate <em>plus</em> the sum of all peer upload rates: $u_s + \Sigma u_i$.</li>
+  <li><strong>Total Time:</strong> The time to distribute the file ($D_{P2P}$) is greater than or equal to $max{F/u_s, F/d_{min}, NF/(u_s + \Sigma u_i)}$.</li>
+</ul>
+
+<p>While the required data ($NF$) increases linearly with $N$, the <em>capacity</em> to deliver that data ($u_s + \Sigma u_i$) also increases as each new peer brings their own upload capacity to the swarm. As a result, P2P distribution times grow much slower than Client-Server times as the number of peers increases.</p>
+
+<h3 id="bittorrent-example">BitTorrent Example</h3>
+<p>In BitTorrent, a file is divided into chunks (e.g., 256Kb). A <strong>torrent</strong> is a group of peers exchanging these chunks. When Alice joins a torrent, she registers with a <strong>tracker</strong> to get a list of peers and connects to a subset of them (“neighbors”).</p>
+<ul>
+  <li><strong>Requesting:</strong> Alice periodically asks her peers for a list of their chunks and requests the ones she is missing, prioritizing the “rarest first”.</li>
+  <li><strong>Sending (Tit-for-Tat):</strong> Alice sends chunks to the four peers currently sending her chunks at the highest rate, while “choking” (ignoring) the others. She re-evaluates this top four every 10 seconds. Every 30 seconds, she “optimistically unchokes” a random peer, allowing them to potentially join the top four.</li>
+</ul>
+
+<hr />
+
+<h2 id="7-video-streaming-and-cdns">7. Video Streaming and CDNs</h2>
+
+<p>Stream video traffic is a major consumer of Internet bandwidth. As an example, Netflix, YouTube, and Amazon Prime accounted for 80% of residential ISP traffic in 2020. The primary challenges in video streaming are scaling the infrastructure to reach roughly a billion users and managing heterogeneity. Heterogeneity refers to the fact that different users have different capabilities, such as using wired versus mobile connections, or existing in bandwidth-rich versus bandwidth-poor environments. The core solution to these challenges relies on a distributed, application-level infrastructure.</p>
+
+<h3 id="video-encoding">Video Encoding</h3>
+<p>Video is fundamentally a sequence of images displayed at a constant rate, such as 24 images per second. A digital image is an array of pixels, where each pixel is represented by bits. To decrease the number of bits needed to encode an image, video coding exploits redundancy within and between images:</p>
+<ul>
+  <li><strong>Spatial Coding:</strong> Leverages redundancy within an image. Instead of sending $N$ identical color values for a single frame, the system can send only two values: the color value and the number of repeated values.</li>
+  <li><strong>Temporal Coding:</strong> Leverages redundancy from one image to the next. Instead of sending a complete frame, it only sends the differences from the previous frame.</li>
+  <li><strong>Bit Rates:</strong> Video can be encoded at a Constant Bit Rate (CBR), where the video encoding rate is fixed, or a Variable Bit Rate (VBR), where the encoding rate changes as the amount of spatial and temporal coding changes. Common examples include MPEG 1 (used for CD-ROM) at 1.5 Mbps, MPEG 2 (used for DVD) at 3-6 Mbps, and MPEG 4 (often used on the Internet) ranging from 64 Kbps to 12 Mbps.</li>
+</ul>
+
+<h3 id="streaming-stored-video">Streaming Stored Video</h3>
+<p>In a simple scenario, a video server sends stored video to a client over the Internet. The server-to-client bandwidth will vary over time as network congestion levels change in the house, access network, network core, or video server. Packet loss and delay due to congestion will either delay playout or result in poor video quality.</p>
+<ul>
+  <li><strong>Continuous Playout Constraint:</strong> During client video playout, the playout timing must match the original timing. During streaming, the client actively plays out an early part of the video while the server is still sending a later part of the video.</li>
+  <li><strong>Playout Buffering:</strong> Because network delays are variable (causing delay jitter), the system relies on a client-side buffer to compensate and match the continuous playout constraint.</li>
+  <li><strong>Other Challenges:</strong> Video systems must also handle client interactivity (e.g., pause, fast-forward, rewind, jump through video) and deal with video packets that may be lost and retransmitted.</li>
+</ul>
+
+<h3 id="dash-dynamic-adaptive-streaming-over-http">DASH: Dynamic, Adaptive Streaming over HTTP</h3>
+<p>Streaming video practically equates to the combination of encoding, DASH, and playout buffering. To handle varying bandwidths and heterogeneous clients, modern streaming utilizes DASH.</p>
+<ul>
+  <li><strong>Server-side:</strong> The server divides the video file into multiple chunks. Each chunk is encoded at multiple different rates, and these different rate encodings are stored in different files. These files are then replicated across various CDN nodes. A <strong>manifest file</strong> provides the URLs for these different chunks.</li>
+  <li><strong>Client-side (“Intelligence”):</strong> The intelligence in DASH lives at the client, which periodically estimates the server-to-client bandwidth. Consulting the manifest, the client requests one chunk at a time. It chooses the maximum coding rate sustainable given the current bandwidth. The client determines <em>when</em> to request a chunk (so that buffer starvation or overflow does not occur), <em>what</em> encoding rate to request (seeking higher quality when more bandwidth is available), and <em>where</em> to request the chunk (choosing a URL server that is “close” to the client or has high available bandwidth). The client can choose different coding rates at different points in time from different servers.</li>
+</ul>
+
+<h3 id="content-distribution-networks-cdns">Content Distribution Networks (CDNs)</h3>
+<p>The monumental challenge is how to stream content—selected from millions of videos—to hundreds of thousands of simultaneous users. Relying on a single, large “mega-server” does not scale because it creates a single point of failure, acts as a point of network congestion, and establishes a long (and possibly congested) path to distant clients. Instead, Content Distribution Networks (CDNs) store and serve multiple copies of videos at multiple geographically distributed sites.</p>
+<ul>
+  <li><strong>Enter Deep:</strong> Some CDNs push their servers deep into many access networks to get extremely close to users. Akamai, for example, had 240,000 servers deployed in over 120 countries in 2015. Today, the Akamai Edge boasts 360,000 servers, processing 100+ million hits per second, and 7+ trillion deliveries per day. It delivers 175+ terabits per second (with over 250 Tbps at peak) and spans 4,200+ locations, 1,350+ networks, 840+ cities, and 135 countries.</li>
+  <li><strong>Bring Home:</strong> Other CDNs build a smaller number (tens) of larger clusters situated in Points of Presence (POPs) near access networks, an approach used by companies like Limelight.</li>
+  <li><strong>DNS Redirects to CDNs:</strong> When a user requests content, the Domain Name System is typically involved to redirect the request to a CDN server. For instance, if a user visits NetCinema and clicks a video link, their host sends a DNS query for <code class="language-plaintext highlighter-rouge">video.netcinema.com</code>. The user’s Local DNS Server (LDNS) relays the query to an authoritative DNS server for NetCinema. To “hand over” the query, the NetCinema authoritative server returns a hostname in the CDN’s domain (e.g., <code class="language-plaintext highlighter-rouge">a1105.kingcdn.com</code>) to the LDNS. The LDNS then sends a second query for this new address into KingCDN’s private DNS infrastructure, which eventually returns the IP address of a KingCDN content server. The LDNS forwards this IP address to the user’s host, which establishes a direct TCP connection with the CDN server to issue an HTTP GET request or retrieve a DASH manifest file.</li>
+  <li><strong>Over the Top (OTT):</strong> Companies like Netflix utilize “over the top” services, storing copies of content at their worldwide OpenConnect CDN nodes. A subscriber requests content, the service provider returns a manifest, and the client retrieves the content at the highest supportable rate. The client may choose a different rate or copy if the network path is congested. OTT treats Internet host-host communication as a service. OTT providers face the challenge of coping with a congested Internet right from the “edge”, meaning they must meticulously determine what content to place in which CDN node, and clients must decide from which CDN node to retrieve content at which rate.</li>
+</ul>
+
+<hr />
+
+<h2 id="8-introduction-to-the-transport-layer">8. Introduction to the Transport Layer</h2>
+
+<p>As we move down the protocol stack, we encounter the <strong>Transport Layer</strong>. The transport layer provides logical communication between application <em>processes</em> running on different hosts. This relies on and enhances the network layer services, which provide logical communication between the <em>hosts</em> themselves.</p>
+
+<ul>
+  <li><strong>Sender Actions:</strong> The sender is passed an application-layer message, determines the segment header fields values, creates the segment, and passes the segment to the IP network layer.</li>
+  <li><strong>Receiver Actions:</strong> The receiver receives a segment from the IP layer, checks the header values, extracts the application-layer message, and demultiplexes the message up to the application via a socket.</li>
+</ul>
+
+<blockquote>
+  <p><strong>The Household Analogy:</strong> Imagine 12 kids in Ann’s house sending letters to 12 kids in Bill’s house.</p>
+  <ul>
+    <li><strong>Hosts:</strong> The houses themselves.</li>
+    <li><strong>Processes:</strong> The individual kids.</li>
+    <li><strong>Application Messages:</strong> The letters inside the envelopes.</li>
+    <li><strong>Network Layer:</strong> The postal service moving mail between the houses.</li>
+    <li><strong>Transport Layer:</strong> Ann and Bill, who collect the letters and distribute the received mail to the right siblings.</li>
+  </ul>
+</blockquote>
+
+<h3 id="the-two-principal-internet-transport-protocols">The Two Principal Internet Transport Protocols</h3>
+<p>There are two transport protocols available to Internet applications:</p>
+<ul>
+  <li><strong>TCP (Transmission Control Protocol):</strong> A connection-oriented transport protocol that provides reliable, in-order delivery. It features congestion control to throttle the sender when the network is overloaded, flow control to ensure the sender won’t overwhelm the receiver, and strict connection setup requirements between client and server processes.</li>
+  <li><strong>UDP (User Datagram Protocol):</strong> A connectionless transport protocol offering unreliable, unordered delivery. It serves as a no-frills extension of “best-effort” IP and does not provide reliability, flow control, congestion control, connection setup, timing, or security.</li>
+  <li><strong>Services Not Available:</strong> At the transport layer, neither TCP nor UDP can provide delay guarantees or bandwidth guarantees.</li>
+</ul>
+
+<h3 id="multiplexing-and-demultiplexing">Multiplexing and Demultiplexing</h3>
+<p>Multiplexing and demultiplexing happen at all layers of the network stack, but at the transport layer, they are fundamentally based on segment and datagram header field values. Because a single host can run many applications, the Transport layer must know how to route arriving data to the correct process.</p>
+<ul>
+  <li><strong>Multiplexing (Sender):</strong> The sender handles data from multiple sockets and adds a transport header that will be later used for demultiplexing.</li>
+  <li><strong>Demultiplexing (Receiver):</strong> The receiver uses the header info to deliver received segments to the correct socket. A host receives IP datagrams that each carry a source IP address, a destination IP address, and a single transport-layer segment containing a source port number and a destination port number. The host uses these IP addresses and port numbers to direct the segment to the appropriate socket.</li>
+  <li><strong>TCP/UDP Segment Format:</strong> Both TCP and UDP utilize a segment format featuring a 32-bit width layout that holds the source port number, the destination port number, other specific header fields, and the application data (payload).</li>
+</ul>
+
+<h3 id="connectionless-vs-connection-oriented-demultiplexing">Connectionless vs. Connection-Oriented Demultiplexing</h3>
+<p>The Transport Layer handles demultiplexing differently depending on whether it is using UDP or TCP:</p>
+<ul>
+  <li><strong>Connectionless Demultiplexing (UDP):</strong> When creating a UDP socket, the application must specify a host-local port number. When creating a datagram to send into a UDP socket, the destination IP address and destination port number must be explicitly specified. When the receiving host receives the UDP segment, it strictly checks the destination port number and directs the segment to the socket bound to that port. If IP/UDP datagrams have the same destination port number, but different source IP addresses or source port numbers, they will still be directed to the exact same socket at the receiving host.</li>
+  <li><strong>Connection-Oriented Demultiplexing (TCP):</strong> A TCP socket is specifically identified by a <strong>4-tuple</strong>: source IP address, source port number, destination IP address, and destination port number. The receiver demultiplexes by using all four values to direct the segment to the appropriate socket. Because of this, a server can seamlessly support many simultaneous TCP sockets, where each socket is identified by its own 4-tuple and is associated with a different connecting client.</li>
+</ul>
+
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
+
+    <div class="footer">
+  <div>
+    © 2026 Diba Hadi Esfangereh · Built with Jekyll ·
+    <a href="/feed.xml">RSS</a>
+  </div>
+</div>
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  </body>
+</html>

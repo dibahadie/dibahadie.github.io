@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Transport Layer: Comprehensive Guide | Diba Hadi Esfangereh</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Transport Layer: Comprehensive Guide" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The Transport Layer" />
+<meta property="og:description" content="The Transport Layer" />
+<link rel="canonical" href="http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/03-transport-layer/" />
+<meta property="og:url" content="http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/03-transport-layer/" />
+<meta property="og:site_name" content="Diba Hadi Esfangereh" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-07-27T00:17:58+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Transport Layer: Comprehensive Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-07-27T00:17:58+03:00","datePublished":"2026-07-27T00:17:58+03:00","description":"The Transport Layer","headline":"Transport Layer: Comprehensive Guide","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/03-transport-layer/"},"url":"http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/03-transport-layer/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+      <link rel="stylesheet" href="/assets/css/notebook_layout.css">
+    
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body class="site-wrapper">
+    <nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">Diba Hadi Esfangereh</a>
+    <div class="nav-links">
+      <a href="/" class="">Home</a>
+      <a href="/research/" class="">Research</a>
+      <a href="/blog/" class="">Blog</a>
+      <a href="/notebooks/" class="active">Notebooks</a>
+      <a href="/contact/" class="">Contact</a>
+    </div>
+  </div>
+</nav>
+
+    
+    <main class="container content-area">
+      <div class="site-wrapper">
+  <div class="content-area">
+    <div class="container">
+      <div class="notebook-grid">
+        
+        <aside class="notebook-sidebar">
+          <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+          
+          <div class="sidebar-sticky card reveal-card sidebar-collapsible">
+            <div class="card-pad">
+              
+              <div class="sidebar-header-flex">
+                <div class="pub-label">Sections</div>
+                <a href="/notebooks/" class="back-button-mini">
+                  <i class="fa-solid fa-arrow-left"></i> Back
+                </a>
+              </div>
+
+              <nav class="notebook-nav-list">
+                <ul>
+                  
+                  
+                  
+                  
+                  
+
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/index/" class="nav-item ">
+                          Computer Engineering Topics
+                        </a>
+                      </li>
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+                        <li class="nav-section-title">
+                          I Computer Networks
+                        </li>
+                        
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/01_Computer%20Networks/01-basics/" class="nav-item ">
+                          Basics of Computer Networks
+                        </a>
+                      </li>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/01_Computer%20Networks/02-application-layer/" class="nav-item ">
+                          Application Layer
+                        </a>
+                      </li>
+                    
+                  
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/01_Computer%20Networks/03-transport-layer/" class="nav-item active">
+                          Transport Layer: Comprehensive Guide
+                        </a>
+                      </li>
+                    
+                  
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </aside>
+
+        <article class="notebook-body card reveal-card">
+          <div class="card-pad">
+            <header class="notebook-header">
+              <div class="pub-label">Computer Engineering</div>
+              <h1 class="h-title">Transport Layer: Comprehensive Guide</h1>
+            </header>
+            <div class="notebook-markdown">
+              <h1 id="the-transport-layer">The Transport Layer</h1>
+
+<p>While the Network Layer (IP) provides logical communication between <em>hosts</em>, the Transport Layer provides logical communication between <em>application processes</em> running on those different hosts.</p>
+
+<h2 id="1-overview-of-the-transport-layer">1. Overview of the Transport Layer</h2>
+<p>The transport layer takes application messages, breaks them into segments (adding a transport header), and passes them to the network layer. On the receiving end, it reassembles those segments back into messages and passes them up to the correct application.</p>
+
+<blockquote>
+  <p><strong>The Household Analogy:</strong> Imagine 12 kids in Ann’s house sending letters to 12 kids in Bill’s house.</p>
+  <ul>
+    <li><strong>Hosts:</strong> The houses themselves.</li>
+    <li><strong>Processes:</strong> The individual kids.</li>
+    <li><strong>Application Messages:</strong> The letters inside the envelopes.</li>
+    <li><strong>Network Layer:</strong> The postal service moving mail between the houses.</li>
+    <li><strong>Transport Layer:</strong> Ann and Bill, who collect the letters from their siblings and hand them to the mail carrier, and later distribute the received mail to the right siblings.</li>
+  </ul>
+</blockquote>
+
+<p>The Internet provides two principal transport protocols:</p>
+<ul>
+  <li><strong>UDP (User Datagram Protocol):</strong> A connectionless, unreliable, unordered delivery service (a “no-frills” extension of best-effort IP).</li>
+  <li><strong>TCP (Transmission Control Protocol):</strong> A connection-oriented service that provides reliable, in-order delivery, flow control, and congestion control.</li>
+  <li><em>Note: Neither protocol guarantees delay or bandwidth.</em></li>
+</ul>
+
+<hr />
+
+<h2 id="2-multiplexing-and-demultiplexing">2. Multiplexing and Demultiplexing</h2>
+<p>Because a single host can run many network applications simultaneously, the transport layer must know how to route data to the correct process.</p>
+<ul>
+  <li><strong>Multiplexing (Sender):</strong> The transport layer gathers data from multiple application sockets, adds a transport header (containing source and destination port numbers), and passes the segment to the network layer.</li>
+  <li><strong>Demultiplexing (Receiver):</strong> The transport layer examines the header fields of an incoming segment and uses those port numbers (and sometimes IP addresses) to direct the segment to the correct application socket.</li>
+</ul>
+
+<h3 id="connectionless-vs-connection-oriented-demultiplexing">Connectionless vs. Connection-Oriented Demultiplexing</h3>
+<ul>
+  <li><strong>UDP (Connectionless):</strong> Demultiplexes using <em>only</em> the destination port number. If two different clients send UDP packets to the same destination port on a server, both packets go to the exact same socket.</li>
+  <li><strong>TCP (Connection-Oriented):</strong> Demultiplexes using a <strong>4-tuple</strong>: Source IP, Source Port, Destination IP, and Destination Port. This allows a web server to maintain multiple simultaneous TCP sockets, each exclusively communicating with a specific connecting client.</li>
+</ul>
+
+<hr />
+
+<h2 id="3-udp-the-no-frills-protocol">3. UDP: The “No-Frills” Protocol</h2>
+<p>UDP provides a “best effort” service; its segments may be lost or delivered out of order. It is connectionless, meaning there is no handshaking, and each segment is handled independently.</p>
+
+<p><strong>Why does UDP exist?</strong></p>
+<ol>
+  <li><strong>No connection establishment:</strong> Avoids the round-trip time (RTT) delay of handshaking.</li>
+  <li><strong>Simple:</strong> No connection state needs to be maintained at the sender or receiver.</li>
+  <li><strong>Small header size:</strong> Reduces overhead.</li>
+  <li><strong>No congestion control:</strong> UDP can blast data as fast as desired and function even when network service is compromised by congestion.</li>
+</ol>
+
+<p><strong>Common Uses:</strong> Streaming multimedia (which is loss-tolerant but rate-sensitive), DNS, SNMP, and HTTP/3. If an application needs reliability over UDP (like HTTP/3), it must build that reliability and congestion control directly into the application layer.</p>
+
+<h3 id="the-udp-checksum">The UDP Checksum</h3>
+<p>UDP includes a simple checksum to detect errors (flipped bits) in the transmitted segment.</p>
+<ul>
+  <li><strong>Sender:</strong> Treats the segment contents (including header and IP addresses) as a sequence of 16-bit integers, adds them using one’s complement sum, and puts the value in the checksum field.</li>
+  <li><strong>Receiver:</strong> Computes the checksum of the received segment and compares it to the checksum field. If they don’t match, an error is detected.</li>
+  <li><em>Weakness:</em> The checksum is a weak protection. If multiple bits flip in a way that offsets each other during addition, the error will go undetected.</li>
+</ul>
+
+<hr />
+
+<h2 id="4-principles-of-reliable-data-transfer-rdt">4. Principles of Reliable Data Transfer (RDT)</h2>
+<p>Building a reliable data transfer protocol is complex because the underlying channel (IP) is unreliable (it can lose, corrupt, or reorder data). The sender and receiver do not naturally know the “state” of each other (e.g., “Did the receiver get my message?”).</p>
+
+<p>We use Finite State Machines (FSMs) to model these protocols incrementally.</p>
+
+<h3 id="rdt-10-perfectly-reliable-channel">RDT 1.0: Perfectly Reliable Channel</h3>
+<p>If the underlying channel never flips bits and never loses packets, the protocol is trivial. The sender simply sends the data, and the receiver reads it.</p>
+
+<h3 id="rdt-20-channel-with-bit-errors">RDT 2.0: Channel with Bit Errors</h3>
+<p>If the channel can flip bits (detected by a checksum), we need a way to recover. RDT 2.0 uses a <strong>stop-and-wait</strong> approach: the sender sends one packet and waits for a response.</p>
+<ul>
+  <li><strong>Acknowledgements (ACKs):</strong> Receiver tells the sender the packet was received OK.</li>
+  <li><strong>Negative Acknowledgements (NAKs):</strong> Receiver tells the sender the packet had errors. The sender then retransmits the packet.</li>
+  <li><strong>The Fatal Flaw:</strong> What if the ACK or NAK itself is corrupted? The sender won’t know what happened at the receiver. It can’t just blindly retransmit, because the receiver wouldn’t know if the incoming packet is a duplicate or new data.</li>
+</ul>
+
+<h3 id="rdt-21-handling-garbled-acksnaks">RDT 2.1: Handling Garbled ACKs/NAKs</h3>
+<p>To solve the duplicate problem, the sender adds a <strong>sequence number</strong> to each packet. Because we are using a stop-and-wait protocol, we only need two sequence numbers (0 and 1).</p>
+<ul>
+  <li><strong>Sender FSM:</strong> Has twice as many states as 2.0 because it must “remember” whether the next expected packet should have a sequence number of 0 or 1. If it receives a corrupted ACK/NAK, it retransmits the current packet.</li>
+  <li><strong>Receiver FSM:</strong> Must check if the received packet is a duplicate. Its state indicates whether 0 or 1 is the expected sequence number.</li>
+</ul>
+
+<h3 id="rdt-22-a-nak-free-protocol">RDT 2.2: A NAK-Free Protocol</h3>
+<p>RDT 2.2 provides the same functionality as 2.1 but removes NAKs.</p>
+<ul>
+  <li>Instead of sending a NAK, the receiver simply sends an <strong>ACK for the last packet received OK</strong>.</li>
+  <li>Crucially, the receiver must explicitly include the sequence number of the packet being ACKed.</li>
+  <li>If the sender receives a <strong>duplicate ACK</strong>, it takes the same action as receiving a NAK: it retransmits the current packet. <em>(TCP uses this exact NAK-free approach!)</em></li>
+</ul>
+
+<h3 id="rdt-30-channels-with-errors-and-loss">RDT 3.0: Channels with Errors and Loss</h3>
+<p>Now we assume the underlying channel can flip bits <em>and</em> lose packets completely. ACKs and sequence numbers aren’t enough if the packet never arrives in the first place.</p>
+<ul>
+  <li><strong>The Timeout Mechanism:</strong> The sender waits a “reasonable amount of time” for an ACK. If no ACK is received before the countdown timer expires, the sender assumes the packet (or its ACK) was lost and retransmits the packet.</li>
+  <li><strong>Handling Delays:</strong> If the packet or ACK was just delayed (not actually lost), the retransmission will result in a duplicate packet arriving at the receiver. However, the sequence numbers from RDT 2.1 already handle this perfectly, allowing the receiver to identify and discard the duplicate.</li>
+</ul>
+
+<p><strong>The Performance Problem of Stop-and-Wait (RDT 3.0)</strong>
+While RDT 3.0 works, its performance is terrible. Let’s look at the sender’s utilization ($U_{sender}$), which is the fraction of time the sender is actually busy sending data.</p>
+<ul>
+  <li><strong>Example:</strong> On a 1 Gbps link with a 15 ms propagation delay ($RTT \approx 30$ ms) and an 8000-bit packet, the transmission time ($L/R$) is only 8 microseconds (0.008 ms).</li>
+  <li><strong>Calculation:</strong> $U_{sender} = \frac{L/R}{RTT + L/R} = \frac{0.008}{30.008} = 0.00027$.</li>
+  <li><strong>Conclusion:</strong> The sender is only busy 0.027% of the time! The protocol itself is limiting the performance of the underlying physical infrastructure.</li>
+</ul>
+
+<hr />
+
+<h2 id="5-pipelined-protocols-go-back-n-gbn">5. Pipelined Protocols: Go-Back-N (GBN)</h2>
+
+<p>To fix the performance issues of stop-and-wait, we use <strong>pipelining</strong>: allowing the sender to have multiple “in-flight,” yet-to-be-acknowledged packets at the same time.</p>
+<ul>
+  <li>Pipelining requires increasing the range of sequence numbers and adding buffering at the sender, receiver, or both.</li>
+  <li>If we allow 3 in-flight packets, we increase utilization by a factor of 3 ($U_{sender} = \frac{3 \times L/R}{RTT + L/R}$).</li>
+</ul>
+
+<p>One of the most common pipelined protocols is <strong>Go-Back-N (GBN)</strong>.</p>
+
+<h3 id="go-back-n-the-sender">Go-Back-N: The Sender</h3>
+<ul>
+  <li><strong>The Window:</strong> The sender is allowed to transmit multiple packets without waiting for an ACK, but is restricted to a maximum “window” of $N$ consecutive unacknowledged packets.</li>
+  <li><strong>Cumulative ACKs:</strong> The sender relies on cumulative ACKs. If it receives $ACK(n)$, it means all packets up to and including sequence number $n$ have been successfully received. The sender then slides its window forward to begin at $n+1$.</li>
+  <li><strong>The Timer:</strong> The sender maintains a single timer for the <em>oldest</em> in-flight packet.</li>
+  <li><strong>Timeout Behavior:</strong> If a timeout occurs for packet $n$, the sender retransmits packet $n$ <em>and all higher sequence number packets</em> currently in the window.</li>
+</ul>
+
+<h3 id="go-back-n-the-receiver">Go-Back-N: The Receiver</h3>
+<ul>
+  <li><strong>ACK-Only:</strong> The receiver always sends an ACK for the highest in-order packet it has received correctly so far. This means it may send duplicate ACKs.</li>
+  <li><strong>Handling Out-of-Order Packets:</strong> If the receiver gets an out-of-order packet (e.g., it was expecting packet 2 but receives packet 3), it will discard the out-of-order packet (or buffer it, depending on implementation) and simply re-send an ACK for the last in-order packet (e.g., $ACK(1)$). It only needs to remember <code class="language-plaintext highlighter-rouge">rcv_base</code>, the next expected in-order sequence number.</li>
+</ul>
+
+<blockquote>
+  <p><strong>GBN in Action:</strong></p>
+  <ol>
+    <li>Sender sends packets 0, 1, 2, 3.</li>
+    <li>Packet 2 is lost.</li>
+    <li>Receiver gets 0 and 1, sending $ACK(0)$ and $ACK(1)$.</li>
+    <li>Receiver gets 3. Because it was expecting 2, it discards 3 and re-sends $ACK(1)$.</li>
+    <li>Sender receives the duplicate ACKs but ignores them.</li>
+    <li>Eventually, the timer for packet 2 expires.</li>
+    <li>The sender “goes back N” and retransmits packet 2 <em>and</em> packet 3.</li>
+  </ol>
+</blockquote>
+
+<hr />
+
+<h2 id="6-tcp-connection-management-reliability-and-flow-control">6. TCP: Connection Management, Reliability, and Flow Control</h2>
+
+<p>TCP is the workhorse of the Internet. It provides a suite of services that UDP simply ignores:</p>
+
+<ul>
+  <li><strong>Point-to-Point:</strong> A TCP connection is strictly between one sender and one receiver.</li>
+  <li><strong>Reliable, In-Order Byte Stream:</strong> TCP guarantees that data arrives exactly as it was sent. Unlike UDP, which sends discrete “messages,” TCP views data as an unstructured stream of bytes without “message boundaries”.</li>
+  <li><strong>Full Duplex Data:</strong> Data can flow in both directions simultaneously within the same connection.</li>
+  <li><strong>Maximum Segment Size (MSS):</strong> The maximum amount of payload data that can be put into a single TCP segment.</li>
+  <li><strong>Cumulative ACKs:</strong> TCP uses cumulative acknowledgements, meaning an ACK for sequence number <em>N</em> confirms receipt of all bytes up to <em>N-1</em>.</li>
+  <li><strong>Pipelining:</strong> TCP allows multiple “in-flight” unacknowledged packets to increase network utilization. The window size is dynamically set by flow and congestion control mechanisms.</li>
+  <li><strong>Connection-Oriented:</strong> Before any data is exchanged, the sender and receiver must undergo a handshaking process (exchanging control messages) to initialize their connection state.</li>
+  <li><strong>Flow Controlled:</strong> TCP ensures that a fast sender will not overwhelm a slow receiver’s buffer.</li>
+</ul>
+
+<h3 id="the-tcp-segment-structure">The TCP Segment Structure</h3>
+<p>A standard TCP header is typically 20 bytes long and contains several critical fields:</p>
+
+<ol>
+  <li><strong>Source Port &amp; Destination Port (16 bits each):</strong> Used for multiplexing and demultiplexing data to the correct application processes.</li>
+  <li><strong>Sequence Number (32 bits):</strong> In TCP, the sequence number is <strong>not</strong> a packet count. It represents the byte-stream “number” of the <em>first byte</em> of data in that specific segment.</li>
+  <li><strong>Acknowledgement Number (32 bits):</strong> The sequence number of the <em>next byte</em> the receiver is expecting from the other side.</li>
+  <li><strong>Header Length:</strong> Indicates where the data begins.</li>
+  <li><strong>Flags:</strong> Several 1-bit flags dictate the segment’s purpose:
+    <ul>
+      <li><strong>A (ACK):</strong> Indicates that the Acknowledgement Number field is valid.</li>
+      <li><strong>RST, SYN, FIN:</strong> Used for connection management (setup and teardown).</li>
+      <li><strong>C, E:</strong> Used for Explicit Congestion Notification.</li>
+    </ul>
+  </li>
+  <li><strong>Receive Window:</strong> Used for flow control, indicating the number of bytes the receiver is currently willing to accept.</li>
+  <li><strong>Internet Checksum:</strong> For detecting bit errors.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Out-of-Order Segments:</strong> What does a TCP receiver do if it receives segment 3 before segment 2? The official TCP specification actually doesn’t strictly dictate this; it is left up to the implementor (usually the OS developer) whether to buffer the out-of-order segment or discard it.</p>
+</blockquote>
+
+<h3 id="tcp-connection-management-the-3-way-handshake">TCP Connection Management (The 3-Way Handshake)</h3>
+<p>Before any data is exchanged, the sender and receiver must “handshake” to agree to establish the connection and synchronize connection parameters (like starting sequence numbers).</p>
+
+<p>To prevent issues with delayed or reordered packets establishing “half-open” connections, TCP uses a <strong>3-way handshake</strong>:</p>
+<ol>
+  <li><strong>SYN:</strong> The client chooses an initial sequence number <code class="language-plaintext highlighter-rouge">x</code> and sends a TCP SYN message to the server (Client enters <code class="language-plaintext highlighter-rouge">SYNSENT</code> state).</li>
+  <li><strong>SYNACK:</strong> The server receives the request, chooses its own initial sequence number <code class="language-plaintext highlighter-rouge">y</code>, and sends a SYNACK message acknowledging <code class="language-plaintext highlighter-rouge">x</code> (<code class="language-plaintext highlighter-rouge">ACKnum = x+1</code>) (Server enters <code class="language-plaintext highlighter-rouge">SYN RCVD</code> state).</li>
+  <li><strong>ACK:</strong> The client receives the SYNACK (proving the server is live), enters the <code class="language-plaintext highlighter-rouge">ESTAB</code> (established) state, and sends an ACK for <code class="language-plaintext highlighter-rouge">y</code> (<code class="language-plaintext highlighter-rouge">ACKnum = y+1</code>). This third segment may also contain the first pieces of client-to-server data.</li>
+</ol>
+
+<p>To close a connection, the client and server each close their respective side by sending a TCP segment with the <code class="language-plaintext highlighter-rouge">FIN</code> bit set to 1, which the other side acknowledges.</p>
+
+<h3 id="estimating-round-trip-time-rtt-and-timeouts">Estimating Round Trip Time (RTT) and Timeouts</h3>
+<p>TCP uses a countdown timer to determine if a packet was lost and needs retransmission. The timeout value must be dynamically adjusted based on network conditions:</p>
+
+<ul>
+  <li>TCP estimates the RTT by measuring <code class="language-plaintext highlighter-rouge">SampleRTT</code>—the actual time elapsed between transmitting a segment and receiving its ACK.</li>
+  <li>It uses an <strong>Exponential Weighted Moving Average (EWMA)</strong> to smooth the estimate:
+\(EstimatedRTT = (1 - \alpha) \times EstimatedRTT + \alpha \times SampleRTT\)</li>
+  <li>It calculates the deviation (<code class="language-plaintext highlighter-rouge">DevRTT</code>) of the samples using another EWMA:
+\(DevRTT = (1 - \beta) \times DevRTT + \beta \times |SampleRTT - EstimatedRTT|\)</li>
+  <li>Finally, the timeout interval is calculated as the estimate plus a safety margin:
+\(TimeoutInterval = EstimatedRTT + 4 \times DevRTT\)</li>
+</ul>
+
+<h3 id="tcp-sender-logic-and-retransmissions">TCP Sender Logic and Retransmissions</h3>
+<p>To provide reliable data transfer, the simplified TCP sender reacts to three main events:</p>
+<ol>
+  <li><strong>Data received from application:</strong> The sender creates a segment with a sequence number and passes it to IP. It starts a timer if one isn’t already running.</li>
+  <li><strong>Timeout:</strong> If the timer expires, the sender retransmits the specific not-yet-acknowledged segment that caused the timeout and restarts the timer.</li>
+  <li><strong>ACK received:</strong> If the ACK acknowledges previously unacknowledged segments, the sender updates its records. It starts the timer if there are still unacknowledged segments, or stops it if there are none.</li>
+</ol>
+
+<p><strong>TCP Fast Retransmit</strong>
+Waiting for a timeout can take a long time, degrading performance. TCP includes a mechanism called <strong>Fast Retransmit</strong> to speed this up.</p>
+<ul>
+  <li>If a sender receives 3 <em>additional</em> ACKs for the exact same data (“triple duplicate ACKs”), it assumes that the unacknowledged segment with the smallest sequence number was lost.</li>
+  <li>It immediately resends that segment without waiting for the timeout to occur.</li>
+</ul>
+
+<h3 id="tcp-flow-control">TCP Flow Control</h3>
+<p>TCP uses <strong>flow control</strong> to ensure the sender won’t overflow the receiver’s buffers by transmitting too much data too fast.</p>
+<ul>
+  <li>The TCP receiver “advertises” its available free buffer space using the <strong><code class="language-plaintext highlighter-rouge">rwnd</code> (receive window)</strong> field in the TCP header.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">RcvBuffer</code> size is set via socket options and is often auto-adjusted by the operating system.</li>
+  <li>The sender restricts its amount of unacknowledged (“in-flight”) data to stay within the limits of the advertised <code class="language-plaintext highlighter-rouge">rwnd</code> value, guaranteeing the receive buffer will not overflow.</li>
+</ul>
+
+<hr />
+
+<h2 id="7-principles-of-congestion-control">7. Principles of Congestion Control</h2>
+
+<p><strong>Congestion</strong> occurs when there are too many sources sending too much data too fast for the network to handle. This is distinctly different from flow control (which only deals with one sender overwhelming one receiver).</p>
+
+<h3 id="the-costs-of-congestion">The Costs of Congestion</h3>
+<ul>
+  <li><strong>Infinite Buffers:</strong> As the arrival rate approaches the link’s maximum capacity, queueing delays become extremely large.</li>
+  <li><strong>Finite Buffers &amp; Retransmissions:</strong> When buffers fill up, packets are dropped and must be retransmitted. Premature timeouts can cause senders to transmit unneeded duplicates. This wastes link capacity, meaning the link carries multiple copies of the same packet, decreasing the maximum achievable effective throughput.</li>
+  <li><strong>Multi-hop Paths:</strong> When a packet is successfully transmitted through several routers but is ultimately dropped at a downstream bottleneck link, all the upstream transmission capacity and buffering used for that packet was entirely wasted.</li>
+</ul>
+
+<h3 id="approaches-to-congestion-control">Approaches to Congestion Control</h3>
+<ol>
+  <li><strong>End-end congestion control:</strong> The network provides no explicit feedback. The endpoints must infer congestion based on observed packet loss and delays. <em>(This is the approach taken by TCP).</em></li>
+  <li><strong>Network-assisted congestion control:</strong> Routers provide direct, explicit feedback to the sending/receiving hosts. For example, Explicit Congestion Notification (ECN) uses two bits in the IP header to mark congestion, which the destination then echoes back to the sender via the TCP ACK segment.</li>
+</ol>
+
+<hr />
+
+<h2 id="8-tcp-congestion-control">8. TCP Congestion Control</h2>
+
+<p>To combat congestion, TCP uses an approach called <strong>AIMD (Additive Increase, Multiplicative Decrease)</strong>. The core idea is that a sender will slowly increase its sending rate to probe for available bandwidth until a packet loss (congestion event) occurs, at which point it drastically reduces its rate.</p>
+
+<ul>
+  <li><strong>Additive Increase:</strong> The sender increases its sending rate by 1 Maximum Segment Size (MSS) every Round Trip Time (RTT) as long as no loss is detected.</li>
+  <li><strong>Multiplicative Decrease:</strong> When a loss event occurs, the sender immediately cuts its sending rate in half.</li>
+</ul>
+
+<p>This dynamic probing mechanism results in the classic <strong>“sawtooth”</strong> behavior of a TCP connection’s throughput over time.</p>
+
+<h3 id="slow-start">Slow Start</h3>
+<p>When a connection begins, AIMD’s linear increase would take too long to reach a respectable speed. Therefore, TCP begins in <strong>Slow Start</strong>:</p>
+<ul>
+  <li>The initial congestion window (<code class="language-plaintext highlighter-rouge">cwnd</code>) is set to 1 MSS.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">cwnd</code> is doubled every RTT (by incrementing <code class="language-plaintext highlighter-rouge">cwnd</code> for every ACK received).</li>
+  <li>This means the initial rate starts slow but ramps up exponentially fast.</li>
+</ul>
+
+<h3 id="transitioning-to-congestion-avoidance">Transitioning to Congestion Avoidance</h3>
+<p>When does the exponential increase (Slow Start) switch to the linear increase (AIMD)?</p>
+<ul>
+  <li>TCP maintains a variable called <code class="language-plaintext highlighter-rouge">ssthresh</code> (Slow Start Threshold).</li>
+  <li>On a loss event, <code class="language-plaintext highlighter-rouge">ssthresh</code> is set to half of <code class="language-plaintext highlighter-rouge">cwnd</code> just before the loss event.</li>
+  <li>During Slow Start, once <code class="language-plaintext highlighter-rouge">cwnd</code> reaches or exceeds <code class="language-plaintext highlighter-rouge">ssthresh</code>, TCP transitions into <strong>Congestion Avoidance</strong> mode, where it grows linearly.</li>
+</ul>
+
+<h3 id="tcp-cubic-and-delay-based-congestion-control">TCP CUBIC and Delay-based Congestion Control</h3>
+<p>As networks evolved to support “long, fat pipes” (high bandwidth, high delay links), classic AIMD struggled to maintain high throughput.</p>
+<ul>
+  <li><strong>TCP CUBIC:</strong> A more modern approach (default in Linux) that changes the way it probes for bandwidth. After cutting the rate in half, it rapidly ramps the window size back up close to the previous maximum ($W_{max}$), but then slows down and becomes very cautious as it nears $W_{max}$. It does this using a cubic function of time.</li>
+  <li><strong>Delay-based TCP (e.g., BBR):</strong> Tries to keep the sender-to-receiver pipe “just full enough, but no fuller” by monitoring the RTT. If the measured throughput is close to the uncongested throughput, it increases the window; if it falls far below (indicating buffering and congestion), it decreases the window, attempting to avoid congestion <em>without</em> forcing a packet loss.</li>
+</ul>
+
+<h3 id="tcp-fairness">TCP Fairness</h3>
+<p>If $K$ TCP sessions share the same bottleneck link of bandwidth $R$, each should ideally get an average rate of $R/K$. TCP is generally fair under idealized assumptions (same RTT, fixed number of sessions in congestion avoidance). However, fairness can be circumvented:</p>
+<ul>
+  <li><strong>UDP:</strong> Multimedia apps often use UDP specifically to avoid being throttled by TCP’s congestion control. There is no “Internet police” enforcing congestion control.</li>
+  <li><strong>Parallel Connections:</strong> An application (like a web browser) can open multiple parallel connections between two hosts. If a link has 9 existing connections, a new application opening 1 connection gets $1/10$th of the bandwidth, but an application opening 11 connections grabs over half the bandwidth.</li>
+</ul>
+
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
+
+    <div class="footer">
+  <div>
+    © 2026 Diba Hadi Esfangereh · Built with Jekyll ·
+    <a href="/feed.xml">RSS</a>
+  </div>
+</div>
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  </body>
+</html>

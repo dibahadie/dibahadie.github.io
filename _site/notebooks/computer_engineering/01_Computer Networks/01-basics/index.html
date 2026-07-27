@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Basics of Computer Networks | Diba Hadi Esfangereh</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Basics of Computer Networks" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Basics of Computer Networks" />
+<meta property="og:description" content="Basics of Computer Networks" />
+<link rel="canonical" href="http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/01-basics/" />
+<meta property="og:url" content="http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/01-basics/" />
+<meta property="og:site_name" content="Diba Hadi Esfangereh" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-07-27T00:17:58+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Basics of Computer Networks" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-07-27T00:17:58+03:00","datePublished":"2026-07-27T00:17:58+03:00","description":"Basics of Computer Networks","headline":"Basics of Computer Networks","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/01-basics/"},"url":"http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/01-basics/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+      <link rel="stylesheet" href="/assets/css/notebook_layout.css">
+    
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body class="site-wrapper">
+    <nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">Diba Hadi Esfangereh</a>
+    <div class="nav-links">
+      <a href="/" class="">Home</a>
+      <a href="/research/" class="">Research</a>
+      <a href="/blog/" class="">Blog</a>
+      <a href="/notebooks/" class="active">Notebooks</a>
+      <a href="/contact/" class="">Contact</a>
+    </div>
+  </div>
+</nav>
+
+    
+    <main class="container content-area">
+      <div class="site-wrapper">
+  <div class="content-area">
+    <div class="container">
+      <div class="notebook-grid">
+        
+        <aside class="notebook-sidebar">
+          <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+          
+          <div class="sidebar-sticky card reveal-card sidebar-collapsible">
+            <div class="card-pad">
+              
+              <div class="sidebar-header-flex">
+                <div class="pub-label">Sections</div>
+                <a href="/notebooks/" class="back-button-mini">
+                  <i class="fa-solid fa-arrow-left"></i> Back
+                </a>
+              </div>
+
+              <nav class="notebook-nav-list">
+                <ul>
+                  
+                  
+                  
+                  
+                  
+
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/index/" class="nav-item ">
+                          Computer Engineering Topics
+                        </a>
+                      </li>
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+                        <li class="nav-section-title">
+                          I Computer Networks
+                        </li>
+                        
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/01_Computer%20Networks/01-basics/" class="nav-item active">
+                          Basics of Computer Networks
+                        </a>
+                      </li>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/01_Computer%20Networks/02-application-layer/" class="nav-item ">
+                          Application Layer
+                        </a>
+                      </li>
+                    
+                  
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/01_Computer%20Networks/03-transport-layer/" class="nav-item ">
+                          Transport Layer: Comprehensive Guide
+                        </a>
+                      </li>
+                    
+                  
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </aside>
+
+        <article class="notebook-body card reveal-card">
+          <div class="card-pad">
+            <header class="notebook-header">
+              <div class="pub-label">Computer Engineering</div>
+              <h1 class="h-title">Basics of Computer Networks</h1>
+            </header>
+            <div class="notebook-markdown">
+              <h1 id="basics-of-computer-networks">Basics of Computer Networks</h1>
+
+<p>Whether you are streaming a movie, sending an email, or reading this blog post, you are relying on a massive, complex, and invisible infrastructure: the Internet. But how does it actually work? Let’s dive into the foundational concepts of computer networks, breaking down the hardware, the software, and the rules that keep the digital world spinning.</p>
+
+<hr />
+
+<h2 id="1-what-is-the-internet-two-perspectives">1. What is the Internet? Two Perspectives</h2>
+
+<p>We can look at the Internet through two distinct lenses: the physical hardware (nuts and bolts) and the software services it provides.</p>
+
+<h3 id="the-nuts-and-bolts-view">The “Nuts and Bolts” View</h3>
+<p>Physically, the Internet is a <strong>“network of networks.”</strong> It is a sprawling web of interconnected Internet Service Providers (ISPs) that link billions of devices together.</p>
+<ul>
+  <li><strong>Hosts (End Systems):</strong> These are the devices running network applications at the “edge” of the Internet—your smartphone, laptop, smart fridge, or a massive server in a Google data center.</li>
+  <li><strong>Packet Switches:</strong> Devices like <strong>routers</strong> and <strong>switches</strong> that act as digital traffic cops, forwarding chunks of data (called packets) toward their destinations.</li>
+  <li><strong>Communication Links:</strong> The physical roads the data travels on, including fiber-optic cables, copper wires, radio waves, and satellite links.</li>
+  <li><strong>Bandwidth:</strong> The transmission rate of these links, dictating how much data can flow through per second.</li>
+  <li><strong>Standards:</strong> Organizations like the IETF (Internet Engineering Task Force) define the rules of the road using documents called RFCs (Request for Comments).</li>
+</ul>
+
+<h3 id="the-services-view">The “Services” View</h3>
+<p>From a software perspective, the Internet is an <strong>infrastructure that provides services to applications</strong>.</p>
+<ul>
+  <li>It provides a programming interface for distributed applications (like web browsers, multiplayer games, and email clients).</li>
+  <li>It offers “hooks” that allow these applications to connect to the network and choose specific service options, much like choosing between standard or express delivery at a post office.</li>
+</ul>
+
+<hr />
+
+<h2 id="2-what-is-a-protocol">2. What is a Protocol?</h2>
+
+<p>Imagine two people meeting: one puts out their hand, and the other shakes it. That’s a human protocol. In networking, <strong>protocols</strong> are the strict rules that govern all communication between computers and devices.</p>
+
+<blockquote>
+  <p><strong>Definition:</strong> Protocols define the format and order of messages sent and received among network entities, as well as the specific actions taken upon message transmission or receipt.</p>
+</blockquote>
+
+<p>Without protocols like HTTP (for the Web) or IP (for routing), the Internet would be a chaotic mess of unrecognizable electrical signals.</p>
+
+<hr />
+
+<h2 id="3-network-structure-from-the-edge-to-the-core">3. Network Structure: From the Edge to the Core</h2>
+
+<h3 id="the-network-edge">The Network Edge</h3>
+<p>The edge of the network is where the users are. It consists of the <strong>hosts</strong> (clients and servers). Modern servers are rarely standalone machines; they are usually clustered by the thousands in massive high-bandwidth <strong>data centers</strong>.</p>
+
+<p>To connect these edge devices to the broader Internet, we use <strong>access networks</strong>:</p>
+<ul>
+  <li><strong>Cable-based Access:</strong> Uses Hybrid Fiber Coax (HFC) to transmit data and TV signals at different frequencies over a shared cable. Cable is typically asymmetric, meaning download speeds (up to 1.2 Gbps) are faster than upload speeds.</li>
+  <li><strong>Digital Subscriber Line (DSL):</strong> Piggybacks on existing copper telephone lines. It separates voice and data into different frequencies, also offering asymmetric speeds.</li>
+  <li><strong>Home &amp; Enterprise Networks:</strong> A typical home network uses a combination of a modem, a router/firewall, and a WiFi access point. Enterprise networks scale this up, using a mix of high-speed wired Ethernet (up to 10 Gbps) and wireless links to connect servers and users across entire campuses.</li>
+</ul>
+
+<h3 id="the-physical-media">The Physical Media</h3>
+<p>Data needs a physical medium to travel across.</p>
+<ul>
+  <li><strong>Guided Media:</strong> Signals travel through a solid medium. Examples include <strong>Twisted Pair (TP)</strong> copper wires (used in Ethernet), <strong>Coaxial Cables</strong>, and <strong>Fiber Optic Cables</strong> (which use pulses of light for ultra-fast, long-distance transmission immune to electromagnetic noise).</li>
+  <li><strong>Unguided Media:</strong> Signals broadcast freely, like <strong>Wireless Radio</strong>. This includes WiFi (Local Area Networks), 4G/5G cellular (Wide Area Networks), Bluetooth, and Satellite links. These signals are susceptible to environmental factors like reflection and physical obstructions.</li>
+</ul>
+
+<h3 id="the-network-core">The Network Core</h3>
+<p>If the edge is the neighborhoods and driveways, the core is the global highway system. The network core is a mesh of interconnected routers. Its two main jobs are:</p>
+<ol>
+  <li><strong>Routing (Global):</strong> Using algorithms to determine the entire path a packet should take from source to destination.</li>
+  <li><strong>Forwarding or Switching (Local):</strong> The localized action where a router looks at an arriving packet’s destination address, consults its internal forwarding table, and moves the packet to the correct output link.</li>
+</ol>
+
+<hr />
+
+<h2 id="4-circuit-switching-vs-packet-switching">4. Circuit Switching vs. Packet Switching</h2>
+
+<p>How do we share the massive resources of the network among billions of users? Historically, there were two main approaches.</p>
+
+<h3 id="circuit-switching-the-old-way">Circuit Switching (The Old Way)</h3>
+<p>Think of making a reservation at a restaurant. In circuit switching, end-hosts explicitly request and reserve a dedicated path (a circuit) through the network before they send any data.</p>
+<ul>
+  <li><strong>How it works:</strong> Resources are reserved at call setup and released at teardown. Data flows along this single, guaranteed path.</li>
+  <li><strong>Multiplexing:</strong> It shares links using techniques like <strong>Time-Division Multiplexing (TDM)</strong> (dividing time into slots) or <strong>Frequency-Division Multiplexing (FDM)</strong> (dividing frequencies into bands).</li>
+  <li><strong>The Flaw:</strong> It uses <em>static allocation</em>. If your application isn’t actively sending data, that reserved capacity sits completely idle and is wasted.</li>
+</ul>
+
+<h3 id="packet-switching-the-internet-way">Packet Switching (The Internet Way)</h3>
+<p>Think of a first-come, first-serve diner. In packet switching, data is broken into smaller chunks called <strong>packets</strong>, each containing a header with source and destination addresses.</p>
+<ul>
+  <li><strong>Store-and-Forward:</strong> A router must receive the <em>entire</em> packet before it can begin forwarding it to the next link.</li>
+  <li><strong>Statistical Multiplexing:</strong> Resources are allocated on demand. Hosts just send packets and “hope for the best.” Because it is highly unlikely that every user will need maximum bandwidth at the exact same millisecond, the network can support far more users efficiently.</li>
+  <li><strong>Example:</strong> Imagine a 1 Gbps link where users need 100 Mbps, but only 10% of the time. Circuit switching could only support exactly 10 users (10 * 100 Mbps = 1 Gbps). Packet switching, utilizing the laws of binomial probability, can support 35 users with a less than 0.04% chance of the network being overwhelmed!</li>
+</ul>
+
+<hr />
+
+<h2 id="5-performance-delay-loss-and-throughput">5. Performance: Delay, Loss, and Throughput</h2>
+
+<p>Because packet switching does not reserve resources, traffic jams can happen. When packets arrive at a router faster than the router can send them out, they wait in a <strong>queue</strong> (buffer). If the queue fills up completely, new arriving packets are dropped. This is <strong>packet loss</strong>.</p>
+
+<p>The total delay a packet experiences at a single router node ($d_{nodal}$) is the sum of four parts:</p>
+
+\[d_{nodal} = d_{proc} + d_{queue} + d_{trans} + d_{prop}\]
+
+<ol>
+  <li><strong>Nodal Processing ($d_{proc}$):</strong> The time a router takes to check for bit errors and determine the output link (usually microseconds).</li>
+  <li><strong>Queueing Delay ($d_{queue}$):</strong> The time spent waiting in the buffer. This depends heavily on network congestion. We measure this using <strong>Traffic Intensity</strong> ($La/R$, where $L$ is packet length, $a$ is arrival rate, and $R$ is bandwidth). As traffic intensity approaches 1, queueing delays spike exponentially. If it exceeds 1, the delay theoretically approaches infinity, and packets are lost.</li>
+  <li><strong>Transmission Delay ($d_{trans}$):</strong> The time required to physically push all the packet’s bits onto the wire. Formula: $d_{trans} = L/R$.</li>
+  <li><strong>Propagation Delay ($d_{prop}$):</strong> The time it takes for a bit to travel through the physical medium to the next router. Formula: $d_{prop} = d/s$ (distance divided by the speed of light in that medium).</li>
+</ol>
+
+<blockquote>
+  <p><strong>The Toll Booth Analogy:</strong> Imagine a 10-car caravan (a 10-bit packet) traveling down a highway between toll booths (routers).</p>
+  <ul>
+    <li><strong>Transmission delay</strong> is the time it takes the toll booth worker to process all 10 cars and push them onto the highway.</li>
+    <li><strong>Propagation delay</strong> is the time it takes the cars to physically drive to the next toll booth.</li>
+  </ul>
+</blockquote>
+
+<p><em>Note: You can actually measure real-world internet delays yourself using a command-line tool called <code class="language-plaintext highlighter-rouge">traceroute</code>, which bounces test packets off routers along a path to measure round-trip times.</em></p>
+
+<hr />
+
+<h2 id="6-open-architecture--the-tcpip-protocol-suite">6. Open Architecture &amp; The TCP/IP Protocol Suite</h2>
+
+<p>The modern Internet is built on the concept of <strong>Open Architecture Networking</strong>. No single entity dictates internal network designs; distinct networks can be built however their creators want, as long as they connect via “black-box” gateways (routers) using a meta-level internetworking architecture.</p>
+
+<p>This led to the creation of the <strong>TCP/IP</strong> suite, breaking networking into two main protocols:</p>
+<ul>
+  <li><strong>IP (Internet Protocol):</strong> Handles the addressing and best-effort forwarding of individual packets.</li>
+  <li><strong>TCP (Transmission Control Protocol):</strong> Sits on top of IP to provide reliable delivery, flow control, and recovery from the packet loss inherent in packet switching.</li>
+  <li><strong>UDP (User Datagram Protocol):</strong> A lightweight, “unreliable” alternative to TCP for applications that prioritize speed over perfect accuracy (like live video or gaming).</li>
+</ul>
+
+<hr />
+
+<h2 id="7-the-magic-of-layers-the-protocol-stack">7. The Magic of Layers (The Protocol Stack)</h2>
+
+<p>Networks are incredibly complex. To make them manageable, engineers use <strong>layers of abstraction</strong>. Each layer relies on the services of the layer below it and provides services to the layer above it.</p>
+
+<h3 id="the-5-layer-internet-model">The 5-Layer Internet Model</h3>
+<ol>
+  <li><strong>Application Layer:</strong> Where your apps live (HTTP for web, SMTP for email, DNS). Data here is called a <strong>message</strong>.</li>
+  <li><strong>Transport Layer:</strong> Manages process-to-process delivery (TCP, UDP). It wraps the message in a Transport header to create a <strong>segment</strong>.</li>
+  <li><strong>Network Layer:</strong> Handles routing from source to destination (IP). It wraps the segment in a Network header to create a <strong>datagram</strong>.</li>
+  <li><strong>Link Layer:</strong> Handles data transfer between neighboring devices (Ethernet, WiFi). It wraps the datagram in a Link header to create a <strong>frame</strong>.</li>
+  <li><strong>Physical Layer:</strong> Physically moves the raw bits over wires, fibers, or airwaves.</li>
+</ol>
+
+<h3 id="encapsulation-the-matryoshka-dolls-of-data">Encapsulation: The Matryoshka Dolls of Data</h3>
+<p>When you send an email, your computer doesn’t just shoot raw text into the wall. As the message moves <em>down</em> the layers on your machine, each protocol adds its own <strong>header</strong> (metadata containing instructions), enveloping the data like a set of Russian nesting dolls. This is called <strong>encapsulation</strong>.</p>
+
+<p>When the packet arrives at the destination, it moves <em>up</em> the layers. Each layer reads its specific header, strips it off (<strong>decapsulation</strong>), and passes the payload up to the next layer.</p>
+
+<blockquote>
+  <p><strong>The Postal Analogy:</strong></p>
+  <ul>
+    <li><strong>Application (CEO):</strong> Alice writes a letter to Bob.</li>
+    <li><strong>Transport (Secretary):</strong> The secretary puts it in an envelope, addressing it “From Alice, To Bob.”</li>
+    <li><strong>Network (Mailroom):</strong> The mailroom puts that envelope into a larger box addressed “From 123 Alice St. to 456 Bob St.”</li>
+    <li><strong>Link/Physical (Mail Carrier):</strong> The mail carrier physically drives the box to the post office.</li>
+  </ul>
+</blockquote>
+
+<p><strong>Crucially, intermediate routers only implement the bottom three layers (Physical, Link, and Network).</strong> They open the “box” just enough to read the IP address, decide where to forward it, put it in a new Link-layer box, and send it on its way. They never look at the Application data inside.</p>
+
+<h3 id="the-narrow-waist">The “Narrow Waist”</h3>
+<p>If you look at all the protocols, there are dozens of Application protocols (HTTP, FTP), Transport protocols (TCP, UDP), and Link protocols (WiFi, Ethernet). But there is only <strong>one</strong> Network layer protocol: <strong>IP</strong>. Because every device and router on the Internet speaks IP, it acts as a universal translator, unifying vastly different physical networks into the single, cohesive Internet we use today.</p>
+
+<hr />
+
+<h2 id="8-a-quick-word-on-security">8. A Quick Word on Security</h2>
+
+<p>The Internet was originally designed with a vision of “mutually trusting users.” Security was not built-in from day one. Today, protocol designers play catch-up against bad actors.</p>
+
+<p>Common threats include:</p>
+<ul>
+  <li><strong>Packet Sniffing:</strong> Attackers silently reading broadcast data on shared networks (like public WiFi).</li>
+  <li><strong>IP Spoofing:</strong> Attackers injecting packets with a fake source address to impersonate someone else.</li>
+  <li><strong>Denial of Service (DoS):</strong> Attackers using compromised computers (botnets) to overwhelm a server with bogus traffic, taking it offline.</li>
+</ul>
+
+<p>To fight back, modern networks rely on multiple lines of defense, including <strong>authentication</strong> (proving who you are), <strong>confidentiality</strong> (encryption), <strong>integrity checks</strong> (digital signatures), and <strong>firewalls</strong> (middleboxes that filter out malicious traffic).</p>
+
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
+
+    <div class="footer">
+  <div>
+    © 2026 Diba Hadi Esfangereh · Built with Jekyll ·
+    <a href="/feed.xml">RSS</a>
+  </div>
+</div>
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  </body>
+</html>

@@ -5,7 +5,7 @@ title: "Signal Processing Topics"
 category: "Signal Processing"
 last_updated: "2026"
 status: "In Progress"
-order: 0
+order: 2
 tags: ["signal processing"]
 description: "This notebook contains my notes on many different signal processing topics."
 custom_css: notebook_layout
