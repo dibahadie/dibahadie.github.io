@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Data Plane | Diba Hadi Esfangereh</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Data Plane" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In this post, we will unpack the fundamental concepts that govern how data navigates the internet." />
+<meta property="og:description" content="In this post, we will unpack the fundamental concepts that govern how data navigates the internet." />
+<link rel="canonical" href="http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/04-data-plane/" />
+<meta property="og:url" content="http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/04-data-plane/" />
+<meta property="og:site_name" content="Diba Hadi Esfangereh" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-07-31T13:25:58+03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Data Plane" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-07-31T13:25:58+03:00","datePublished":"2026-07-31T13:25:58+03:00","description":"In this post, we will unpack the fundamental concepts that govern how data navigates the internet.","headline":"Data Plane","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/04-data-plane/"},"url":"http://localhost:4000/notebooks/computer_engineering/01_Computer%20Networks/04-data-plane/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    
+      <link rel="stylesheet" href="/assets/css/notebook_layout.css">
+    
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body class="site-wrapper">
+    <nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/">Diba Hadi Esfangereh</a>
+    <div class="nav-links">
+      <a href="/" class="">Home</a>
+      <a href="/research/" class="">Research</a>
+      <a href="/blog/" class="">Blog</a>
+      <a href="/notebooks/" class="active">Notebooks</a>
+      <a href="/contact/" class="">Contact</a>
+    </div>
+  </div>
+</nav>
+
+    
+    <main class="container content-area">
+      <div class="site-wrapper">
+  <div class="content-area">
+    <div class="container">
+      <div class="notebook-grid">
+        
+        <aside class="notebook-sidebar">
+          <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+          
+          <div class="sidebar-sticky card reveal-card sidebar-collapsible">
+            <div class="card-pad">
+              
+              <div class="sidebar-header-flex">
+                <div class="pub-label">Sections</div>
+                <a href="/notebooks/" class="back-button-mini">
+                  <i class="fa-solid fa-arrow-left"></i> Back
+                </a>
+              </div>
+
+              <nav class="notebook-nav-list">
+                <ul>
+                  
+                  
+                  
+                  
+                  
+
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/index/" class="nav-item ">
+                          Computer Engineering Topics
+                        </a>
+                      </li>
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+                        <li class="nav-section-title">
+                          I Computer Networks
+                        </li>
+                        
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/01_Computer%20Networks/01-basics/" class="nav-item ">
+                          Basics of Computer Networks
+                        </a>
+                      </li>
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/01_Computer%20Networks/02-application-layer/" class="nav-item ">
+                          Application Layer
+                        </a>
+                      </li>
+                    
+                  
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/01_Computer%20Networks/03-transport-layer/" class="nav-item ">
+                          Transport Layer: Comprehensive Guide
+                        </a>
+                      </li>
+                    
+                  
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/01_Computer%20Networks/04-data-plane/" class="nav-item active">
+                          Data Plane
+                        </a>
+                      </li>
+                    
+                  
+                    
+                      
+                      
+                      
+                      
+
+                      
+                      
+
+                      <li>
+                        <a href="/notebooks/computer_engineering/01_Computer%20Networks/05-control-plane/" class="nav-item ">
+                          Data Plane
+                        </a>
+                      </li>
+                    
+                  
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </aside>
+
+        <article class="notebook-body card reveal-card">
+          <div class="card-pad">
+            <header class="notebook-header">
+              <div class="pub-label">Computer Engineering</div>
+              <h1 class="h-title">Data Plane</h1>
+            </header>
+            <div class="notebook-markdown">
+              <p>In this post, we will unpack the fundamental concepts that govern how data navigates the internet.</p>
+
+<hr />
+
+<h2 id="1-network-layer-overview-forwarding-vs-routing">1. Network Layer Overview: Forwarding vs. Routing</h2>
+
+<p>To understand the network layer, we first need to distinguish between its two primary functions: forwarding and routing.</p>
+
+<ul>
+  <li><strong>Forwarding (Data Plane):</strong> This is the process of moving packets from a router’s input link to the appropriate output link. Think of this as the local, per-router action of getting a car through a single highway interchange.</li>
+  <li><strong>Routing (Control Plane):</strong> This is the network-wide logic that determines the specific end-to-end route taken by packets from the source to their destination. This is analogous to planning the entire trip from start to finish.</li>
+</ul>
+
+<h3 id="control-plane-approaches">Control Plane Approaches</h3>
+<p>The control plane can be implemented in two distinct ways:</p>
+<ol>
+  <li><strong>Traditional Routing Algorithms:</strong> The routing algorithm components are implemented individually inside each and every router.</li>
+  <li><strong>Software-Defined Networking (SDN):</strong> A remote controller server computes and installs the forwarding tables into the routers.</li>
+</ol>
+
+<h3 id="network-service-models">Network Service Models</h3>
+<p>When transporting datagrams, what kind of guarantees does the network provide? The Internet operates on a <strong>“best-effort”</strong> service model.</p>
+
+<ul>
+  <li><strong>Internet Best-Effort:</strong> Provides absolutely no guarantees regarding successful datagram delivery, bandwidth, timing, or packet ordering. Despite these missing guarantees, the simplicity of this mechanism has allowed the Internet to be widely deployed. Furthermore, sufficient provisioning of bandwidth allows the performance of real-time applications to be “good enough” most of the time.</li>
+  <li><strong>Alternative Models:</strong> Network architectures like ATM (Asynchronous Transfer Mode) offer models like Constant Bit Rate or Available Bit Rate, which can guarantee minimum bandwidths and timing. Intserv and Diffserv are other architectures that attempt to add Quality of Service (QoS) guarantees.</li>
+</ul>
+
+<hr />
+
+<h2 id="2-whats-inside-a-router">2. What’s Inside a Router?</h2>
+
+<p>Routers are specialized devices divided into hardware and software components. The routing and management control plane operates in software (in the millisecond timeframe), while the forwarding data plane relies on hardware (in the nanosecond timeframe).</p>
+
+<h3 id="input-ports">Input Ports</h3>
+<p>Input ports handle bit-level reception and link-layer protocol processing (like Ethernet) before moving to lookup and forwarding.</p>
+<ul>
+  <li><strong>Decentralized Switching:</strong> The input port uses header field values to look up the correct output port using a local forwarding table.</li>
+  <li><strong>Longest Prefix Matching:</strong> When finding a table entry for a destination address, the router uses the longest address prefix that matches the destination. This is often performed at lightning speed using Ternary Content Addressable Memories (TCAMs), which retrieve addresses in a single clock cycle.</li>
+  <li><strong>Queuing:</strong> If datagrams arrive faster than the switching fabric can process them, input port queuing occurs. This can lead to <strong>Head-of-the-Line (HOL) blocking</strong>, where a delayed datagram at the front of the queue prevents other datagrams behind it from moving forward.</li>
+</ul>
+
+<h3 id="switching-fabrics">Switching Fabrics</h3>
+<p>The switching fabric transfers packets from the input links to the appropriate output links. The switching rate is ideally N times the line rate (where N is the number of inputs). There are three major types of switching fabrics:</p>
+<ol>
+  <li><strong>Memory:</strong> Early routers copied packets into system memory under direct CPU control. Speed is limited by memory bandwidth.</li>
+  <li><strong>Bus:</strong> Datagrams travel over a shared bus. Speed is limited by bus contention (e.g., a 32 Gbps bus is sufficient for access routers).</li>
+  <li><strong>Interconnection Network:</strong> Advanced fabrics, like crossbars, overcome bus bandwidth limitations by allowing multiple parallel connections.</li>
+</ol>
+
+<h3 id="output-ports--buffer-management">Output Ports &amp; Buffer Management</h3>
+<p>Queuing also happens at output ports when the arrival rate from the switch exceeds the output line speed. This requires careful buffer management:</p>
+<ul>
+  <li><strong>Drop Policies:</strong> If buffers are full, the router must decide which packets to drop (e.g., tail drop removes the arriving packet, or priority drop removes based on classification).</li>
+  <li><strong>How Much Buffering is Needed?</strong> An old RFC 3439 rule of thumb suggests buffering equal to a typical Round Trip Time (RTT) multiplied by the link capacity (C). For a system with N flows, a more recent recommendation is calculated via the formula:
+\(\frac{\text{RTT} \cdot C}{\sqrt{N}}\)
+Too much buffering, however, can increase delays—a common issue in home routers.</li>
+</ul>
+
+<h3 id="packet-scheduling">Packet Scheduling</h3>
+<p>Routers must decide which queued packet to send next over the link.</p>
+<ul>
+  <li><strong>FCFS (First-Come, First-Served):</strong> Packets are transmitted strictly in their order of arrival.</li>
+  <li><strong>Priority:</strong> Traffic is classified into queues, and packets are always sent from the highest-priority queue that contains data.</li>
+  <li><strong>Round Robin (RR):</strong> The server repeatedly cycles through class queues, sending one complete packet from each class in turn.</li>
+  <li><strong>Weighted Fair Queuing (WFQ):</strong> A generalized version of Round Robin. Each class i is assigned a weight, W_i, and is guaranteed a minimum bandwidth based on the fraction:
+\(\frac{W_i}{\sum W_j}\)</li>
+</ul>
+
+<hr />
+
+<h2 id="3-the-internet-protocol-ip">3. The Internet Protocol (IP)</h2>
+
+<h3 id="ip-datagram-format">IP Datagram Format</h3>
+<p>An IPv4 datagram contains several vital fields:</p>
+<ul>
+  <li><strong>Version Number:</strong> Indicates the IP protocol version.</li>
+  <li><strong>Time To Live (TTL):</strong> Tracks the remaining maximum hops the packet can take, decremented at each router.</li>
+  <li><strong>Overhead:</strong> A typical datagram carries 40 bytes of overhead (20 bytes for the IP header and 20 bytes for the TCP header) before application data is even included.</li>
+  <li><strong>Length:</strong> The maximum length is 64K bytes, but they are typically 1500 bytes or less.</li>
+  <li><strong>Addresses:</strong> 32-bit source and destination IP addresses.</li>
+</ul>
+
+<h3 id="fragmentation--reassembly">Fragmentation &amp; Reassembly</h3>
+<p>Different network links have different Maximum Transmission Units (MTUs)—the largest possible link-level frame they can carry. If an IP datagram is larger than a link’s MTU, it must be fragmented into smaller datagrams within the network.</p>
+<ul>
+  <li>These fragments are only reassembled once they reach their final destination.</li>
+  <li>Routers use the IP header bits (ID, flag, offset) to identify and order related fragments.</li>
+  <li><em>Example:</em> A 4000-byte datagram traversing a link with a 1500-byte MTU will be fragmented into three smaller datagrams (e.g., lengths of 1500, 1500, and 1040 bytes).</li>
+</ul>
+
+<hr />
+
+<h2 id="4-ip-addressing-and-subnets">4. IP Addressing and Subnets</h2>
+
+<p>An IP address is a 32-bit identifier associated with a host or router interface (the connection between the device and the physical link). They are usually expressed in dotted-decimal notation (e.g., 223.1.1.1).</p>
+
+<h3 id="subnets-and-cidr">Subnets and CIDR</h3>
+<p>A subnet consists of device interfaces that can physically reach each other without passing through an intervening router. IP addresses contain structure:</p>
+<ul>
+  <li><strong>Subnet Part:</strong> High-order bits common to all devices in the same subnet.</li>
+  <li><strong>Host Part:</strong> Remaining low-order bits.</li>
+</ul>
+
+<p>The Internet uses <strong>CIDR (Classless InterDomain Routing)</strong> to format addresses. Addresses are written as <code class="language-plaintext highlighter-rouge">a.b.c.d/x</code>, where <code class="language-plaintext highlighter-rouge">x</code> is the number of bits defining the subnet portion (the subnet mask).</p>
+
+<h3 id="how-hosts-get-ip-addresses-dhcp">How Hosts Get IP Addresses: DHCP</h3>
+<p>Hosts dynamically obtain IP addresses via the <strong>Dynamic Host Configuration Protocol (DHCP)</strong>. DHCP allows a host to “plug-and-play” and renew leases on addresses, natively supporting mobile users. The sequence works like this:</p>
+<ol>
+  <li><strong>DHCP Discover:</strong> The arriving client broadcasts to ask if a DHCP server is out there.</li>
+  <li><strong>DHCP Offer:</strong> The server broadcasts an offer with an available IP address.</li>
+  <li><strong>DHCP Request:</strong> The client broadcasts its intent to use the offered IP address.</li>
+  <li><strong>DHCP ACK:</strong> The server broadcasts a confirmation that the client owns the address.</li>
+</ol>
+
+<p>Beyond an IP address, DHCP also provides the address of the first-hop router, the name and IP of the DNS server, and the network subnet mask.</p>
+
+<h3 id="route-aggregation">Route Aggregation</h3>
+<p>ISPs receive blocks of IP addresses from ICANN (Internet Corporation for Assigned Names and Numbers). ISPs use hierarchical addressing to allocate smaller blocks to individual organizations. This structure allows for efficient route aggregation, where an ISP can advertise a single, unified route for multiple subnet blocks to the broader Internet.</p>
+
+<hr />
+
+<h2 id="5-network-address-translation-nat">5. Network Address Translation (NAT)</h2>
+
+<p>By 2011, ICANN had allocated the final chunk of IPv4 addresses. To combat this exhaustion, <strong>NAT (Network Address Translation)</strong> was introduced.</p>
+
+<p>NAT allows all devices in a local network (using private IP prefixes like 10/8, 172.16/12, or 192.168/16) to share a single public IPv4 address assigned by an ISP.</p>
+
+<ul>
+  <li><strong>How it works:</strong> A NAT router transparently replaces the source IP address and port number of outgoing datagrams with the shared NAT IP address and a new port. It records this swap in a NAT translation table. When a reply arrives, the router checks the table and replaces the destination NAT IP and port with the original local IP and port.</li>
+  <li><strong>The Controversy:</strong> NAT violates the end-to-end argument because a network-layer device is manipulating port numbers (a transport-layer concept). Furthermore, routers are technically only supposed to process data up to layer 3. Despite these complaints, NAT is massively deployed in home networks, institutions, and 4G/5G cellular networks.</li>
+</ul>
+
+<hr />
+
+<h2 id="6-ipv6-the-future-of-the-internet">6. IPv6: The Future of the Internet</h2>
+
+<p>Because the 32-bit IPv4 address space simply ran out of room, IPv6 was created.</p>
+
+<h3 id="ipv6-datagram-format">IPv6 Datagram Format</h3>
+<p>IPv6 expands the address space significantly to <strong>128 bits</strong>. The protocol also introduces a streamlined, 40-byte fixed-length header to speed up processing and forwarding.</p>
+<ul>
+  <li><strong>What’s Missing?</strong> Compared to IPv4, IPv6 removes the checksum entirely to speed up processing at routers. It also completely removes fragmentation and reassembly capabilities from network routers.</li>
+</ul>
+
+<h3 id="the-transition-to-ipv6">The Transition to IPv6</h3>
+<p>Because we cannot upgrade all routers worldwide at the same time (no “flag days”), the network relies heavily on <strong>Tunneling</strong>. During transit between IPv4-only routers, the entire IPv6 datagram is stuffed directly into the payload of an IPv4 datagram—a literal “packet within a packet”.</p>
+
+<p>Deployment has been a slow process, taking well over 25 years. However, adoption is steadily rising; as of 2023, Google reported that roughly 40% of clients access their services via IPv6, and one-third of US government domains are IPv6 capable.</p>
+
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
+
+    <div class="footer">
+  <div>
+    © 2026 Diba Hadi Esfangereh · Built with Jekyll ·
+    <a href="/feed.xml">RSS</a>
+  </div>
+</div>
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  </body>
+</html>

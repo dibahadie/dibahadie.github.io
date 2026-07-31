@@ -4,21 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Signal Processing Topics | Diba Hadi Esfangereh</title>
+<title>DAP: Discrete All-Pole Modeling | Diba Hadi Esfangereh</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Signal Processing Topics" />
+<meta property="og:title" content="DAP: Discrete All-Pole Modeling" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="This notebook contains my notes on many different signal processing topics." />
-<meta property="og:description" content="This notebook contains my notes on many different signal processing topics." />
-<link rel="canonical" href="http://localhost:4000/notebooks/signal_processing/index/" />
-<meta property="og:url" content="http://localhost:4000/notebooks/signal_processing/index/" />
+<meta name="description" content="DAP: Discrete All-Pole Modeling: Introduction" />
+<meta property="og:description" content="DAP: Discrete All-Pole Modeling: Introduction" />
+<link rel="canonical" href="http://localhost:4000/notebooks/signal_processing/01_Algorithms/04-Discrete-All-Pole-Modeling/" />
+<meta property="og:url" content="http://localhost:4000/notebooks/signal_processing/01_Algorithms/04-Discrete-All-Pole-Modeling/" />
 <meta property="og:site_name" content="Diba Hadi Esfangereh" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2026-07-31T13:25:58+03:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Signal Processing Topics" />
+<meta property="twitter:title" content="DAP: Discrete All-Pole Modeling" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-07-31T13:25:58+03:00","datePublished":"2026-07-31T13:25:58+03:00","description":"This notebook contains my notes on many different signal processing topics.","headline":"Signal Processing Topics","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notebooks/signal_processing/index/"},"url":"http://localhost:4000/notebooks/signal_processing/index/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-07-31T13:25:58+03:00","datePublished":"2026-07-31T13:25:58+03:00","description":"DAP: Discrete All-Pole Modeling: Introduction","headline":"DAP: Discrete All-Pole Modeling","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/notebooks/signal_processing/01_Algorithms/04-Discrete-All-Pole-Modeling/"},"url":"http://localhost:4000/notebooks/signal_processing/01_Algorithms/04-Discrete-All-Pole-Modeling/"}</script>
 <!-- End Jekyll SEO tag -->
 
     <link rel="stylesheet" href="/assets/css/main.css">
@@ -109,7 +109,7 @@
                       
 
                       <li>
-                        <a href="/notebooks/signal_processing/01_Algorithms/04-Discrete-All-Pole-Modeling/" class="nav-item ">
+                        <a href="/notebooks/signal_processing/01_Algorithms/04-Discrete-All-Pole-Modeling/" class="nav-item active">
                           DAP: Discrete All-Pole Modeling
                         </a>
                       </li>
@@ -183,7 +183,7 @@
                       
 
                       <li>
-                        <a href="/notebooks/signal_processing/index/" class="nav-item active">
+                        <a href="/notebooks/signal_processing/index/" class="nav-item ">
                           Signal Processing Topics
                         </a>
                       </li>
@@ -243,11 +243,40 @@
         <article class="notebook-body card reveal-card">
           <div class="card-pad">
             <header class="notebook-header">
-              <div class="pub-label">Signal Processing</div>
-              <h1 class="h-title">Signal Processing Topics</h1>
+              <div class="pub-label">signal processing</div>
+              <h1 class="h-title">DAP: Discrete All-Pole Modeling</h1>
             </header>
             <div class="notebook-markdown">
-              <h1 id="content-starts-here">Content starts here…</h1>
+              <h3 id="dap-discrete-all-pole-modeling-introduction">DAP: Discrete All-Pole Modeling: Introduction</h3>
+
+<p>If you have ever tried to analyze a high-pitched voice using standard Linear Predictive Coding (LPC), you have probably run into its biggest flaw: the model gets heavily distorted.</p>
+
+<p>This happens because LPC has a mathematical blind spot. Its underlying equations force it to analyze the entire frequency spectrum as if it were a solid, continuous block of sound. But pitched human speech isn’t solid—it looks like a sparse row of sharp harmonic spikes separated by wide gaps of dead silence. Because standard LPC is forced to measure everything, it awkwardly tries to map that empty space, pulling and warping the digital model down into the silent gaps.</p>
+
+<p>Discrete All-Pole (DAP) modeling was invented to fix exactly this. Instead of blindly measuring the whole spectrum, DAP changes the rules so the algorithm only looks at the exact tips of those harmonic spikes. By completely ignoring the empty, silent space in between, DAP stops the model from warping. The result is a perfectly smooth, highly accurate map of the vocal tract, no matter how high the speaker’s pitch goes.</p>
+
+<h3 id="itakura-saito-distance">Itakura-Saito Distance</h3>
+
+<p>DAP needs a way to calculate “error” at those specific harmonic frequencies. Instead of using standard subtraction (Mean Squared Error), it uses a formula uniquely suited for human hearing: the Itakura-Saito (IS) distance.</p>
+
+<p>For a specific harmonic peak $P$ and our model’s guess $\hat{P}$, the error is calculated as:</p>
+
+\[d_{IS}(P, \hat{P}) = \frac{P}{\hat{P}} - \ln\left(\frac{P}{\hat{P}}\right) - 1\]
+
+<ul>
+  <li>Missing a peak is heavily punished: If the real voice is loud at that harmonic, but our model dips too low, the ratio explodes into a massive number. The algorithm immediately course-corrects to push the model up.</li>
+  <li>Missing a valley is forgiven: If the model stays high while the real audio dips, the ratio becomes a tiny fraction. Thanks to the natural logarithm, the math applies almost no penalty.</li>
+</ul>
+
+<p>When you sum this up across all the discrete harmonics $N$, you get the ultimate DAP error equation:</p>
+
+\[E_{DAP} = \frac{1}{N} \sum_{k=1}^{N} \left( \frac{P(\omega_k)}{\hat{P}(\omega_k)} - \ln\left(\frac{P(\omega_k)}{\hat{P}(\omega_k)}\right) - 1 \right)\]
+
+<h3 id="computational-catch">Computational Catch</h3>
+
+<p>To find the predictor coefficients that minimize this error, we have to take the derivative of $E_{DAP}$ with respect to the coefficients and set it to zero.Here is where DAP gets difficult: because we are using a discrete sum involving a logarithm, the derivative does not cleanly resolve into a simple set of linear equations (the Yule-Walker equations we saw in standard LPC).</p>
+
+<p>The Trade-off: DAP generates an incredibly accurate, pitch-independent map of the vocal tract. However, because it requires an iterative loop instead of a single, straight-line calculation, it is significantly more computationally expensive than standard LPC.</p>
 
             </div>
           </div>
