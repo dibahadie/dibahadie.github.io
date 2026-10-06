@@ -7,9 +7,7 @@ email: "diba.hadie@gmail.com"
 academic_email: "diba.hadie83@sharif.edu"
 
 intro: >
-  I’m an undergraduate researcher in Computer Engineering at Sharif University of Technology (minor in Mathematics). My primary focus is computational music generation and NIME, especially culturally grounded modeling of musical structure and expressivity. I also work on statistical learning and AI—probabilistic modeling and controllable generation.
-
-
+  I’m an undergraduate researcher in Computer Engineering at Sharif University of Technology (minor in Mathematics). My primary focus is controllable music generation and NIME. As a dancer, I am deeply interested in exploring interactive experiences and systems that bridge motion and sound.
 social:
   - label: "GitHub"
     icon: "fa-brands fa-github"
