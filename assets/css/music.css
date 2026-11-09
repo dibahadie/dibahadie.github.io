@@ -1,0 +1,137 @@
+.music-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Absolutely forces items to the left edge */
+  gap: 24px;
+}
+
+.music-card {
+  width: 240px; /* Fixed width */
+  height: 240px; /* Fixed height guarantees a perfect square */
+  flex-shrink: 0; /* Prevents the browser from squishing or stretching it */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-decoration: none !important;
+}
+
+.music-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  z-index: 1;
+}
+
+.music-cover-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--panel), rgba(192, 132, 252, 0.15));
+  display: grid;
+  place-items: center;
+  font-size: 48px;
+  color: var(--accent-lavender);
+  opacity: 0.5;
+  transition: transform 0.5s ease;
+  z-index: 1;
+}
+
+.music-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(6, 9, 15, 0.95) 0%, rgba(6, 9, 15, 0.6) 60%, transparent 100%);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform 0.3s ease;
+}
+
+.music-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  color: var(--accent-lavender);
+  margin-bottom: 8px;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.music-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  transform: translateY(0); 
+  opacity: 0.6; /* Added: Title is faded by default */
+  transition: all 0.3s ease;
+}
+
+.play-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  width: 48px;
+  height: 48px;
+  background: var(--glass-bg);
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-size: 16px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.play-indicator i {
+  margin-left: 3px;
+}
+
+/* Hover States */
+.music-card:hover .music-cover,
+.music-card:hover .music-cover-fallback {
+  transform: scale(1.08);
+}
+
+.music-card:hover .music-meta {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.music-card:hover .play-indicator {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  background: rgba(192, 132, 252, 0.2);
+}
+
+.music-card:hover .music-title {
+  opacity: 1; /* Added: Title becomes solid white on hover */
+}
+
+/* Mobile Adjustments */
+@media (max-width: 640px) {
+  .music-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .music-overlay { padding: 12px; }
+  .music-title { font-size: 14px; }
+}

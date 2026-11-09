@@ -18,6 +18,9 @@ social:
   - label: "LinkedIn"
     icon: "fa-brands fa-linkedin"
     url: "https://www.linkedin.com/in/dibahadie"
+  - label: "Sound Cloud"
+    icon: "fa-brands fa-soundcloud"
+    url: https://soundcloud.com/diba-hadi-762230429
 
 music:
   enabled: false
