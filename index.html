@@ -15,9 +15,6 @@ title: Home
           <img src="{{ '/assets/img/profile.png' | relative_url }}" alt="{{ p.name }}" class="profile-pic">
           
           <div class="intro-contacts">
-            {% if p.location != "" %}
-              <div style="color:var(--muted);"><i class="fa-solid fa-location-dot"></i> {{ p.location }}</div>
-            {% endif %}
             
             {% if p.email != "" %}
               <a href="mailto:{{ p.email }}" style="color:var(--muted);"><i class="fa-solid fa-envelope"></i> Email</a>
