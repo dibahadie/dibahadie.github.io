@@ -128,8 +128,23 @@ a:hover { color: var(--accent); }
 
 .under-hero {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 1024px) {
+  .under-hero {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 700px) {
+  .under-hero {
+    grid-template-columns: 1fr;
+  }
 }
 
 .h-title { font-size: 34px; line-height: 1.15; margin: 0 0 10px; letter-spacing: .01em; margin-top: 0;}

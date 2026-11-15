@@ -118,29 +118,33 @@ title: Home
     </div>
   </section>
 
-  <section class="section reveal-card ">
+  </section>
+
+  <section class="section reveal-card">
     <div class="under-hero">
       
+      <!-- Column 1: Research Interests -->
       <div>
         <h2><i class="fa-solid fa-compass"></i> Research Interests</h2>
         <div class="stack">
           <div class="row">
             <div class="icon"><i class="fa-solid fa-music"></i></div>
             <div>
-              <div class="row-title">Controllable music generation </div>
+              <div class="row-title">Controllable music generation</div>
               <div class="row-text">Developing models for structured, expressive, and controllable musical output.</div>
             </div>
           </div>
           <div class="row">
             <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
             <div>
-            <div class="row-title">Sound-movement interaction</div>
-            <div class="row-text">Exploring interactive and real-time experiences at the intersection of motion and sound.</div>
-          </div>
+              <div class="row-title">Sound-movement interaction</div>
+              <div class="row-text">Exploring interactive and real-time experiences at the intersection of motion and sound.</div>
+            </div>
           </div>
         </div>
       </div>
 
+      <!-- Column 2: Latest on Blog -->
       <div>
         <h2><i class="fa-solid fa-pen-nib"></i> Latest on Blog</h2>
         <div class="stack">
@@ -149,12 +153,45 @@ title: Home
               <div class="icon"><i class="fa-regular fa-file"></i></div>
               <div>
                 <div class="row-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
-                <div class="row-text">{{ post.date | date: "%b %-d, %Y" }} · {{ post.excerpt | strip_html | truncate: 110 }}</div>
+                <div class="row-text">{{ post.date | date: "%b %-d, %Y" }} · {{ post.excerpt | strip_html | truncate: 90 }}</div>
               </div>
             </div>
           {% endfor %}
           {% if site.posts.size == 0 %}
             <div class="row"><div class="row-text">Create your first post in <code>_posts/</code>.</div></div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Column 3: Latest Music -->
+      <div>
+        <h2><i class="fa-solid fa-headphones"></i> Latest Music</h2>
+        <div class="stack">
+          {% if site.data.music.items.size > 0 %}
+            {% for track in site.data.music.items limit:2 %}
+              <div class="row">
+                <div class="icon"><i class="fa-brands fa-soundcloud"></i></div>
+                <div>
+                  <div class="row-title">
+                    <a href="{{ track.url }}" target="_blank" rel="noopener">{{ track.title }}</a>
+                  </div>
+                  <div class="row-text">
+                    {% if track.instrument %}{{ track.instrument }} · {% endif %}{{ track.description }}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <!-- Fallback / Direct link to your SoundCloud -->
+            <div class="row">
+              <div class="icon"><i class="fa-brands fa-soundcloud"></i></div>
+              <div>
+                <div class="row-title">
+                  <a href="https://soundcloud.com" target="_blank" rel="noopener">Listen on SoundCloud</a>
+                </div>
+                <div class="row-text">Original recordings, Persian traditional vocals, and generative audio experiments.</div>
+              </div>
+            </div>
           {% endif %}
         </div>
       </div>
