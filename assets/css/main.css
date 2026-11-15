@@ -126,25 +126,52 @@ a:hover { color: var(--accent); }
   gap: 18px;
 }
 
+/* --- Force 3-Column Bottom Grid --- */
 .under-hero {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 28px !important;
   align-items: start;
 }
 
-/* Tablet: 2 columns */
 @media (max-width: 1024px) {
   .under-hero {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
 
-/* Mobile: 1 column */
 @media (max-width: 700px) {
   .under-hero {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
+}
+
+/* --- Colorful Latest Music Column --- */
+.music-home-row {
+  text-decoration: none;
+  padding: 0px 10px;
+  margin-left: -10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.music-mini-cover {
+  width: 44px;
+  height: 44px;
+  border-radius: 3px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.music-genre-pill {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1px 6px;
+  border-radius: 4px;
 }
 
 .h-title { font-size: 34px; line-height: 1.15; margin: 0 0 10px; letter-spacing: .01em; margin-top: 0;}
