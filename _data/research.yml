@@ -13,7 +13,7 @@ items:
     venue: "Personal Project"
     year: ongoing
     featured: true
-    pdf: "https://arxiv.org/pdf/2511.05717"  
+    pdf: "https://github.com/dibahadie/Culturaly-Grounded-MIR/tree/master"  
     code: "https://github.com/dibahadie/Culturaly-Grounded-MIR/tree/master"
     abstract: "Culturally-Grounded-MIR is a personal project dedicated to exploring computational research across diverse folk and traditional music systems. I'm currently collecting research papers, open datasets, and AI models focused on non-Western music traditions—such as Turkish Makam, Indian Classical, and African polyrhythms."
 
